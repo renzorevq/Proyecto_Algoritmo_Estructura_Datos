@@ -127,7 +127,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cancion.cpp" />
+    <ClCompile Include="listaEnlazada.cpp" />
+    <ClCompile Include="login.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="nodo.cpp" />
+    <ClCompile Include="playlist.cpp" />
     <ClCompile Include="Spotify.cpp" />
+    <ClCompile Include="usuario.cpp" />
+    <ClCompile Include="utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cancion.h" />
+    <ClInclude Include="listaEnlazada.h" />
+    <ClInclude Include="login.h" />
+    <ClInclude Include="nodo.h" />
+    <ClInclude Include="playlist.h" />
+    <ClInclude Include="usuario.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

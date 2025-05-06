@@ -13,10 +13,87 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Utils">
+      <UniqueIdentifier>{58031892-280d-4046-a7a7-fb3d96900cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Utils">
+      <UniqueIdentifier>{8d35c606-c476-48e3-bdfa-dba999d7be85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Menu">
+      <UniqueIdentifier>{7e85f414-0e69-4401-b185-68632d69f346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Login">
+      <UniqueIdentifier>{c505dba6-bbdc-4004-9545-16e33549cf4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Login">
+      <UniqueIdentifier>{bfb06483-281e-4d75-b686-75ac81a81a47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Menu">
+      <UniqueIdentifier>{a07e6ad1-c7ca-4371-a77b-dced07d23409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Usuario">
+      <UniqueIdentifier>{1c97e08f-9849-4fa9-a33b-b92cb7edd48d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Usuario">
+      <UniqueIdentifier>{8d0faef1-fe93-4ac2-8777-5c6d7dd4f212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Clases">
+      <UniqueIdentifier>{2a4b7c62-3d52-41a0-8a3f-5ae494a0ac3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Clases">
+      <UniqueIdentifier>{6680d042-c610-4b0d-8aa2-ec88340ab751}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Spotify.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Archivos de origen\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="login.cpp">
+      <Filter>Archivos de origen\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Archivos de origen\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="nodo.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="listaEnlazada.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="cancion.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="playlist.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="usuario.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils.h">
+      <Filter>Archivos de encabezado\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="login.h">
+      <Filter>Archivos de encabezado\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="nodo.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="listaEnlazada.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="cancion.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="usuario.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="playlist.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
