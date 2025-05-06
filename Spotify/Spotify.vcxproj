@@ -128,10 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cancion.cpp" />
-    <ClCompile Include="listaEnlazada.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="menu.cpp" />
-    <ClCompile Include="nodo.cpp" />
     <ClCompile Include="playlist.cpp" />
     <ClCompile Include="Spotify.cpp" />
     <ClCompile Include="usuario.cpp" />

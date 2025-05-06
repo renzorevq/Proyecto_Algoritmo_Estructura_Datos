@@ -8,7 +8,7 @@
 using namespace std;
 
 
-void registrarse(vector<Usuario> usuarios) {
+void registrarse(vector<Usuario>& usuarios) {
     limpiarPantalla();
     dibujarCaja({ "REGISTRARSE" });
     string nombreUsuario, correoElectronico, contrasenaUsuario;
@@ -39,8 +39,11 @@ void iniciarSesion(vector<Usuario> usuarios) {
         pausar();
     }
     else {
-        /*Usuario& usuarioLogueado = *it;
+        
+        Usuario& usuarioLogueado = *it;
         bool sesionActiva = true;
+        int opcion;
+
         while (sesionActiva) {
             limpiarPantalla();
             dibujarCaja({
@@ -126,8 +129,8 @@ void iniciarSesion(vector<Usuario> usuarios) {
             }
             else if (opcion == 7) {
                 sesionActiva = false;
-            }*/
-        //}
+            }
+        }
     }
 
 }

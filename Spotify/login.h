@@ -5,6 +5,7 @@
 #include <vector>
 #include "./usuario.h"
 
-void registrarse(vector<Usuario> usuarios);
+void registrarse(vector<Usuario>& usuarios);
+void iniciarSesion(vector<Usuario> usuarios);
 
 #endif // !LOGIN_H

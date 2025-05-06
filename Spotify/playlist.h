@@ -13,7 +13,7 @@ class Playlist {
     string descripcion;
     ListaEnlazada<Cancion> canciones;
 public:
-    Playlist() {}
+    Playlist();
     Playlist(const string& nombrePlaylist, const string& descripcionPlaylist);
     
     void agregarCancion(const Cancion& cancion);

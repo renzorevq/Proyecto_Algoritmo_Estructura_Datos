@@ -49,13 +49,6 @@ public:
     bool estaVacia() const { return elementos.empty(); }
 };
 
-// Clases del dominio
-
-
-
-
-
-
 // Persistencia de usuarios
 void cargarUsuarios(vector<Usuario>& usuarios) {
     ifstream archivo("usuarios.txt");
@@ -80,32 +73,32 @@ void guardarUsuarios(const vector<Usuario>& usuarios) {
 }
 
 int main() {
-    //vector<Usuario> usuarios;
-    //cargarUsuarios(usuarios);
-    //bool ejecutando = true;
+    vector<Usuario> usuarios;
+    cargarUsuarios(usuarios);
+    bool ejecutando = true;
 
-    //while (ejecutando) {
-    //    limpiarPantalla();
-    //    dibujarCaja({ "MINI SPOTIFY", "1. Registrarse", "2. Iniciar Sesion", "3. Salir" });
-    //    cout << "Seleccione opcion: ";
-    //    int opcion;
-    //    cin >> opcion;
-    //    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    //    switch (opcion)
-    //    {
-    //    case 1:
-    //        registrarse(usuarios);
-    //        break;
-    //    case 2:
-    //        //iniciarSesion();
-    //        break;
-    //    case 3:
-    //        ejecutando = false;
-    //        break;
-    //    default:
-    //        break;
-    //    }
-    //}
-    //guardarUsuarios(usuarios);
+    while (ejecutando) {
+        limpiarPantalla();
+        dibujarCaja({ "MINI SPOTIFY", "1. Registrarse", "2. Iniciar Sesion", "3. Salir" });
+        cout << "Seleccione opcion: ";
+        int opcion;
+        cin >> opcion;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        switch (opcion)
+        {
+        case 1:
+            registrarse(usuarios);
+            break;
+        case 2:
+            iniciarSesion(usuarios);
+            break;
+        case 3:
+            ejecutando = false;
+            break;
+        default:
+            break;
+        }
+    }
+    guardarUsuarios(usuarios);
     return 0;
 }

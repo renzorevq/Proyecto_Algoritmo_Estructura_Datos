@@ -30,7 +30,7 @@ void textoCentrado(const string& texto, int ancho) {
     cout << "|" << string(relleno, ' ') << texto << string(ancho - 2 - relleno - texto.size(), ' ') << "|\n";
 }
 
-void dibujarCaja(const vector<string>& lineas, int ancho = 60) {
+void dibujarCaja(const vector<string>& lineas, int ancho) {
     lineaHorizontal(ancho);
     for (const auto& linea : lineas) textoCentrado(linea, ancho);
     lineaHorizontal(ancho);

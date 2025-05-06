@@ -14,7 +14,7 @@ class Usuario {
     string contrasena;
     vector<Playlist> misPlaylists;
 public:
-    Usuario() {}
+    Usuario();
     Usuario(const string& nombreUsuario,
         const string& correoElectronico,
         const string& contrasenaUsuario);
