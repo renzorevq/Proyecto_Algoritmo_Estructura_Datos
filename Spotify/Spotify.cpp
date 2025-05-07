@@ -15,7 +15,7 @@
 
 using namespace std;
 
-// Pila genérica (LIFO)
+// Pila genÃ©rica (LIFO)
 template <typename T>
 class Pila {
     vector<T> elementos;
@@ -32,7 +32,7 @@ public:
     bool estaVacia() const { return elementos.empty(); }
 };
 
-// Cola genérica (FIFO)
+// Cola genÃ©rica (FIFO)
 template <typename T>
 class Cola {
     list<T> elementos;
