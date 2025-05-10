@@ -9,11 +9,53 @@
 #include <stdexcept>
 #include <limits>
 #include <string>
+#include <map>
 
 #include "./utils.h"
 #include "./login.h"
 
 using namespace std;
+
+// Cola circular genérica (FIFO)
+template <typename T, size_t N>
+class ColaCircular {
+    T datos[N];
+    size_t inicio = 0, fin = 0, conteo = 0;
+public:
+    void encolar(const T& valor) {
+        if (conteo < N) {
+            datos[fin] = valor;
+            fin = (fin + 1) % N;
+            ++conteo;
+        }
+    }
+    void desencolar() {
+        if (conteo > 0) {
+            inicio = (inicio + 1) % N;
+            --conteo;
+        }
+    }
+    T& frente() {
+        if (conteo == 0) throw out_of_range("Cola vacia");
+        return datos[inicio];
+    }
+    bool estaVacia() const { return conteo == 0; }
+};
+
+// Quick sort para vector de Cancion por duracion
+void quickSortDuracion(vector<Cancion>& v, int izq, int der) {
+    if (izq >= der) return;
+    int piv = v[(izq + der) / 2].obtenerDuracion();   // <<< usa el getter
+    int i = izq, j = der;
+    while (i <= j) {
+        while (v[i].obtenerDuracion() < piv) ++i;      // <<< getter
+        while (v[j].obtenerDuracion() > piv) --j;      // <<< getter
+        if (i <= j) swap(v[i++], v[j--]);
+    }
+    quickSortDuracion(v, izq, j);
+    quickSortDuracion(v, i, der);
+}
+
 
 // Pila genérica (LIFO)
 template <typename T>
@@ -77,6 +119,11 @@ int main() {
     cargarUsuarios(usuarios);
     bool ejecutando = true;
 
+    map<int, function<void()>> acciones;
+    acciones[1] = [&] { registrarse(usuarios); };
+    acciones[2] = [&] { iniciarSesion(usuarios); };
+    acciones[3] = [&] { ejecutando = false; };
+
     while (ejecutando) {
         limpiarPantalla();
         dibujarCaja({ "MINI SPOTIFY", "1. Registrarse", "2. Iniciar Sesion", "3. Salir" });
@@ -84,20 +131,7 @@ int main() {
         int opcion;
         cin >> opcion;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        switch (opcion)
-        {
-        case 1:
-            registrarse(usuarios);
-            break;
-        case 2:
-            iniciarSesion(usuarios);
-            break;
-        case 3:
-            ejecutando = false;
-            break;
-        default:
-            break;
-        }
+        if (acciones.count(opcion)) acciones[opcion]();
     }
     guardarUsuarios(usuarios);
     return 0;

@@ -12,3 +12,4 @@ Cancion::Cancion(const string& tituloCancion,
 
 string Cancion::obtenerTitulo() const { return titulo; }
 string Cancion::obtenerArtista() const { return artista; }
+int Cancion::obtenerDuracion() const { return duracion; }
