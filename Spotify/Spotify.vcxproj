@@ -127,20 +127,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlbumSorter.cpp" />
+    <ClCompile Include="ArtisSorter.cpp" />
     <ClCompile Include="cancion.cpp" />
+    <ClCompile Include="DurationSorter.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="playlist.cpp" />
     <ClCompile Include="Spotify.cpp" />
+    <ClCompile Include="TitleSorter.cpp" />
     <ClCompile Include="usuario.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlbumSorter.h" />
+    <ClInclude Include="ArtisSorter.h" />
     <ClInclude Include="cancion.h" />
+    <ClInclude Include="DurationSorter.h" />
     <ClInclude Include="listaEnlazada.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="nodo.h" />
     <ClInclude Include="playlist.h" />
+    <ClInclude Include="TitleSorter.h" />
     <ClInclude Include="usuario.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>

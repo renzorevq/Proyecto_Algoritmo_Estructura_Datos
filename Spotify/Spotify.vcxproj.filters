@@ -57,12 +57,6 @@
     <ClCompile Include="menu.cpp">
       <Filter>Archivos de origen\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="nodo.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="listaEnlazada.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
     <ClCompile Include="cancion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
@@ -70,6 +64,18 @@
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="usuario.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="DurationSorter.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtisSorter.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleSorter.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="AlbumSorter.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,6 +99,18 @@
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="playlist.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="DurationSorter.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtisSorter.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleSorter.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="AlbumSorter.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
   </ItemGroup>
