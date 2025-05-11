@@ -4,26 +4,26 @@
 #include "ListaReproduccion.h"
 #include "ListaEnlazada.h"
 #include "Cancion.h"
-#include "Utils.h"
+#include "Utilidades.h"
 
 using namespace std;
 
-Playlist::Playlist() {};
-Playlist::Playlist(const string& nombrePlaylist, const string& descripcionPlaylist)
+ListaReproduccion::ListaReproduccion() {};
+ListaReproduccion::ListaReproduccion(const string& nombrePlaylist, const string& descripcionPlaylist)
 	: nombre(nombrePlaylist), descripcion(descripcionPlaylist) {
 }
 
-void Playlist::agregarCancion(const Cancion& cancion) {
+void ListaReproduccion::agregarCancion(const Cancion& cancion) {
 	canciones.insertar(cancion);
 }
 
-void Playlist::eliminarCancion(const string& tituloCancion) { 
+void ListaReproduccion::eliminarCancion(const string& tituloCancion) {
 	canciones.eliminar([&](const Cancion& c) {
 		return c.obtenerTitulo() == tituloCancion;
 		});
 }
 
-void Playlist::listarCanciones() const {
+void ListaReproduccion::listarCanciones() const {
 	dibujarCaja({ "PLAYLIST: " + nombre, descripcion });
 	if (canciones.estaVacia()) {
 		cout << "(sin canciones)" << "\n";
@@ -35,4 +35,4 @@ void Playlist::listarCanciones() const {
 	}
 }
 
-string Playlist::obtenerNombre() const { return nombre; }
+string ListaReproduccion::obtenerNombre() const { return nombre; }

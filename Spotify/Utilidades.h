@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef UTILIDADES_H
+#define UTILIDADES_H
 
 #include <string>
 #include <vector>
@@ -13,4 +13,4 @@ void dibujarCaja(const vector<string>& lineas, int ancho = 60);
 void lineaHorizontal(int ancho);
 void textoCentrado(const string& texto, int ancho);
 
-#endif UTILS_H
+#endif UTILIDADES_H

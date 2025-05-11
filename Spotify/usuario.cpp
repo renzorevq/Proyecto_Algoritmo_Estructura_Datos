@@ -17,17 +17,17 @@ string Usuario::obtenerNombre() const { return nombre; }
 
 string Usuario::obtenerCorreo() const { return correo; }
 string Usuario::obtenerContrasena() const { return contrasena; }
-vector<Playlist>& Usuario::obtenerPlaylists() { return misPlaylists; }
-void Usuario::crearPlaylist(const Playlist& nuevaPlaylist) {
-	misPlaylists.push_back(nuevaPlaylist);
+vector<ListaReproduccion>& Usuario::obtenerListaReproduccion() { return misListaReproducciones; }
+void Usuario::crearListaReproduccion(const ListaReproduccion& nuevaListaReproduccion) {
+	misListaReproducciones.push_back(nuevaListaReproduccion);
 }
-void Usuario::eliminarPlaylist(const string& nombrePlaylist) {
-	misPlaylists.erase(
+void Usuario::eliminarListaReproduccion(const string& nombreListaReproduccion) {
+	misListaReproducciones.erase(
 		remove_if(
-			misPlaylists.begin(),
-			misPlaylists.end(),
-			[&](const Playlist& p) { return p.obtenerNombre() == nombrePlaylist; }
+			misListaReproducciones.begin(),
+			misListaReproducciones.end(),
+			[&](const ListaReproduccion& p) { return p.obtenerNombre() == nombreListaReproduccion; }
 		),
-		misPlaylists.end()
+		misListaReproducciones.end()
 	);
 }

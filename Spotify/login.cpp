@@ -4,12 +4,21 @@
 #include <sstream>
 #include <algorithm>
 #include <limits>
+#include <map>
+#include <thread>
+#include <mutex>
+#include <atomic>
+#include "AdministradordePodcast.h"
+#include "Podcast.h"
+#include "MarcaDescarga.h"
+#include "Historial.h"
+#include "EstadisticaPista.h"
 #include "EnlaceFavorito.h"
 #include "DatosValoracion.h"
 #include "DatosComentario.h"
 #include "CompartirCancion.h"
 #include "Login.h"
-#include "Utils.h"
+#include "Utilidades.h"
 #include "Usuario.h"
 
 using namespace std;
@@ -52,6 +61,16 @@ void iniciarSesion(vector<Usuario> usuarios) {
     CompartirCancion  gestorCompartir;
     DatosValoracion gestorValoracion;
     EnlaceFavorito gestorEnlaces;
+    EstadisticaPista estadisticas;
+    map<string, int> progresoCanciones;
+    mutex mtxTiempo;
+    atomic<bool> enReproduccion(false);
+    atomic<bool> detenerHilo(false);
+    Historial historial;
+    MarcaDescarga gestorDescargas;
+    AdministradordePodcast gestorPodcasts;
+
+
 
     bool sesionActiva = true;
     int  opcion;
@@ -69,7 +88,11 @@ void iniciarSesion(vector<Usuario> usuarios) {
             "11. Compartir Cancion", "12. Ver Compartidos",
             "13. Valorar Cancion", "14. Ver Valoraciones",
             "15. Agregar Enlace Favorito", "16. Ver Enlaces", 
-            "17. Eliminar Enlace"
+            "17. Eliminar Enlace","18. Reproducir Cancion", 
+            "19. Ver Estadísticas","20. Historial General",
+            "21. Descargar Cancion", "22. Ver Descargas",
+            "23. Registrar Podcast", "24. Ver Podcasts"
+
             });
         cout << "Seleccione opcion: ";
         cin >> opcion;
@@ -82,8 +105,9 @@ void iniciarSesion(vector<Usuario> usuarios) {
             string nombreP, descP;
             cout << "Nombre Playlist: "; getline(cin, nombreP);
             cout << "Descripcion    : "; getline(cin, descP);
-            usuarioLogueado.crearPlaylist(Playlist(nombreP, descP));
+            usuarioLogueado.crearListaReproduccion(ListaReproduccion(nombreP, descP));
             cout << "-> Playlist creada!\n";
+            historial.registrarEvento("Se creó la playlist: " + nombreP);
             pausar();
             break;
         }
@@ -92,7 +116,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             dibujarCaja({ "ELIMINAR PLAYLIST" });
             string nombreP;
             cout << "Nombre Playlist: "; getline(cin, nombreP);
-            usuarioLogueado.eliminarPlaylist(nombreP);
+            usuarioLogueado.eliminarListaReproduccion(nombreP);
             cout << "-> Eliminada si existia!\n";
             pausar();
             break;
@@ -100,7 +124,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
         case 3: {
             limpiarPantalla();
             dibujarCaja({ "TUS PLAYLISTS" });
-            for (const auto& p : usuarioLogueado.obtenerPlaylists())
+            for (const auto& p : usuarioLogueado.obtenerListaReproduccion())
                 cout << "* " << p.obtenerNombre() << "\n";
             pausar();
             break;
@@ -115,10 +139,12 @@ void iniciarSesion(vector<Usuario> usuarios) {
             cout << "Artista       : "; getline(cin, art);
             cout << "Album         : "; getline(cin, alb);
             cout << "Duracion (s)  : "; cin >> dur; cin.ignore();
-            for (auto& p : usuarioLogueado.obtenerPlaylists())
+            for (auto& p : usuarioLogueado.obtenerListaReproduccion())
                 if (p.obtenerNombre() == nombreP)
                     p.agregarCancion(Cancion(t, art, alb, dur));
             cout << "-> Cancion agregada!\n";
+            historial.registrarEvento("Se agregó la canción '" + t + "' a la playlist: " + nombreP);
+
             pausar();
             break;
         }
@@ -128,7 +154,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             string nombreP, t;
             cout << "Playlist      : "; getline(cin, nombreP);
             cout << "Titulo Cancion: "; getline(cin, t);
-            for (auto& p : usuarioLogueado.obtenerPlaylists())
+            for (auto& p : usuarioLogueado.obtenerListaReproduccion())
                 if (p.obtenerNombre() == nombreP)
                     p.eliminarCancion(t);
             cout << "-> Eliminada si existia!\n";
@@ -140,7 +166,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             dibujarCaja({ "LISTAR CANCIONES" });
             string nombreP;
             cout << "Playlist: "; getline(cin, nombreP);
-            for (const auto& p : usuarioLogueado.obtenerPlaylists())
+            for (const auto& p : usuarioLogueado.obtenerListaReproduccion())
                 if (p.obtenerNombre() == nombreP)
                     p.listarCanciones();
             pausar();
@@ -194,6 +220,8 @@ void iniciarSesion(vector<Usuario> usuarios) {
                 cout << "-> Link generado: " << link << "\n";
             else
                 cout << "-> Límite de compartidos alcanzado!\n";
+            historial.registrarEvento("Se compartió la canción: " + titulo);
+
             pausar();
             break;
         }
@@ -216,6 +244,8 @@ void iniciarSesion(vector<Usuario> usuarios) {
                 std::cout << "-> Valoracion guardada!\n";
             else
                 std::cout << "-> Valor no valido o capacidad llena\n";
+            historial.registrarEvento("Se valoró la canción '" + titulo + "' con: " + to_string(valor));
+
             pausar();
             break;
         }
@@ -231,7 +261,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             dibujarCaja({ "AGREGAR ENLACE FAVORITO" });
             std::string titulo, url;
             std::cout << "Titulo de la cancion: "; getline(std::cin, titulo);
-            std::cout << "URL externa         : "; getline(std::cin, url);
+            std::cout << "URL externa(numero de 3digitos):https://open.spotify.com/intl-es/track/"; getline(std::cin, url);
             if (gestorEnlaces.agregarEnlace(titulo, url))
                 std::cout << "-> Enlace guardado!\n";
             else
@@ -259,6 +289,149 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
+        case 18: { // REPRODUCTOR AVANZADO MULTIHILO
+            limpiarPantalla();
+            dibujarCaja({ "REPRODUCTOR DE CANCIONES" });
+
+            string titulo;
+            cout << "Titulo de la canción: ";
+            getline(cin, titulo);
+
+            const int DURACION_TOTAL = 150;
+            int& segundos = progresoCanciones[titulo]; // Progreso por referencia
+
+            enReproduccion = false;
+            detenerHilo = false;
+
+            // Hilo: simula la reproducción (1 seg por segundo)
+            thread hiloCronometro([&]() {
+                while (!detenerHilo) {
+                    if (enReproduccion && segundos < DURACION_TOTAL) {
+                        this_thread::sleep_for(chrono::seconds(1));
+                        lock_guard<mutex> lock(mtxTiempo);
+                        ++segundos;
+                        if (segundos >= DURACION_TOTAL) {
+                            enReproduccion = false;
+                            cout << "\n>> Canción finalizada.\n";
+                            estadisticas.registrarReproduccion(titulo);
+                        }
+                    }
+                    else {
+                        this_thread::sleep_for(chrono::milliseconds(200));
+                    }
+                }
+                });
+
+            // Hilo: muestra tiempo actual cada segundo
+            thread hiloVisual([&]() {
+                while (!detenerHilo) {
+                    this_thread::sleep_for(chrono::milliseconds(500));
+                    lock_guard<mutex> lock(mtxTiempo);
+                    cout << "\r[ " << (segundos / 60) << "m " << (segundos % 60) << "s / 2m 30s ] ";
+                    cout.flush();
+                }
+                });
+
+            // Submenú: acepta comandos sin bloquear reproducción
+            bool salir = false;
+            while (!salir) {
+                cout << "\n\nSubopciones: 1.Reproducir  2.Pausar  3.Salir\n";
+                cout << "Ingrese opción: ";
+                int sub;
+                cin >> sub;
+                cin.ignore();
+
+                switch (sub) {
+                case 1:
+                    if (segundos >= DURACION_TOTAL) {
+                        cout << ">> Ya terminó. Reinicia manualmente.\n";
+                    }
+                    else {
+                        enReproduccion = true;
+                        cout << ">> Reproduciendo...\n";
+                    }
+                    break;
+                case 2:
+                    enReproduccion = false;
+                    cout << ">> Pausado.\n";
+                    break;
+                case 3:
+                    detenerHilo = true;
+                    enReproduccion = false;
+                    salir = true;
+                    cout << ">> Saliendo del reproductor...\n";
+                    break;
+                default:
+                    cout << "Opción inválida.\n";
+                }
+            }
+
+            // Esperar cierre de hilos
+            if (hiloCronometro.joinable()) hiloCronometro.join();
+            if (hiloVisual.joinable()) hiloVisual.join();
+            historial.registrarEvento("Reproducción iniciada de: " + titulo);
+
+            break;
+        }
+
+
+        case 19: {
+            limpiarPantalla();
+            dibujarCaja({ "ESTADISTICAS DE REPRODUCCION" });
+            estadisticas.mostrarEstadisticas();
+            pausar();
+            break;
+        }
+        case 20: {
+            limpiarPantalla();
+            dibujarCaja({ "HISTORIAL GENERAL DE ACTIVIDADES" });
+            historial.mostrarHistorial();
+            pausar();
+            break;
+        }
+        case 21: { // DESCARGAR CANCION
+            limpiarPantalla();
+            dibujarCaja({ "DESCARGAR CANCION" });
+            string titulo;
+            cout << "Titulo de la cancion a descargar: ";
+            getline(cin, titulo);
+            if (gestorDescargas.registrarDescarga(titulo))
+                cout << "-> Cancion marcada como descargada!\n";
+            else
+                cout << "-> No se pudo registrar descarga.\n";
+            pausar();
+            break;
+        }
+        case 22: { // VER DESCARGAS
+            limpiarPantalla();
+            dibujarCaja({ "DESCARGAS REALIZADAS" });
+            gestorDescargas.mostrarDescargas();
+            pausar();
+            break;
+        }
+        case 23: {
+            limpiarPantalla();
+            dibujarCaja({ "REGISTRAR PODCAST" });
+            std::string titulo, creador;
+            int duracion;
+            std::cout << "Titulo del podcast : "; getline(std::cin, titulo);
+            std::cout << "Creador del podcast: "; getline(std::cin, creador);
+            std::cout << "Duracion (segundos): "; std::cin >> duracion; std::cin.ignore();
+            if (gestorPodcasts.registrarPodcast(titulo, creador, duracion))
+                std::cout << "-> Podcast registrado!\n";
+            else
+                std::cout << "-> Limite de podcasts alcanzado!\n";
+            pausar();
+            break;
+        }
+        case 24: {
+            limpiarPantalla();
+            dibujarCaja({ "LISTA DE PODCASTS" });
+            gestorPodcasts.listarPodcasts();
+            pausar();
+            break;
+        }
+
 
         default:
             cout << "Opcion no valida!\n";

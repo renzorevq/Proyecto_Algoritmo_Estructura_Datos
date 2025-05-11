@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PLAYLIST_H
-#define PLAYLIST_H
+#ifndef LISTAREPRODUCCION_H
+#define LISTAREPRODUCCION_H
 
 #include <string>
 #include "ListaEnlazada.h"
@@ -8,13 +8,13 @@
 
 using namespace std;
 
-class Playlist {
+class ListaReproduccion {
     string nombre;
     string descripcion;
     ListaEnlazada<Cancion> canciones;
 public:
-    Playlist();
-    Playlist(const string& nombrePlaylist, const string& descripcionPlaylist);
+    ListaReproduccion();
+    ListaReproduccion(const string& nombreListaReproduccion, const string& descripcionListaReproduccion);
     
     void agregarCancion(const Cancion& cancion);
 

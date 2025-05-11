@@ -42,7 +42,7 @@
     <ClCompile Include="Spotify.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
+    <ClCompile Include="Utilidades.cpp">
       <Filter>Archivos de origen\Utilidades</Filter>
     </ClCompile>
     <ClCompile Include="Login.cpp">
@@ -51,7 +51,7 @@
     <ClCompile Include="Cancion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="Playlist.cpp">
+    <ClCompile Include="ListaReproduccion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="Usuario.cpp">
@@ -81,9 +81,21 @@
     <ClCompile Include="EnlaceFavorito.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="EstadisticaPista.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Historial.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="MarcaDescarga.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="AdministradordePodcast.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Utils.h">
+    <ClInclude Include="Utilidades.h">
       <Filter>Archivos de encabezado\Utilidades</Filter>
     </ClInclude>
     <ClInclude Include="login.h">
@@ -156,6 +168,9 @@
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="ColaCircular.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="AdministradordePodcast.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
   </ItemGroup>

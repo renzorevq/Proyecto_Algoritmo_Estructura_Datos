@@ -12,7 +12,7 @@ bool EnlaceFavorito::agregarEnlace(const std::string& titulo, const std::string&
 void EnlaceFavorito::listarFavoritos() const {
     std::cout << "=== Enlaces Favoritos ===\n";
     for (int i = 0; i < conteo; ++i) {
-        std::cout << i + 1 << ". " << titulos[i] << ": " << enlaces[i] << "\n";
+        std::cout << i + 1 << ". " << titulos[i] << ":https://open.spotify.com/intl-es/track/" << enlaces[i] << "\n";
     }
     if (conteo == 0)
         std::cout << "(sin enlaces aún)\n";

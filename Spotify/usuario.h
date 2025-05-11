@@ -12,7 +12,7 @@ class Usuario {
     string nombre;
     string correo;
     string contrasena;
-    vector<Playlist> misPlaylists;
+    vector<ListaReproduccion> misListaReproducciones;
 public:
     Usuario();
     Usuario(const string& nombreUsuario,
@@ -21,11 +21,11 @@ public:
     string obtenerNombre() const;
     string obtenerCorreo() const;
     string obtenerContrasena() const;
-    vector<Playlist>& obtenerPlaylists();
+    vector<ListaReproduccion>& obtenerListaReproduccion();
 
-    void crearPlaylist(const Playlist& nuevaPlaylist);
+    void crearListaReproduccion(const ListaReproduccion& nuevaListaReproduccion);
 
-    void eliminarPlaylist(const string& nombrePlaylist);
+    void eliminarListaReproduccion(const string& nombreListaReproduccion);
 };
 
 #endif // !USUARIO_H

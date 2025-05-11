@@ -135,14 +135,19 @@
     <ClCompile Include="DatosValoracion.cpp" />
     <ClCompile Include="DuracionOrdenado.cpp" />
     <ClCompile Include="EnlaceFavorito.cpp" />
+    <ClCompile Include="EstadisticaPista.cpp" />
+    <ClCompile Include="Historial.cpp" />
     <ClCompile Include="Login.cpp" />
-    <ClCompile Include="Playlist.cpp" />
+    <ClCompile Include="MarcaDescarga.cpp" />
+    <ClCompile Include="ListaReproduccion.cpp" />
+    <ClCompile Include="AdministradordePodcast.cpp" />
     <ClCompile Include="Spotify.cpp" />
     <ClCompile Include="TituloOrdenado.cpp" />
     <ClCompile Include="Usuario.cpp" />
-    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Utilidades.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdministradordePodcast.h" />
     <ClInclude Include="InformacionAlbum.h" />
     <ClInclude Include="AlbumOrdenado.h" />
     <ClInclude Include="ArtistaOrdenado.h" />
@@ -167,7 +172,7 @@
     <ClInclude Include="EstadisticaPista.h" />
     <ClInclude Include="SeguimientoUsuario.h" />
     <ClInclude Include="Usuario.h" />
-    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Utilidades.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
