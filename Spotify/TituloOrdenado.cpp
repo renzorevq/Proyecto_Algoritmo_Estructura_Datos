@@ -1,6 +1,6 @@
-#include "TitleSorter.h"
+#include "TituloOrdenado.h"
 
-void TitleSorter::ordenar(Cancion canciones[], int n) {
+void TituloOrdenado::ordenarporTitulo(Cancion canciones[], int n) {
 
 	for (int i = 0; i < n - 1; i++) {
 

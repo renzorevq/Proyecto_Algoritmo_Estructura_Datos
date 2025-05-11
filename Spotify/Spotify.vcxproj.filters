@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de encabezado\Utils">
-      <UniqueIdentifier>{58031892-280d-4046-a7a7-fb3d96900cb2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Utils">
-      <UniqueIdentifier>{8d35c606-c476-48e3-bdfa-dba999d7be85}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de origen\Login">
       <UniqueIdentifier>{c505dba6-bbdc-4004-9545-16e33549cf4c}</UniqueIdentifier>
     </Filter>
@@ -37,53 +31,59 @@
     <Filter Include="Archivos de encabezado\Clases">
       <UniqueIdentifier>{6680d042-c610-4b0d-8aa2-ec88340ab751}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Utilidades">
+      <UniqueIdentifier>{58031892-280d-4046-a7a7-fb3d96900cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Utilidades">
+      <UniqueIdentifier>{8d35c606-c476-48e3-bdfa-dba999d7be85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Spotify.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>Archivos de origen\Utils</Filter>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Archivos de origen\Utilidades</Filter>
     </ClCompile>
-    <ClCompile Include="login.cpp">
+    <ClCompile Include="Login.cpp">
       <Filter>Archivos de origen\Login</Filter>
     </ClCompile>
-    <ClCompile Include="cancion.cpp">
+    <ClCompile Include="Cancion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="playlist.cpp">
+    <ClCompile Include="Playlist.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="usuario.cpp">
+    <ClCompile Include="Usuario.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="DurationSorter.cpp">
+    <ClCompile Include="DuracionOrdenado.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="ArtisSorter.cpp">
+    <ClCompile Include="ArtistaOrdenado.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="TitleSorter.cpp">
+    <ClCompile Include="TituloOrdenado.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="AlbumSorter.cpp">
+    <ClCompile Include="AlbumOrdenado.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utils.h">
-      <Filter>Archivos de encabezado\Utils</Filter>
+    <ClInclude Include="Utils.h">
+      <Filter>Archivos de encabezado\Utilidades</Filter>
     </ClInclude>
     <ClInclude Include="login.h">
       <Filter>Archivos de encabezado\Login</Filter>
     </ClInclude>
-    <ClInclude Include="nodo.h">
+    <ClInclude Include="Nodo.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="listaEnlazada.h">
+    <ClInclude Include="ListaEnlazada.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="cancion.h">
+    <ClInclude Include="Cancion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="Usuario.h">
@@ -92,55 +92,55 @@
     <ClInclude Include="ListaReproduccion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="DurationSorter.h">
+    <ClInclude Include="DuracionOrdenado.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="ArtisSorter.h">
+    <ClInclude Include="ArtistaOrdenado.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="TitleSorter.h">
+    <ClInclude Include="TituloOrdenado.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="AlbumSorter.h">
+    <ClInclude Include="AlbumOrdenado.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="Podcast.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="ArtistInfo.h">
+    <ClInclude Include="InformacionArtista.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="AlbumInfo.h">
+    <ClInclude Include="InformacionAlbum.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="GenreType.h">
+    <ClInclude Include="GeneroMusical.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="CommentData.h">
+    <ClInclude Include="DatosComentario.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="FavoriteLink.h">
+    <ClInclude Include="EnlaceFavorito.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="PlayHistory.h">
+    <ClInclude Include="Historial.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="SuggestedTrack.h">
+    <ClInclude Include="PistaSugerida.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="TrackStats.h">
+    <ClInclude Include="EstadisticaPista.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="UserFollow.h">
+    <ClInclude Include="SeguimientoUsuario.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="LyricsData.h">
+    <ClInclude Include="DatosLetra.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="DownloadMark.h">
+    <ClInclude Include="MarcaDescarga.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="RatingData.h">
+    <ClInclude Include="DatosValoracion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="ColaCircular.h">

@@ -1,10 +1,10 @@
-#include "ArtisSorter.h"
+#include "ArtistaOrdenado.h"
 #include <string>
 
 using namespace std;
 
 
-void ArtisSorter::ordenarArtista(Cancion canciones[], int artista) {
+void ArtistaOrdenado::ordenarporArtista(Cancion canciones[], int artista) {
 
 	for (int i = 1; i < artista; i++) {
 		Cancion clave = canciones[i];

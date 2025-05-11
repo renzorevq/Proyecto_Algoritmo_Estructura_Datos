@@ -2,9 +2,9 @@
 #include <string>
 
 #include "./ListaReproduccion.h"
-#include "./listaEnlazada.h"
-#include "./cancion.h"
-#include "./utils.h"
+#include "./ListaEnlazada.h"
+#include "./Cancion.h"
+#include "./Utils.h"
 
 using namespace std;
 

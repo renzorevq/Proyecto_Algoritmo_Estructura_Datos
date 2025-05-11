@@ -127,43 +127,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AlbumSorter.cpp" />
-    <ClCompile Include="ArtisSorter.cpp" />
-    <ClCompile Include="cancion.cpp" />
-    <ClCompile Include="DurationSorter.cpp" />
-    <ClCompile Include="login.cpp" />
-    <ClCompile Include="playlist.cpp" />
+    <ClCompile Include="AlbumOrdenado.cpp" />
+    <ClCompile Include="ArtistaOrdenado.cpp" />
+    <ClCompile Include="Cancion.cpp" />
+    <ClCompile Include="DuracionOrdenado.cpp" />
+    <ClCompile Include="Login.cpp" />
+    <ClCompile Include="Playlist.cpp" />
     <ClCompile Include="Spotify.cpp" />
-    <ClCompile Include="TitleSorter.cpp" />
-    <ClCompile Include="usuario.cpp" />
-    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="TituloOrdenado.cpp" />
+    <ClCompile Include="Usuario.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AlbumInfo.h" />
-    <ClInclude Include="AlbumSorter.h" />
-    <ClInclude Include="ArtisSorter.h" />
-    <ClInclude Include="ArtistInfo.h" />
-    <ClInclude Include="cancion.h" />
+    <ClInclude Include="InformacionAlbum.h" />
+    <ClInclude Include="AlbumOrdenado.h" />
+    <ClInclude Include="ArtistaOrdenado.h" />
+    <ClInclude Include="InformacionArtista.h" />
+    <ClInclude Include="Cancion.h" />
     <ClInclude Include="ColaCircular.h" />
-    <ClInclude Include="CommentData.h" />
-    <ClInclude Include="DownloadMark.h" />
-    <ClInclude Include="DurationSorter.h" />
-    <ClInclude Include="FavoriteLink.h" />
-    <ClInclude Include="GenreType.h" />
-    <ClInclude Include="listaEnlazada.h" />
+    <ClInclude Include="DatosComentario.h" />
+    <ClInclude Include="MarcaDescarga.h" />
+    <ClInclude Include="DuracionOrdenado.h" />
+    <ClInclude Include="EnlaceFavorito.h" />
+    <ClInclude Include="GeneroMusical.h" />
+    <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="login.h" />
-    <ClInclude Include="LyricsData.h" />
-    <ClInclude Include="nodo.h" />
-    <ClInclude Include="PlayHistory.h" />
+    <ClInclude Include="DatosLetra.h" />
+    <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Historial.h" />
     <ClInclude Include="ListaReproduccion.h" />
     <ClInclude Include="Podcast.h" />
-    <ClInclude Include="RatingData.h" />
-    <ClInclude Include="SuggestedTrack.h" />
-    <ClInclude Include="TitleSorter.h" />
-    <ClInclude Include="TrackStats.h" />
-    <ClInclude Include="UserFollow.h" />
+    <ClInclude Include="DatosValoracion.h" />
+    <ClInclude Include="PistaSugerida.h" />
+    <ClInclude Include="TituloOrdenado.h" />
+    <ClInclude Include="EstadisticaPista.h" />
+    <ClInclude Include="SeguimientoUsuario.h" />
     <ClInclude Include="Usuario.h" />
-    <ClInclude Include="utils.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

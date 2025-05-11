@@ -3,7 +3,7 @@
 #define LISTA_ENLAZADA_H
 
 #include <functional>
-#include "./nodo.h"
+#include "./Nodo.h"
 
 using namespace std;
 

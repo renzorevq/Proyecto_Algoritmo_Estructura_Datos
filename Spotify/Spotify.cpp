@@ -10,8 +10,8 @@
 #include <string>
 #include <map>
 #include "utils.h"
-#include "login.h"
-#include "cancion.h"
+#include "Login.h"
+#include "Cancion.h"
 #include "ColaCircular.h"   // tu propia cola circular
 #include "ListaEnlazada.h"  // tu lista enlazada genérica
 
