@@ -140,16 +140,28 @@
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlbumInfo.h" />
     <ClInclude Include="AlbumSorter.h" />
     <ClInclude Include="ArtisSorter.h" />
+    <ClInclude Include="ArtistInfo.h" />
     <ClInclude Include="cancion.h" />
+    <ClInclude Include="CommentData.h" />
+    <ClInclude Include="DownloadMark.h" />
     <ClInclude Include="DurationSorter.h" />
+    <ClInclude Include="FavoriteLink.h" />
+    <ClInclude Include="GenreType.h" />
     <ClInclude Include="listaEnlazada.h" />
     <ClInclude Include="login.h" />
+    <ClInclude Include="LyricsData.h" />
     <ClInclude Include="nodo.h" />
+    <ClInclude Include="PlayHistory.h" />
     <ClInclude Include="playlist.h" />
     <ClInclude Include="Podcast.h" />
+    <ClInclude Include="RatingData.h" />
+    <ClInclude Include="SuggestedTrack.h" />
     <ClInclude Include="TitleSorter.h" />
+    <ClInclude Include="TrackStats.h" />
+    <ClInclude Include="UserFollow.h" />
     <ClInclude Include="usuario.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
