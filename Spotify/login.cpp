@@ -9,6 +9,8 @@
 #include <mutex>
 #include <atomic>
 #include "AdministradorPodcast.h"
+#include "AdministradorCancion.h"
+#include "Cancion.h"
 #include "Podcast.h"
 #include "MarcaDescarga.h"
 #include "Historial.h"
@@ -132,22 +134,35 @@ void iniciarSesion(vector<Usuario> usuarios) {
         case 4: {
             limpiarPantalla();
             dibujarCaja({ "AGREGAR CANCION" });
+
             string nombreP, t, art, alb;
-            int    dur;
+            int dur;
             cout << "Playlist      : "; getline(cin, nombreP);
             cout << "Titulo Cancion: "; getline(cin, t);
             cout << "Artista       : "; getline(cin, art);
             cout << "Album         : "; getline(cin, alb);
             cout << "Duracion (s)  : "; cin >> dur; cin.ignore();
-            for (auto& p : usuarioLogueado.obtenerListaReproduccion())
-                if (p.obtenerNombre() == nombreP)
+
+            bool encontrada = false;
+
+            for (auto& p : usuarioLogueado.obtenerListaReproduccion()) {
+                if (p.obtenerNombre() == nombreP) {
                     p.agregarCancion(Cancion(t, art, alb, dur));
-            cout << "-> Cancion agregada!\n";
-            historial.registrarEvento("Se agregó la canción '" + t + "' a la playlist: " + nombreP);
+                    cout << "-> Cancion agregada!\n";
+                    historial.registrarEvento("Se agregó la canción '" + t + "' a la playlist: " + nombreP);
+                    encontrada = true;
+                    break;
+                }
+            }
+
+            if (!encontrada) {
+                cout << "-> ERROR: La playlist '" << nombreP << "' no existe.\n";
+            }
 
             pausar();
             break;
         }
+
         case 5: {
             limpiarPantalla();
             dibujarCaja({ "ELIMINAR CANCION" });

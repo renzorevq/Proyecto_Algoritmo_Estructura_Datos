@@ -20,4 +20,5 @@ public:
     string obtenerArtista() const;
     string obtenerAlbum()const;
     int obtenerDuracion() const;
+
 };

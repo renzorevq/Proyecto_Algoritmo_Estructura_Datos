@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClCompile Include="AlbumOrdenado.cpp" />
     <ClCompile Include="ArtistaOrdenado.cpp" />
-    <ClCompile Include="Cancion.cpp" />
+    <ClCompile Include="AdministradorCancion.cpp" />
     <ClCompile Include="DatosComentario.cpp" />
     <ClCompile Include="CompartirCancion.cpp" />
     <ClCompile Include="DatosValoracion.cpp" />

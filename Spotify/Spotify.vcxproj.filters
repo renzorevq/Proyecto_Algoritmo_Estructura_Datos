@@ -48,7 +48,7 @@
     <ClCompile Include="Login.cpp">
       <Filter>Archivos de origen\Login</Filter>
     </ClCompile>
-    <ClCompile Include="Cancion.cpp">
+    <ClCompile Include="AdministradorCancion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="ListaReproduccion.cpp">
