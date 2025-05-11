@@ -113,5 +113,8 @@
     <ClInclude Include="AlbumSorter.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
+    <ClInclude Include="Podcast.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

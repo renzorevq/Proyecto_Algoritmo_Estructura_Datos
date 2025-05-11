@@ -148,6 +148,7 @@
     <ClInclude Include="login.h" />
     <ClInclude Include="nodo.h" />
     <ClInclude Include="playlist.h" />
+    <ClInclude Include="Podcast.h" />
     <ClInclude Include="TitleSorter.h" />
     <ClInclude Include="usuario.h" />
     <ClInclude Include="utils.h" />
