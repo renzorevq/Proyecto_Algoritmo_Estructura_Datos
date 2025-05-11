@@ -8,7 +8,7 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
-#include "AdministradordePodcast.h"
+#include "AdministradorPodcast.h"
 #include "Podcast.h"
 #include "MarcaDescarga.h"
 #include "Historial.h"
@@ -68,7 +68,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
     atomic<bool> detenerHilo(false);
     Historial historial;
     MarcaDescarga gestorDescargas;
-    AdministradordePodcast gestorPodcasts;
+    AdministradorPodcast gestorPodcasts;
 
 
 

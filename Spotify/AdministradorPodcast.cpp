@@ -1,5 +1,5 @@
 #include "Podcast.h"
-#include "AdministradordePodcast.h"
+#include "AdministradorPodcast.h"
 // --- Podcast ---
 Podcast::Podcast() : titulo(""), creador(""), duracion(0) {}
 Podcast::Podcast(const std::string& titulo, const std::string& creador, int duracion)
@@ -11,13 +11,13 @@ std::string Podcast::obtenerCreador() const { return creador; }
 int Podcast::obtenerDuracion() const { return duracion; }
 
 // --- PodcastManager ---
-bool AdministradordePodcast::registrarPodcast(const std::string& titulo, const std::string& creador, int duracion) {
+bool  AdministradorPodcast::registrarPodcast(const std::string& titulo, const std::string& creador, int duracion) {
     if (total >= MAX_PODCASTS) return false;
     podcasts[total++] = Podcast(titulo, creador, duracion);
     return true;
 }
 
-void AdministradordePodcast::listarPodcasts() const {
+void  AdministradorPodcast::listarPodcasts() const {
     if (total == 0) {
         std::cout << "(No hay podcasts registrados)\n";
         return;
@@ -29,6 +29,6 @@ void AdministradordePodcast::listarPodcasts() const {
     }
 }
 
-int AdministradordePodcast::obtenerCantidad() const {
+int  AdministradorPodcast::obtenerCantidad() const {
     return total;
 }

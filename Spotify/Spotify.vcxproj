@@ -140,14 +140,15 @@
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="MarcaDescarga.cpp" />
     <ClCompile Include="ListaReproduccion.cpp" />
-    <ClCompile Include="AdministradordePodcast.cpp" />
+    <ClCompile Include="AdministradorPodcast.cpp" />
     <ClCompile Include="Spotify.cpp" />
     <ClCompile Include="TituloOrdenado.cpp" />
     <ClCompile Include="Usuario.cpp" />
     <ClCompile Include="Utilidades.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdministradordePodcast.h" />
+    <ClInclude Include="AdministradorCancion.h" />
+    <ClInclude Include="AdministradorPodcast.h" />
     <ClInclude Include="InformacionAlbum.h" />
     <ClInclude Include="AlbumOrdenado.h" />
     <ClInclude Include="ArtistaOrdenado.h" />

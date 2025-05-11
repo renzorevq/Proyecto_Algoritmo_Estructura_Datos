@@ -90,7 +90,7 @@
     <ClCompile Include="MarcaDescarga.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="AdministradordePodcast.cpp">
+    <ClCompile Include="AdministradorPodcast.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,7 +170,10 @@
     <ClInclude Include="ColaCircular.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="AdministradordePodcast.h">
+    <ClInclude Include="AdministradorPodcast.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="AdministradorCancion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include "Podcast.h"
-class AdministradordePodcast {
+class AdministradorPodcast {
 private:
     static const int MAX_PODCASTS = 50;
     Podcast podcasts[MAX_PODCASTS];
