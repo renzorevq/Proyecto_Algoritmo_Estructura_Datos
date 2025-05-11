@@ -3,8 +3,8 @@
 #define PLAYLIST_H
 
 #include <string>
-#include "./ListaEnlazada.h"
-#include "./Cancion.h"
+#include "ListaEnlazada.h"
+#include "Cancion.h"
 
 using namespace std;
 

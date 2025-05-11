@@ -130,7 +130,11 @@
     <ClCompile Include="AlbumOrdenado.cpp" />
     <ClCompile Include="ArtistaOrdenado.cpp" />
     <ClCompile Include="Cancion.cpp" />
+    <ClCompile Include="DatosComentario.cpp" />
+    <ClCompile Include="CompartirCancion.cpp" />
+    <ClCompile Include="DatosValoracion.cpp" />
     <ClCompile Include="DuracionOrdenado.cpp" />
+    <ClCompile Include="EnlaceFavorito.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="Playlist.cpp" />
     <ClCompile Include="Spotify.cpp" />
@@ -152,7 +156,7 @@
     <ClInclude Include="GeneroMusical.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="login.h" />
-    <ClInclude Include="DatosLetra.h" />
+    <ClInclude Include="CompartirCancion.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Historial.h" />
     <ClInclude Include="ListaReproduccion.h" />

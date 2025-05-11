@@ -43,6 +43,7 @@ int main() {
     // Ejemplo de uso de tu ColaCircular en lugar de std::queue o std::list
     ColaCircular<Cancion, 100> colaReproduccion;
 
+
     bool ejecutando = true;
     map<int, function<void()>> acciones;
     acciones[1] = [&] { registrarse(usuarios); };

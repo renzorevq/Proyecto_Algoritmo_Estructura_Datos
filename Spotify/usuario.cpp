@@ -1,8 +1,8 @@
 #include <string>
 #include <vector>
 
-#include "./Playlist.h"
-#include "./Usuario.h"
+#include "Playlist.h"
+#include "Usuario.h"
 
 using namespace std;
 
