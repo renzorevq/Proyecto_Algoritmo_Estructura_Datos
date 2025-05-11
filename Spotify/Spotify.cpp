@@ -17,7 +17,6 @@
 
 using namespace std;
 
-// Pila genérica (LIFO) basada en vector — sin usar std::list
 template <typename T>
 class Pila {
     vector<T> elementos;
@@ -52,6 +51,7 @@ int main() {
 
     while (ejecutando) {
         limpiarPantalla();
+        cout << "\033[32m";
         dibujarCaja({ "MINI SPOTIFY", "1. Registrarse", "2. Iniciar Sesion", "3. Salir" });
         cout << "Seleccione opcion: ";
         int opcion;
