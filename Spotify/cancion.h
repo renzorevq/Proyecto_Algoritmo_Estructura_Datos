@@ -18,5 +18,6 @@ public:
         int duracionSegundos);
     string obtenerTitulo() const;
     string obtenerArtista() const;
+    string obtenerAlbum()const;
     int obtenerDuracion() const;
 };
