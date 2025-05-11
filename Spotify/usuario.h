@@ -4,7 +4,7 @@
 
 #include <string>
 #include <vector>
-#include "./playlist.h"
+#include "./ListaReproduccion.h"
 
 using namespace std;
 

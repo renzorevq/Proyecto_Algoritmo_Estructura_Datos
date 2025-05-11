@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "./playlist.h"
+#include "./ListaReproduccion.h"
 #include "./listaEnlazada.h"
 #include "./cancion.h"
 #include "./utils.h"

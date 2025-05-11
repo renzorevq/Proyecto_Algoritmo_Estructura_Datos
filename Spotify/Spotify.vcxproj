@@ -132,7 +132,6 @@
     <ClCompile Include="cancion.cpp" />
     <ClCompile Include="DurationSorter.cpp" />
     <ClCompile Include="login.cpp" />
-    <ClCompile Include="menu.cpp" />
     <ClCompile Include="playlist.cpp" />
     <ClCompile Include="Spotify.cpp" />
     <ClCompile Include="TitleSorter.cpp" />
@@ -145,6 +144,7 @@
     <ClInclude Include="ArtisSorter.h" />
     <ClInclude Include="ArtistInfo.h" />
     <ClInclude Include="cancion.h" />
+    <ClInclude Include="ColaCircular.h" />
     <ClInclude Include="CommentData.h" />
     <ClInclude Include="DownloadMark.h" />
     <ClInclude Include="DurationSorter.h" />
@@ -155,14 +155,14 @@
     <ClInclude Include="LyricsData.h" />
     <ClInclude Include="nodo.h" />
     <ClInclude Include="PlayHistory.h" />
-    <ClInclude Include="playlist.h" />
+    <ClInclude Include="ListaReproduccion.h" />
     <ClInclude Include="Podcast.h" />
     <ClInclude Include="RatingData.h" />
     <ClInclude Include="SuggestedTrack.h" />
     <ClInclude Include="TitleSorter.h" />
     <ClInclude Include="TrackStats.h" />
     <ClInclude Include="UserFollow.h" />
-    <ClInclude Include="usuario.h" />
+    <ClInclude Include="Usuario.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
-
+#include <fstream>
+#include <sstream>
 #include "./login.h"
 #include "./utils.h"
-#include "./usuario.h"
+#include "./Usuario.h"
 
 using namespace std;
 
@@ -133,4 +134,31 @@ void iniciarSesion(vector<Usuario> usuarios) {
         }
     }
 
+}
+
+void cargarUsuarios(std::vector<Usuario>& usuarios) {
+    std::ifstream archivo("usuarios.txt");
+    if (!archivo.is_open()) return;
+    std::string linea;
+    while (std::getline(archivo, linea)) {
+        std::stringstream ss(linea);
+        std::string nombre, correo, contrasena;
+        if (std::getline(ss, nombre, ',') &&
+            std::getline(ss, correo, ',') &&
+            std::getline(ss, contrasena, ',')) {
+            usuarios.emplace_back(nombre, correo, contrasena);
+        }
+    }
+}
+
+void guardarUsuarios(const std::vector<Usuario>& usuarios) {
+    std::ofstream archivo("usuarios.txt");
+    if (!archivo.is_open()) return;
+    for (const auto& u : usuarios) {
+        archivo
+            << u.obtenerNombre() << ","
+            << u.obtenerCorreo() << ","
+            << u.obtenerContrasena()
+            << "\n";
+    }
 }
