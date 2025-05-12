@@ -8,6 +8,7 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
+#include "AdministradorCompartirCancion.h"
 #include "AdministradorEstadisticaPista.h"
 #include "AdministradorDatosValoracion.h"
 #include "AdministradorCompartirCancion.h"

@@ -149,6 +149,7 @@
     <ClInclude Include="AdministradorCancion.h" />
     <ClInclude Include="AdministradorCompartirCancion.h" />
     <ClInclude Include="AdministradorDatosValoracion.h" />
+    <ClInclude Include="AdministradorEnlaceFavorito.h" />
     <ClInclude Include="AdministradorEstadisticaPista.h" />
     <ClInclude Include="AdministradorPodcast.h" />
     <ClInclude Include="CompartirCancionOrdenada.h" />

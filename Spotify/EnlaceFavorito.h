@@ -1,12 +1,8 @@
 #pragma once
 #include <string>
+#include "AdministradorEnlaceFavorito.h"
 
-class EnlaceFavorito {
-    static const int MAX_ENLACES = 100;
-    std::string titulos[MAX_ENLACES];
-    std::string enlaces[MAX_ENLACES];
-    int conteo = 0;
-
+class EnlaceFavorito : public AdministradorEnlaceFavorito {
 public:
     bool agregarEnlace(const std::string& titulo, const std::string& url);
     void listarFavoritos() const;
