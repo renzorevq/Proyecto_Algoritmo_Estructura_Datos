@@ -1,5 +1,8 @@
-#include "AlbumOrdenado.h"
-void AlbumOrdenado::ordenarporAlbum(Cancion canciones[], int cantidad) {
+#include "CompartirCancionOrdenada.h"
+#include "chrono" 
+#include <iostream>
+
+void CompartirCancionOrdenado::ordenarporAlbum(Cancion canciones[], int cantidad) {
 
 	for (int gap = cantidad / 2; gap > 0; gap /= 2) {
 		for (int i = gap; i < cantidad; i++) {

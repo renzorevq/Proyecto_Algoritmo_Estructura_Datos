@@ -1,6 +1,6 @@
-#include "DuracionOrdenado.h"
+#include "CancionOrdenada.h"
 
-void DuracionOrdenado::ordenarporDuracion(Cancion canciones[], int cantidad) {
+void CancionOrdenada::ordenarporDuracion(Cancion canciones[], int cantidad) {
 
 	for (int i = 0; i < cantidad; i++) {
 		for (int j = 0; j < cantidad - i - 1; j++) {

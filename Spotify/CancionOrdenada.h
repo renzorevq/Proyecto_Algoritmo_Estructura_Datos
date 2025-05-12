@@ -1,8 +1,7 @@
-
 #pragma once
 #include "Cancion.h"
 
-class DuracionOrdenado {
+class CancionOrdenada {
 public:
     // Ordena el arreglo de canciones según la duración
     void ordenarporDuracion(Cancion canciones[], int cantidad);

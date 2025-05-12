@@ -127,13 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AlbumOrdenado.cpp" />
-    <ClCompile Include="ArtistaOrdenado.cpp" />
+    <ClCompile Include="CompartirCancionOrdenado.cpp" />
+    <ClCompile Include="PodcastOrdenado.cpp" />
     <ClCompile Include="AdministradorCancion.cpp" />
     <ClCompile Include="DatosComentario.cpp" />
     <ClCompile Include="AdministradorCompartirCancion.cpp" />
     <ClCompile Include="AdministradorDatosValoracion.cpp" />
-    <ClCompile Include="DuracionOrdenado.cpp" />
+    <ClCompile Include="CancionOrdenada.cpp" />
     <ClCompile Include="EnlaceFavorito.cpp" />
     <ClCompile Include="AdministradorEstadisticaPista.cpp" />
     <ClCompile Include="Historial.cpp" />
@@ -141,7 +141,7 @@
     <ClCompile Include="ListaReproduccion.cpp" />
     <ClCompile Include="AdministradorPodcast.cpp" />
     <ClCompile Include="Spotify.cpp" />
-    <ClCompile Include="TituloOrdenado.cpp" />
+    <ClCompile Include="DatosValoracionesOrdenado.cpp" />
     <ClCompile Include="Usuario.cpp" />
     <ClCompile Include="Utilidades.cpp" />
   </ItemGroup>
@@ -151,14 +151,14 @@
     <ClInclude Include="AdministradorDatosValoracion.h" />
     <ClInclude Include="AdministradorEstadisticaPista.h" />
     <ClInclude Include="AdministradorPodcast.h" />
-    <ClInclude Include="AlbumOrdenado.h" />
-    <ClInclude Include="ArtistaOrdenado.h" />
+    <ClInclude Include="CompartirCancionOrdenada.h" />
+    <ClInclude Include="PodcastOrdenado.h" />
     <ClInclude Include="Cancion.h" />
     <ClInclude Include="ColaCircular.h" />
     <ClInclude Include="DatosComentario.h" />
     <ClInclude Include="EnlaceFavorito.h" />
     <ClInclude Include="Historial.h" />
-    <ClInclude Include="DuracionOrdenado.h" />
+    <ClInclude Include="CancionOrdenada.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="CompartirCancion.h" />
@@ -166,7 +166,7 @@
     <ClInclude Include="ListaReproduccion.h" />
     <ClInclude Include="Podcast.h" />
     <ClInclude Include="DatosValoracion.h" />
-    <ClInclude Include="TituloOrdenado.h" />
+    <ClInclude Include="DatosValoracionesOrdenado.h" />
     <ClInclude Include="EstadisticaPista.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="Utilidades.h" />

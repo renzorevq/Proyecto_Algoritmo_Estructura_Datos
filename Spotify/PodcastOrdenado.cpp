@@ -1,10 +1,10 @@
-#include "ArtistaOrdenado.h"
+#include "PodcastOrdenado.h"
 #include <string>
 
 using namespace std;
 
 
-void ArtistaOrdenado::ordenarporArtista(Cancion canciones[], int artista) {
+void PodcastOrdenado::ordenarporArtista(Cancion canciones[], int artista) {
 
 	for (int i = 1; i < artista; i++) {
 		Cancion clave = canciones[i];

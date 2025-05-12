@@ -1,6 +1,6 @@
-#include "TituloOrdenado.h"
+#include "DatosValoracionesOrdenado.h"
 
-void TituloOrdenado::ordenarporTitulo(Cancion canciones[], int n) {
+void DatosValoracionesOrdenado::ordenarporTitulo(Cancion canciones[], int n) {
 
 	for (int i = 0; i < n - 1; i++) {
 
