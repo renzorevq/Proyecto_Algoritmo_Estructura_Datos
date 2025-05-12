@@ -2,7 +2,7 @@
 #include "chrono" 
 #include <iostream>
 
-void CompartirCancionOrdenado::ordenarporAlbum(Cancion canciones[], int cantidad) {
+void CompartirCancionOrdenado::compartirOrdenado(Cancion canciones[], int cantidad) {
 
 	for (int gap = cantidad / 2; gap > 0; gap /= 2) {
 		for (int i = gap; i < cantidad; i++) {

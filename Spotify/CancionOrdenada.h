@@ -3,6 +3,5 @@
 
 class CancionOrdenada {
 public:
-    // Ordena el arreglo de canciones según la duración
-    void ordenarporDuracion(Cancion canciones[], int cantidad);
+    void ordenarCancion(Cancion canciones[], int cantidad);
 };
