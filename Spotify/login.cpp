@@ -100,10 +100,10 @@ void iniciarSesion(vector<Usuario> usuarios) {
             "16. Ver Enlaces", 
             "17. Eliminar Enlace",
             "18. Reproducir Cancion", 
-            "19. Ver Estadísticas",
+            "19. Ver Estadisticas",
             "20. Historial General",
-            "23. Registrar Podcast", 
-            "24. Ver Podcasts"
+            "21. Registrar Podcast", 
+            "22. Ver Podcasts"
 
             });
         cout << "Seleccione opcion: ";
@@ -119,7 +119,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             cout << "Descripcion    : "; getline(cin, descP);
             usuarioLogueado.crearListaReproduccion(ListaReproduccion(nombreP, descP));
             cout << "-> Playlist creada!\n";
-            historial.registrarEvento("Se creó la playlist: " + nombreP);
+            historial.registrarEvento("Se creo la playlist: " + nombreP);
             pausar();
             break;
         }
@@ -159,7 +159,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
                 if (p.obtenerNombre() == nombreP) {
                     p.agregarCancion(Cancion(t, art, alb, dur));
                     cout << "-> Cancion agregada!\n";
-                    historial.registrarEvento("Se agregó la canción '" + t + "' a la playlist: " + nombreP);
+                    historial.registrarEvento("Se agrego la cancion '" + t + "' a la playlist: " + nombreP);
                     encontrada = true;
                     break;
                 }
@@ -208,7 +208,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             cout << "Titulo (cancion/playlist): "; getline(cin, titulo);
             cout << "Comentario               : "; getline(cin, texto);
             if (gestorComentarios.agregarComentario(titulo, texto))
-                cout << "-> Comentario añadido!\n";
+                cout << "-> Comentario anadido!\n";
             else
                 cout << "-> Capacidad de comentarios llena!\n";
             pausar();
@@ -244,8 +244,8 @@ void iniciarSesion(vector<Usuario> usuarios) {
             if (!link.empty())
                 cout << "-> Link generado: " << link << "\n";
             else
-                cout << "-> Límite de compartidos alcanzado!\n";
-            historial.registrarEvento("Se compartió la canción: " + titulo);
+                cout << "-> Limite de compartidos alcanzado!\n";
+            historial.registrarEvento("Se compartio la cancion: " + titulo);
 
             pausar();
             break;
@@ -269,7 +269,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
                 std::cout << "-> Valoracion guardada!\n";
             else
                 std::cout << "-> Valor no valido o capacidad llena\n";
-            historial.registrarEvento("Se valoró la canción '" + titulo + "' con: " + to_string(valor));
+            historial.registrarEvento("Se valoro la cancion '" + titulo + "' con: " + to_string(valor));
 
             pausar();
             break;
@@ -286,11 +286,11 @@ void iniciarSesion(vector<Usuario> usuarios) {
             dibujarCaja({ "AGREGAR ENLACE FAVORITO" });
             std::string titulo, url;
             std::cout << "Titulo de la cancion: "; getline(std::cin, titulo);
-            std::cout << "URL externa(numero de 3digitos):https://open.spotify.com/intl-es/track/"; getline(std::cin, url);
+            std::cout << "URL externa(numero de 3 digitos):https://open.spotify.com/intl-es/track/"; getline(std::cin, url);
             if (gestorEnlaces.agregarEnlace(titulo, url))
                 std::cout << "-> Enlace guardado!\n";
             else
-                std::cout << "-> Límite alcanzado!\n";
+                std::cout << "-> Limite alcanzado!\n";
             pausar();
             break;
         }
@@ -310,7 +310,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             if (gestorEnlaces.eliminarEnlace(idx - 1))
                 std::cout << "-> Enlace eliminado!\n";
             else
-                std::cout << "-> Indice no válido\n";
+                std::cout << "-> Indice no valido\n";
             pausar();
             break;
         }
@@ -319,7 +319,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             dibujarCaja({ "REPRODUCTOR DE CANCIONES" });
 
             string titulo;
-            cout << "Titulo de la canción: ";
+            cout << "Titulo de la cancion: ";
             getline(cin, titulo);
 
             const int DURACION_TOTAL = 150;
@@ -337,7 +337,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
                         ++segundos;
                         if (segundos >= DURACION_TOTAL) {
                             enReproduccion = false;
-                            cout << "\n>> Canción finalizada.\n";
+                            cout << "\n>> Cancion finalizada.\n";
                             estadisticas.registrarReproduccion(titulo);
                         }
                     }
@@ -361,7 +361,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             bool salir = false;
             while (!salir) {
                 cout << "\n\nSubopciones: 1.Reproducir  2.Pausar  3.Salir\n";
-                cout << "Ingrese opción: ";
+                cout << "Ingrese opcion: ";
                 int sub;
                 cin >> sub;
                 cin.ignore();
@@ -369,7 +369,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
                 switch (sub) {
                 case 1:
                     if (segundos >= DURACION_TOTAL) {
-                        cout << ">> Ya terminó. Reinicia manualmente.\n";
+                        cout << ">> Ya termino. Reinicia manualmente.\n";
                     }
                     else {
                         enReproduccion = true;
@@ -387,14 +387,14 @@ void iniciarSesion(vector<Usuario> usuarios) {
                     cout << ">> Saliendo del reproductor...\n";
                     break;
                 default:
-                    cout << "Opción inválida.\n";
+                    cout << "Opcion invalida.\n";
                 }
             }
 
             // Esperar cierre de hilos
             if (hiloCronometro.joinable()) hiloCronometro.join();
             if (hiloVisual.joinable()) hiloVisual.join();
-            historial.registrarEvento("Reproducción iniciada de: " + titulo);
+            historial.registrarEvento("Reproduccion iniciada de: " + titulo);
 
             break;
         }
@@ -415,7 +415,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             break;
         }
       
-        case 23: {
+        case 21: {
             limpiarPantalla();
             dibujarCaja({ "REGISTRAR PODCAST" });
             std::string titulo, creador;
@@ -430,7 +430,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 24: {
+        case 22: {
             limpiarPantalla();
             dibujarCaja({ "LISTA DE PODCASTS" });
             gestorPodcasts.listarPodcasts();
