@@ -8,6 +8,8 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
+#include <chrono>
+
 #include "AdministradorEstadisticaPista.h"
 #include "AdministradorDatosValoracion.h"
 #include "AdministradorCompartirCancion.h"
@@ -26,6 +28,7 @@
 #include "Usuario.h"
 
 using namespace std;
+using namespace chrono;
 
 void registrarse(vector<Usuario>& usuarios) {
     limpiarPantalla();
@@ -431,13 +434,73 @@ void iniciarSesion(vector<Usuario> usuarios) {
             break;
         }
         case 24: {
-            limpiarPantalla();
-            dibujarCaja({ "LISTA DE PODCASTS" });
-            gestorPodcasts.listarPodcasts();
-            pausar();
+            if (gestorPodcasts.obtenerCantidad() == 0) {
+                limpiarPantalla();
+                dibujarCaja({ "LISTA DE PODCASTS" });
+                cout << "(No hay podcasts registrados)\n";
+                pausar();
+                break;
+            }
+
+            bool continuar = true;
+            while (continuar) {
+                limpiarPantalla();
+                dibujarCaja({ "LISTA DE PODCASTS" });
+
+                gestorPodcasts.listarPodcasts();
+
+                cout << "\nOpciones de ordenamiento:\n";
+                cout << "1. Por Titulo\n";
+                cout << "2. Por Creador\n";
+                cout << "3. Volver al menu anterior\n\n";
+                cout << "Seleccione una opcion: ";
+
+                int opcionOrden;
+                cin >> opcionOrden;
+                cin.ignore();
+
+                switch (opcionOrden) {
+                case 1:
+                {
+                    auto inicio1 = high_resolution_clock::now();
+
+                    gestorPodcasts.ordenarPorTitulo();
+
+                    auto fin1 = high_resolution_clock::now();
+                    auto duracion1 = duration_cast<milliseconds>(fin1 - inicio1);
+
+                    cout << "Tiempo de ordenamiento: " << duracion1.count() << " milisegundos" << endl;                    
+
+                    pausar();
+
+                    break;
+                }
+                case 2:
+                {
+                    auto inicio2 = high_resolution_clock::now();
+
+                    gestorPodcasts.ordenarPorCreador();
+
+                    auto fin2 = high_resolution_clock::now();
+                    auto duracion2 = duration_cast<milliseconds>(fin2 - inicio2);
+
+                    cout << "Tiempo de ordenamiento: " << duracion2.count() << " milisegundos" << endl;                    
+
+                    pausar();
+
+                    break;
+                }
+                case 3:
+                    continuar = false;
+                    break;
+                default:
+                    cout << "\n-> Opcion no valida.\n";
+                    pausar();
+                }
+            }
+            
             break;
         }
-
 
         default:
             cout << "Opcion no valida!\n";

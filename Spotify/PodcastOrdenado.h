@@ -1,9 +1,19 @@
-
 #pragma once
-#include "Cancion.h"
+#include "Podcast.h"
 
-class PodcastOrdenado{
+class PodcastOrdenado {
+private:
+    Podcast* podcasts;
+    int capacidad;
+    int cantidad;
+
 public:
-    // Ordena el arreglo de canciones según el artista
-    void ordenarporArtista(Cancion canciones[], int cantidad);
+    PodcastOrdenado(int capacidad);
+    ~PodcastOrdenado();
+
+    void agregarPodcast(const Podcast& p);
+    void mostrarPodcasts() const;
+
+    void ordenarPorTitulo();
+    void ordenarPorCreador();
 };
