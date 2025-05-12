@@ -8,8 +8,6 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
-#include <chrono>
-
 #include "AdministradorEstadisticaPista.h"
 #include "AdministradorDatosValoracion.h"
 #include "AdministradorCompartirCancion.h"
@@ -28,7 +26,6 @@
 #include "Usuario.h"
 
 using namespace std;
-using namespace chrono;
 
 void registrarse(vector<Usuario>& usuarios) {
     limpiarPantalla();
@@ -87,26 +84,27 @@ void iniciarSesion(vector<Usuario> usuarios) {
             "SESION: " + usuarioLogueado.obtenerNombre(),
             "1. Crear Playlist",
             "2. Eliminar Playlist",
-            "3. Listar Playlists", 
+            "3. Listar Playlists",
             "4. Agregar Cancion",
-            "5. Eliminar Cancion", 
+            "5. Eliminar Cancion",
             "6. Listar Canciones",
-            "7. Cerrar Sesion",
-            "8. Agregar Comentario", 
-            "9. Ver Comentarios",
-            "10. Eliminar Comentario",
-            "11. Compartir Cancion", 
-            "12. Ver Compartidos",
-            "13. Valorar Cancion", 
-            "14. Ver Valoraciones",
-            "15. Agregar Enlace Favorito", 
-            "16. Ver Enlaces", 
-            "17. Eliminar Enlace",
-            "18. Reproducir Cancion", 
-            "19. Ver Estadisticas",
-            "20. Historial General",
-            "21. Registrar Podcast", 
-            "22. Ver Podcasts"
+            "7. Agregar Comentario",
+            "8. Ver Comentarios",
+            "9. Eliminar Comentario",
+            "10. Compartir Cancion",
+            "11. Ver Compartidos",
+            "12. Valorar Cancion",
+            "13. Ver Valoraciones",
+            "14. Agregar Enlace Favorito",
+            "15. Ver Enlaces",
+            "16. Eliminar Enlace",
+            "17. Reproducir Cancion",
+            "18. Ver Estadisticas",
+            "19. Historial General",
+            "20. Registrar Podcast",
+            "21. Ver Podcasts",
+            "0. Cerrar Sesion",
+
 
             });
         cout << "Seleccione opcion: ";
@@ -200,11 +198,11 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 7:
+        case 0:
             sesionActiva = false;
             break;
 
-        case 8: {  // Agregar Comentario
+        case 7: {  // Agregar Comentario
             limpiarPantalla();
             dibujarCaja({ "AGREGAR COMENTARIO" });
             string titulo, texto;
@@ -217,14 +215,14 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 9:  // Ver Comentarios
+        case 8:  // Ver Comentarios
             limpiarPantalla();
             dibujarCaja({ "LISTA DE COMENTARIOS" });
             gestorComentarios.listarComentarios();
             pausar();
             break;
 
-        case 10: {  // Eliminar Comentario
+        case 9: {  // Eliminar Comentario
             limpiarPantalla();
             dibujarCaja({ "ELIMINAR COMENTARIO" });
             gestorComentarios.listarComentarios();
@@ -238,7 +236,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             break;
         }
 
-        case 11: {  // Compartir Cancion
+        case 10: {  // Compartir Cancion
             limpiarPantalla();
             dibujarCaja({ "COMPARTIR CANCION" });
             string titulo;
@@ -253,14 +251,14 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 12: { // Ver Compartidos
+        case 11: { // Ver Compartidos
             limpiarPantalla();
             dibujarCaja({ "CANCIONES COMPARTIDAS" });
             gestorCompartir.listarCompartidos();
             pausar();
             break;
         }
-        case 13: { // VALORAR CANCIÓN
+        case 12: { // VALORAR CANCIÓN
             limpiarPantalla();
             dibujarCaja({ "VALORAR CANCION" });
             std::string titulo;
@@ -277,14 +275,14 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 14: { // VER VALORACIONES
+        case 13: { // VER VALORACIONES
             limpiarPantalla();
             dibujarCaja({ "VALORACIONES PROMEDIO" });
             gestorValoracion.listarPromedios();
             pausar();
             break;
         }
-        case 15: {
+        case 14: {
             limpiarPantalla();
             dibujarCaja({ "AGREGAR ENLACE FAVORITO" });
             std::string titulo, url;
@@ -297,14 +295,14 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 16: {
+        case 15: {
             limpiarPantalla();
             dibujarCaja({ "TUS ENLACES FAVORITOS" });
             gestorEnlaces.listarFavoritos();
             pausar();
             break;
         }
-        case 17: {
+        case 16: {
             limpiarPantalla();
             dibujarCaja({ "ELIMINAR ENLACE FAVORITO" });
             gestorEnlaces.listarFavoritos();
@@ -317,7 +315,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 18: { // REPRODUCTOR AVANZADO MULTIHILO
+        case 17: { // REPRODUCTOR AVANZADO MULTIHILO
             limpiarPantalla();
             dibujarCaja({ "REPRODUCTOR DE CANCIONES" });
 
@@ -403,22 +401,22 @@ void iniciarSesion(vector<Usuario> usuarios) {
         }
 
 
-        case 19: {
+        case 18: {
             limpiarPantalla();
             dibujarCaja({ "ESTADISTICAS DE REPRODUCCION" });
             estadisticas.mostrarEstadisticas();
             pausar();
             break;
         }
-        case 20: {
+        case 19: {
             limpiarPantalla();
             dibujarCaja({ "HISTORIAL GENERAL DE ACTIVIDADES" });
             historial.mostrarHistorial();
             pausar();
             break;
         }
-      
-        case 21: {
+
+        case 20: {
             limpiarPantalla();
             dibujarCaja({ "REGISTRAR PODCAST" });
             std::string titulo, creador;
@@ -433,74 +431,14 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 22: {
-            if (gestorPodcasts.obtenerCantidad() == 0) {
-                limpiarPantalla();
-                dibujarCaja({ "LISTA DE PODCASTS" });
-                cout << "(No hay podcasts registrados)\n";
-                pausar();
-                break;
-            }
-
-            bool continuar = true;
-            while (continuar) {
-                limpiarPantalla();
-                dibujarCaja({ "LISTA DE PODCASTS" });
-
-                gestorPodcasts.listarPodcasts();
-
-                cout << "\nOpciones de ordenamiento:\n";
-                cout << "1. Por Titulo\n";
-                cout << "2. Por Creador\n";
-                cout << "3. Volver al menu anterior\n\n";
-                cout << "Seleccione una opcion: ";
-
-                int opcionOrden;
-                cin >> opcionOrden;
-                cin.ignore();
-
-                switch (opcionOrden) {
-                case 1:
-                {
-                    auto inicio1 = high_resolution_clock::now();
-
-                    gestorPodcasts.ordenarPorTitulo();
-
-                    auto fin1 = high_resolution_clock::now();
-                    auto duracion1 = duration_cast<milliseconds>(fin1 - inicio1);
-
-                    cout << "Tiempo de ordenamiento: " << duracion1.count() << " milisegundos" << endl;                    
-
-                    pausar();
-
-                    break;
-                }
-                case 2:
-                {
-                    auto inicio2 = high_resolution_clock::now();
-
-                    gestorPodcasts.ordenarPorCreador();
-
-                    auto fin2 = high_resolution_clock::now();
-                    auto duracion2 = duration_cast<milliseconds>(fin2 - inicio2);
-
-                    cout << "Tiempo de ordenamiento: " << duracion2.count() << " milisegundos" << endl;                    
-
-                    pausar();
-
-                    break;
-                }
-                case 3:
-                    continuar = false;
-                    break;
-                default:
-                    cout << "\n-> Opcion no valida.\n";
-                    pausar();
-                }
-            }
-            
+        case 21: {
+            limpiarPantalla();
+            dibujarCaja({ "LISTA DE PODCASTS" });
+            gestorPodcasts.listarPodcasts();
+            pausar();
             break;
         }
+
 
         default:
             cout << "Opcion no valida!\n";
