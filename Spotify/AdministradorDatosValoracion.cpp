@@ -1,3 +1,4 @@
+#include "AdministradorDatosValoracion.h"
 #include "DatosValoracion.h"
 #include <iostream>
 #include <iomanip>

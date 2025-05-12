@@ -1,14 +1,11 @@
+// EstadisticaPista.h
 #pragma once
+#include "AdministradorEstadisticaPista.h"
 #include <string>
 #include <chrono>
 #include <thread>
 
-class EstadisticaPista {
-    static const int MAX_CANCIONES = 100;
-    std::string titulos[MAX_CANCIONES];
-    int conteos[MAX_CANCIONES];
-    int cantidad = 0;
-
+class EstadisticaPista : public AdministradorEstadisticaPista {
 public:
     void registrarReproduccion(const std::string& titulo);
     void mostrarEstadisticas() const;

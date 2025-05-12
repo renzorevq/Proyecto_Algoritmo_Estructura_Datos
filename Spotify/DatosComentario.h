@@ -1,25 +1,22 @@
 #pragma once
 #include <string>
 
-struct Comentario {
-    std::string titulo;   // Título de la canción o playlist
-    std::string texto;    // Texto del comentario
-};
-
 class DatosComentario {
-    static const int MAX = 100;
-    Comentario comentarios[MAX];
-    int contador = 0;
-public:
-    // Añade un comentario; devuelve false si el arreglo está lleno
-    bool agregarComentario(const std::string& titulo, const std::string& texto);
+    static const int MAX_COMENTARIOS = 100;
+    std::string claves[MAX_COMENTARIOS];    // título de la canción o playlist
+    std::string textos[MAX_COMENTARIOS];    // texto del comentario
+    int conteo = 0;
 
-    // Lista todos los comentarios por pantalla
+public:
+    // Agrega un comentario para la clave dada. Devuelve false si el arreglo está lleno.
+    bool agregarComentario(const std::string& clave, const std::string& texto);
+
+    // Lista todos los comentarios en consola, con índice base 1.
     void listarComentarios() const;
 
-    // Elimina el comentario en la posición idx (0-based); devuelve false si idx inválido
+    // Elimina el comentario en la posición idx (0-based). Devuelve true si tuvo éxito.
     bool eliminarComentario(int idx);
 
-    // Devuelve el número de comentarios actualmente almacenados
-    int obtenerCantidad() const;
+    // Devuelve cuántos comentarios hay actualmente.
+    int obtenerCantidad() const noexcept;
 };

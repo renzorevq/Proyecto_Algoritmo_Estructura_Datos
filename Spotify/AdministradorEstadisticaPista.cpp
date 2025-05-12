@@ -1,3 +1,4 @@
+#include "AdministradorEstadisticaPista.h"
 #include "EstadisticaPista.h"
 #include <iostream>
 #include <iomanip>

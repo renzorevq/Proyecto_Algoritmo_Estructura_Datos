@@ -8,11 +8,13 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
+#include "AdministradorEstadisticaPista.h"
+#include "AdministradorDatosValoracion.h"
+#include "AdministradorCompartirCancion.h"
 #include "AdministradorPodcast.h"
 #include "AdministradorCancion.h"
 #include "Cancion.h"
 #include "Podcast.h"
-#include "MarcaDescarga.h"
 #include "Historial.h"
 #include "EstadisticaPista.h"
 #include "EnlaceFavorito.h"
@@ -69,7 +71,6 @@ void iniciarSesion(vector<Usuario> usuarios) {
     atomic<bool> enReproduccion(false);
     atomic<bool> detenerHilo(false);
     Historial historial;
-    MarcaDescarga gestorDescargas;
     AdministradorPodcast gestorPodcasts;
 
 
@@ -81,19 +82,28 @@ void iniciarSesion(vector<Usuario> usuarios) {
         limpiarPantalla();
         dibujarCaja({
             "SESION: " + usuarioLogueado.obtenerNombre(),
-            "1. Crear Playlist", "2. Eliminar Playlist",
-            "3. Listar Playlists", "4. Agregar Cancion",
-            "5. Eliminar Cancion", "6. Listar Canciones",
+            "1. Crear Playlist",
+            "2. Eliminar Playlist",
+            "3. Listar Playlists", 
+            "4. Agregar Cancion",
+            "5. Eliminar Cancion", 
+            "6. Listar Canciones",
             "7. Cerrar Sesion",
-            "8. Agregar Comentario", "9. Ver Comentarios",
+            "8. Agregar Comentario", 
+            "9. Ver Comentarios",
             "10. Eliminar Comentario",
-            "11. Compartir Cancion", "12. Ver Compartidos",
-            "13. Valorar Cancion", "14. Ver Valoraciones",
-            "15. Agregar Enlace Favorito", "16. Ver Enlaces", 
-            "17. Eliminar Enlace","18. Reproducir Cancion", 
-            "19. Ver Estadísticas","20. Historial General",
-            "21. Descargar Cancion", "22. Ver Descargas",
-            "23. Registrar Podcast", "24. Ver Podcasts"
+            "11. Compartir Cancion", 
+            "12. Ver Compartidos",
+            "13. Valorar Cancion", 
+            "14. Ver Valoraciones",
+            "15. Agregar Enlace Favorito", 
+            "16. Ver Enlaces", 
+            "17. Eliminar Enlace",
+            "18. Reproducir Cancion", 
+            "19. Ver Estadísticas",
+            "20. Historial General",
+            "23. Registrar Podcast", 
+            "24. Ver Podcasts"
 
             });
         cout << "Seleccione opcion: ";
@@ -404,26 +414,7 @@ void iniciarSesion(vector<Usuario> usuarios) {
             pausar();
             break;
         }
-        case 21: { // DESCARGAR CANCION
-            limpiarPantalla();
-            dibujarCaja({ "DESCARGAR CANCION" });
-            string titulo;
-            cout << "Titulo de la cancion a descargar: ";
-            getline(cin, titulo);
-            if (gestorDescargas.registrarDescarga(titulo))
-                cout << "-> Cancion marcada como descargada!\n";
-            else
-                cout << "-> No se pudo registrar descarga.\n";
-            pausar();
-            break;
-        }
-        case 22: { // VER DESCARGAS
-            limpiarPantalla();
-            dibujarCaja({ "DESCARGAS REALIZADAS" });
-            gestorDescargas.mostrarDescargas();
-            pausar();
-            break;
-        }
+      
         case 23: {
             limpiarPantalla();
             dibujarCaja({ "REGISTRAR PODCAST" });
