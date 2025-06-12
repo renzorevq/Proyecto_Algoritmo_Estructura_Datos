@@ -31,13 +31,13 @@ public:
     }
     bool estaVacia() const { return elementos.empty(); }
 };
+
 int main() {
     vector<Usuario> usuarios;
     cargarUsuarios(usuarios);
     ColaCircular<Cancion, 100> colaReproduccion;
-
-
     bool ejecutando = true;
+
     map<int, function<void()>> acciones;
     acciones[1] = [&] { registrarse(usuarios); };
     acciones[2] = [&] { iniciarSesion(usuarios); };
@@ -46,14 +46,28 @@ int main() {
     while (ejecutando) {
         limpiarPantalla();
         cout << "\033[32m";
-        dibujarCaja({ "MINI SPOTIFY", "1. Registrarse", "2. Iniciar Sesion", "3. Salir" });
+        dibujarCaja({
+            "MINI SPOTIFY CON QUICKSORT",
+            "1. Registrarse",
+            "2. Iniciar Sesion",
+            "3. Salir"
+            });
         cout << "Seleccione opcion: ";
         int opcion;
         cin >> opcion;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        if (acciones.count(opcion)) acciones[opcion]();
+
+        if (acciones.count(opcion)) {
+            acciones[opcion]();
+        }
+        else {
+            cout << "Opcion no valida!\n";
+            cout << "Presione Enter para continuar...";
+            cin.get();
+        }
     }
 
     guardarUsuarios(usuarios);
+    cout << "\n¡Gracias por usar Mini Spotify!\n";
     return 0;
 }
