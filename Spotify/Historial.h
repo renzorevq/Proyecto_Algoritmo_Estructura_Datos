@@ -1,13 +1,13 @@
 #pragma once
 #include <string>
 #include <vector>
-
+using namespace std;
 class Historial {
 private:
-    std::vector<std::string> eventos;
+    vector<string> eventos;
 
 public:
-    void registrarEvento(const std::string& evento);
+    void registrarEvento(const string& evento);
     void mostrarHistorial() const;
     bool estaVacio() const;
 };

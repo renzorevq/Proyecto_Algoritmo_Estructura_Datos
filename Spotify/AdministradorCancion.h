@@ -5,7 +5,7 @@
 #include "Cancion.h"
 #include <iostream>
 #include <string>
-
+using namespace std;
 const int MAX_CANCIONES = 100;
 
 class AdministradorDeCancion {
@@ -17,10 +17,10 @@ public:
     AdministradorDeCancion() = default;
 
     bool agregarCancion(const Cancion& cancion);
-    bool eliminarCancion(const std::string& titulo);
+    bool eliminarCancion(const string& titulo);
     void listarCanciones() const;
     int obtenerCantidad() const;
-    Cancion* buscarCancion(const std::string& titulo);
+    Cancion* buscarCancion(const string& titulo);
 };
 
 #endif

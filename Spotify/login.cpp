@@ -26,8 +26,6 @@
 #include "Utilidades.h"
 #include "Usuario.h"
 
-using namespace std;
-
 void registrarse(vector<Usuario>& usuarios) {
     limpiarPantalla();
     dibujarCaja({ "REGISTRARSE" });
@@ -105,8 +103,6 @@ void iniciarSesion(vector<Usuario> usuarios) {
             "20. Registrar Podcast",
             "21. Ver Podcasts",
             "0. Cerrar Sesion",
-
-
             });
         cout << "Seleccione opcion: ";
         cin >> opcion;
@@ -262,15 +258,15 @@ void iniciarSesion(vector<Usuario> usuarios) {
         case 12: { // VALORAR CANCIÓN
             limpiarPantalla();
             dibujarCaja({ "VALORAR CANCION" });
-            std::string titulo;
+            string titulo;
             int valor;
-            std::cout << "Titulo de la cancion: "; getline(std::cin, titulo);
-            std::cout << "Valor (1-5): "; std::cin >> valor; std::cin.ignore();
+            cout << "Titulo de la cancion: "; getline(cin, titulo);
+            cout << "Valor (1-5): "; cin >> valor; cin.ignore();
 
             if (gestorValoracion.agregarValoracion(titulo, valor))
-                std::cout << "-> Valoracion guardada!\n";
+                cout << "-> Valoracion guardada!\n";
             else
-                std::cout << "-> Valor no valido o capacidad llena\n";
+                cout << "-> Valor no valido o capacidad llena\n";
             historial.registrarEvento("Se valoro la cancion '" + titulo + "' con: " + to_string(valor));
 
             pausar();
@@ -286,13 +282,13 @@ void iniciarSesion(vector<Usuario> usuarios) {
         case 14: {
             limpiarPantalla();
             dibujarCaja({ "AGREGAR ENLACE FAVORITO" });
-            std::string titulo, url;
-            std::cout << "Titulo de la cancion: "; getline(std::cin, titulo);
-            std::cout << "URL externa(numero de 3 digitos):https://open.spotify.com/intl-es/track/"; getline(std::cin, url);
+            string titulo, url;
+            cout << "Titulo de la cancion: "; getline(cin, titulo);
+            cout << "URL externa(numero de 3 digitos):https://open.spotify.com/intl-es/track/"; getline(cin, url);
             if (gestorEnlaces.agregarEnlace(titulo, url))
-                std::cout << "-> Enlace guardado!\n";
+                cout << "-> Enlace guardado!\n";
             else
-                std::cout << "-> Limite alcanzado!\n";
+                cout << "-> Limite alcanzado!\n";
             pausar();
             break;
         }
@@ -307,12 +303,12 @@ void iniciarSesion(vector<Usuario> usuarios) {
             limpiarPantalla();
             dibujarCaja({ "ELIMINAR ENLACE FAVORITO" });
             gestorEnlaces.listarFavoritos();
-            std::cout << "Indice a eliminar: ";
+            cout << "Indice a eliminar: ";
             int idx; std::cin >> idx; std::cin.ignore();
             if (gestorEnlaces.eliminarEnlace(idx - 1))
-                std::cout << "-> Enlace eliminado!\n";
+                cout << "-> Enlace eliminado!\n";
             else
-                std::cout << "-> Indice no valido\n";
+                cout << "-> Indice no valido\n";
             pausar();
             break;
         }
@@ -392,12 +388,10 @@ void iniciarSesion(vector<Usuario> usuarios) {
                     cout << "Opcion invalida.\n";
                 }
             }
-
             // Esperar cierre de hilos
             if (hiloCronometro.joinable()) hiloCronometro.join();
             if (hiloVisual.joinable()) hiloVisual.join();
             historial.registrarEvento("Reproduccion iniciada de: " + titulo);
-
             break;
         }
 
@@ -420,15 +414,15 @@ void iniciarSesion(vector<Usuario> usuarios) {
         case 20: {
             limpiarPantalla();
             dibujarCaja({ "REGISTRAR PODCAST" });
-            std::string titulo, creador;
+            string titulo, creador;
             int duracion;
-            std::cout << "Titulo del podcast : "; getline(std::cin, titulo);
-            std::cout << "Creador del podcast: "; getline(std::cin, creador);
-            std::cout << "Duracion (segundos): "; std::cin >> duracion; std::cin.ignore();
+            cout << "Titulo del podcast : "; getline(cin, titulo);
+            cout << "Creador del podcast: "; getline(cin, creador);
+            cout << "Duracion (segundos): "; cin >> duracion; cin.ignore();
             if (gestorPodcasts.registrarPodcast(titulo, creador, duracion))
-                std::cout << "-> Podcast registrado!\n";
+                cout << "-> Podcast registrado!\n";
             else
-                std::cout << "-> Limite de podcasts alcanzado!\n";
+                cout << "-> Limite de podcasts alcanzado!\n";
             pausar();
             break;
         }

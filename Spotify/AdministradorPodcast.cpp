@@ -1,9 +1,9 @@
 #include "Podcast.h"
 #include "AdministradorPodcast.h"
 
-using namespace std;
 
-// --- Podcast ---
+
+//Podcast
 Podcast::Podcast() : titulo(""), creador(""), duracion(0) {}
 Podcast::Podcast(const string& titulo, const string& creador, int duracion)
     : titulo(titulo), creador(creador), duracion(duracion) {
@@ -13,7 +13,7 @@ string Podcast::obtenerTitulo() const { return titulo; }
 string Podcast::obtenerCreador() const { return creador; }
 int Podcast::obtenerDuracion() const { return duracion; }
 
-// --- PodcastManager ---
+//PodcastManager
 bool  AdministradorPodcast::registrarPodcast(const string& titulo, const string& creador, int duracion) {
     if (total >= MAX_PODCASTS) return false;
     podcasts[total++] = Podcast(titulo, creador, duracion);

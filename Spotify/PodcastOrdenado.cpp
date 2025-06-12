@@ -1,8 +1,6 @@
 #include "PodcastOrdenado.h"
 #include <iostream>
 
-using namespace std;
-
 PodcastOrdenado::PodcastOrdenado(int cap) : capacidad(cap), cantidad(0) {
     podcasts = new Podcast[capacidad];
 }
@@ -16,15 +14,15 @@ void PodcastOrdenado::agregarPodcast(const Podcast& p) {
         podcasts[cantidad++] = p;
     }
     else {
-        cout << "Capacidad máxima alcanzada.\n";
+        cout << "Capacidad maxima alcanzada.\n";
     }
 }
 
 void PodcastOrdenado::mostrarPodcasts() const {
     for (int i = 0; i < cantidad; i++) {
-        cout << "Título: " << podcasts[i].obtenerTitulo()
+        cout << "Titulo: " << podcasts[i].obtenerTitulo()
             << ", Creador: " << podcasts[i].obtenerCreador()
-            << ", Duración: " << podcasts[i].obtenerDuracion() << "s\n";
+            << ", Duracion: " << podcasts[i].obtenerDuracion() << "s\n";
     }
 }
 

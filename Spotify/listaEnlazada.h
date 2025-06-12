@@ -78,4 +78,4 @@ void ListaEnlazada<T>::limpiar() {
 	cabeza = nullptr;
 }
 
-#endif // !LISTA_ENLAZADA_H
+#endif

@@ -13,4 +13,4 @@ void cargarUsuarios(vector<Usuario>& usuarios);
 void guardarUsuarios(const vector<Usuario>& usuarios);
 
 
-#endif // !LOGIN_H
+#endif

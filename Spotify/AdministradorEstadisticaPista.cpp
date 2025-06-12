@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <algorithm>
 
-void EstadisticaPista::registrarReproduccion(const std::string& titulo) {
+void EstadisticaPista::registrarReproduccion(const string& titulo) {
     for (int i = 0; i < cantidad; ++i) {
         if (titulos[i] == titulo) {
             conteos[i]++;
@@ -20,16 +20,16 @@ void EstadisticaPista::registrarReproduccion(const std::string& titulo) {
 }
 
 void EstadisticaPista::mostrarEstadisticas() const {
-    std::cout << "=== Estadísticas de Reproducción ===\n";
+    cout << "=== Estadisticas de Reproduccion ===\n";
     if (cantidad == 0) {
-        std::cout << "(aún no se han reproducido canciones)\n";
+        cout << "(aun no se han reproducido canciones)\n";
     }
     else {
         for (int i = 0; i < cantidad; ++i) {
-            std::cout << std::setw(2) << (i + 1) << ". "
+            cout << setw(2) << (i + 1) << ". "
                 << titulos[i] << " - "
                 << conteos[i] << " reproducciones\n";
         }
     }
-    std::cout << "====================================\n";
+    cout << "====================================\n";
 }

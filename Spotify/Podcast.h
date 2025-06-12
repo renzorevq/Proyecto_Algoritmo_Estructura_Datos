@@ -1,18 +1,18 @@
 #pragma once
 #include <string>
 #include <iostream>
-
+using namespace std;
 class Podcast {
 private:
-    std::string titulo;
-    std::string creador;
-    int duracion; // en segundos
+    string titulo;
+    string creador;
+    int duracion;
 public:
     Podcast();
-    Podcast(const std::string& titulo, const std::string& creador, int duracion);
+    Podcast(const string& titulo, const string& creador, int duracion);
 
-    std::string obtenerTitulo() const;
-    std::string obtenerCreador() const;
+    string obtenerTitulo() const;
+    string obtenerCreador() const;
     int obtenerDuracion() const;
 };
 

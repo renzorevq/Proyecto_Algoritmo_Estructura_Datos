@@ -3,7 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
-bool DatosValoracion::agregarValoracion(const std::string& titulo, int valor) {
+bool DatosValoracion::agregarValoracion(const string& titulo, int valor) {
     if (valor < 1 || valor > 5) return false;
 
     for (int i = 0; i < conteo; ++i) {
@@ -23,7 +23,7 @@ bool DatosValoracion::agregarValoracion(const std::string& titulo, int valor) {
     return true;
 }
 
-float DatosValoracion::obtenerPromedio(const std::string& titulo) const {
+float DatosValoracion::obtenerPromedio(const string& titulo) const {
     for (int i = 0; i < conteo; ++i) {
         if (titulos[i] == titulo && cantidadValoraciones[i] > 0) {
             return (float)sumaValoracion[i] / cantidadValoraciones[i];
@@ -33,13 +33,13 @@ float DatosValoracion::obtenerPromedio(const std::string& titulo) const {
 }
 
 void DatosValoracion::listarPromedios() const {
-    std::cout << "=== Valoraciones Promedio ===\n";
+    cout << "=== Valoraciones Promedio ===\n";
     for (int i = 0; i < conteo; ++i) {
         float promedio = (float)sumaValoracion[i] / cantidadValoraciones[i];
-        std::cout << std::fixed << std::setprecision(2);
-        std::cout << titulos[i] << " -> " << promedio << "/5\n";
+        cout << fixed << setprecision(2);
+        cout << titulos[i] << " -> " << promedio << "/5\n";
     }
     if (conteo == 0)
-        std::cout << "(sin valoraciones aún)\n";
-    std::cout << "=============================\n";
+        cout << "(sin valoraciones aun)\n";
+    cout << "=============================\n";
 }

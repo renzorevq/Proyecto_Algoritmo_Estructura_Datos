@@ -1,7 +1,7 @@
 #include "EnlaceFavorito.h"
 #include <iostream>
 
-bool EnlaceFavorito::agregarEnlace(const std::string& titulo, const std::string& url) {
+bool EnlaceFavorito::agregarEnlace(const string& titulo, const string& url) {
     if (conteo >= MAX_ENLACES) return false;
     titulos[conteo] = titulo;
     enlaces[conteo] = url;
@@ -10,13 +10,13 @@ bool EnlaceFavorito::agregarEnlace(const std::string& titulo, const std::string&
 }
 
 void EnlaceFavorito::listarFavoritos() const {
-    std::cout << "=== Enlaces Favoritos ===\n";
+    cout << "=== Enlaces Favoritos ===\n";
     for (int i = 0; i < conteo; ++i) {
-        std::cout << i + 1 << ". " << titulos[i] << ":https://open.spotify.com/intl-es/track/" << enlaces[i] << "\n";
+        cout << i + 1 << ". " << titulos[i] << ":https://open.spotify.com/intl-es/track/" << enlaces[i] << "\n";
     }
     if (conteo == 0)
-        std::cout << "(sin enlaces aún)\n";
-    std::cout << "=========================\n";
+    cout << "(sin enlaces aun)\n";
+    cout << "=========================\n";
 }
 
 bool EnlaceFavorito::eliminarEnlace(int indice) {

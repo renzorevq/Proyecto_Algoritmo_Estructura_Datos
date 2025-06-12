@@ -1,4 +1,3 @@
-// Spotify.cpp
 #include <iostream>
 #include <vector>
 #include <functional>
@@ -12,8 +11,8 @@
 #include "utilidades.h"
 #include "Login.h"
 #include "Cancion.h"
-#include "ColaCircular.h"   // tu propia cola circular
-#include "ListaEnlazada.h"  // tu lista enlazada genérica
+#include "ColaCircular.h"
+#include "ListaEnlazada.h"
 
 using namespace std;
 
@@ -23,23 +22,18 @@ class Pila {
 public:
     void push(const T& valor) { elementos.push_back(valor); }
     void pop() {
-        if (elementos.empty()) throw out_of_range("Pila vacía");
+        if (elementos.empty()) throw out_of_range("Pila vacia");
         elementos.pop_back();
     }
     T& top() {
-        if (elementos.empty()) throw out_of_range("Pila vacía");
+        if (elementos.empty()) throw out_of_range("Pila vacia");
         return elementos.back();
     }
     bool estaVacia() const { return elementos.empty(); }
 };
-
-// Persistencia de usuarios
-// (usa cargarUsuarios/guardarUsuarios de login.h)
 int main() {
     vector<Usuario> usuarios;
     cargarUsuarios(usuarios);
-
-    // Ejemplo de uso de tu ColaCircular en lugar de std::queue o std::list
     ColaCircular<Cancion, 100> colaReproduccion;
 
 

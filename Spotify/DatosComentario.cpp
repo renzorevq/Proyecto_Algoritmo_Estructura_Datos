@@ -1,7 +1,7 @@
 #include "DatosComentario.h"
 #include <iostream>
 
-bool DatosComentario::agregarComentario(const std::string& clave, const std::string& texto) {
+bool DatosComentario::agregarComentario(const string& clave, const string& texto) {
     if (conteo >= MAX_COMENTARIOS) return false;
     claves[conteo] = clave;
     textos[conteo] = texto;
@@ -11,11 +11,11 @@ bool DatosComentario::agregarComentario(const std::string& clave, const std::str
 
 void DatosComentario::listarComentarios() const {
     if (conteo == 0) {
-        std::cout << "(no hay comentarios aún)\n";
+        cout << "(no hay comentarios aun)\n";
         return;
     }
     for (int i = 0; i < conteo; ++i) {
-        std::cout << (i + 1) << ". [" << claves[i] << "] " << textos[i] << "\n";
+        cout << (i + 1) << ". [" << claves[i] << "] " << textos[i] << "\n";
     }
 }
 

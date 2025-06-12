@@ -1,7 +1,7 @@
 #pragma once
 #ifndef NODO_H
 #define NODO_H
-
+using namespace std;
 template <typename T>
 class Nodo {
 public:
@@ -15,4 +15,4 @@ public:
 template <typename T>
 Nodo<T>::Nodo(const T& valor) : dato(valor), siguiente(nullptr) {}
 
-#endif NODO_H
+#endif

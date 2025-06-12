@@ -3,15 +3,15 @@
 #include <iostream>
 #include <cstdlib>
 
-std::string AdministradorCompartirCancion::generarCodigo() const {
-    std::string codigo;
+string AdministradorCompartirCancion::generarCodigo() const {
+    string codigo;
     for (int i = 0; i < 3; ++i) {
-        codigo += char('0' + (std::rand() % 10));
+        codigo += char('0' + (rand() % 10));
     }
     return codigo;
 }
 
-bool AdministradorCompartirCancion::agregarCompartido(const std::string& titulo, const std::string& link) {
+bool AdministradorCompartirCancion::agregarCompartido(const string& titulo, const string& link) {
     if (conteo >= MAX_COMPARTIDOS) return false;
     titulos[conteo] = titulo;
     links[conteo] = link + generarCodigo();
@@ -25,7 +25,7 @@ int AdministradorCompartirCancion::obtenerCantidad() const {
 
 void AdministradorCompartirCancion::listarCompartidos() const {
     if (conteo == 0) {
-        std::cout << "(No hay canciones compartidas aún)\n";
+        cout << "(No hay canciones compartidas aun)\n";
         return;
     }
     for (int i = 0; i < conteo; ++i) {

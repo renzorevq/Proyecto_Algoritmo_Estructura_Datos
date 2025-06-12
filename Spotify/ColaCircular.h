@@ -1,16 +1,12 @@
 #pragma once
-
-// Cola circular genérica (FIFO) basada en un arreglo de tamaño fijo N
-// T: tipo de dato almacenado
-// N: capacidad máxima de la cola
-
+using namespace std;
 template <typename T, size_t N>
 class ColaCircular {
 private:
-    T datos[N];            // buffer circular
-    size_t inicio = 0;      // índice del siguiente elemento a desencolar
-    size_t fin = 0;         // índice de la siguiente posición libre para encolar
-    size_t conteo = 0;      // número de elementos actualmente en la cola
+    T datos[N];
+    size_t inicio = 0;
+    size_t fin = 0;
+    size_t conteo = 0;
 
 public:
     ColaCircular() = default;
