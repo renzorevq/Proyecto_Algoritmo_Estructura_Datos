@@ -127,10 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cancion.cpp" />
     <ClCompile Include="CompartirCancionOrdenado.cpp" />
     <ClCompile Include="PodcastOrdenado.cpp" />
     <ClCompile Include="AdministradorCancion.cpp" />
-    <ClCompile Include="DatosComentario.cpp" />
     <ClCompile Include="AdministradorCompartirCancion.cpp" />
     <ClCompile Include="AdministradorDatosValoracion.cpp" />
     <ClCompile Include="CancionOrdenada.cpp" />
@@ -138,7 +138,6 @@
     <ClCompile Include="AdministradorEstadisticaPista.cpp" />
     <ClCompile Include="Historial.cpp" />
     <ClCompile Include="Login.cpp" />
-    <ClCompile Include="ListaReproduccion.cpp" />
     <ClCompile Include="AdministradorPodcast.cpp" />
     <ClCompile Include="Spotify.cpp" />
     <ClCompile Include="DatosValoracionesOrdenado.cpp" />
@@ -152,11 +151,10 @@
     <ClInclude Include="AdministradorEnlaceFavorito.h" />
     <ClInclude Include="AdministradorEstadisticaPista.h" />
     <ClInclude Include="AdministradorPodcast.h" />
+    <ClInclude Include="Cancion.h" />
     <ClInclude Include="CompartirCancionOrdenada.h" />
     <ClInclude Include="PodcastOrdenado.h" />
-    <ClInclude Include="Cancion.h" />
     <ClInclude Include="ColaCircular.h" />
-    <ClInclude Include="DatosComentario.h" />
     <ClInclude Include="EnlaceFavorito.h" />
     <ClInclude Include="Historial.h" />
     <ClInclude Include="CancionOrdenada.h" />
@@ -164,7 +162,6 @@
     <ClInclude Include="login.h" />
     <ClInclude Include="CompartirCancion.h" />
     <ClInclude Include="Nodo.h" />
-    <ClInclude Include="ListaReproduccion.h" />
     <ClInclude Include="Podcast.h" />
     <ClInclude Include="DatosValoracion.h" />
     <ClInclude Include="DatosValoracionesOrdenado.h" />

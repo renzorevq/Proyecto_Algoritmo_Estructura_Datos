@@ -2,25 +2,25 @@
 #ifndef ADMINISTRADORDECANCION_H
 #define ADMINISTRADORDECANCION_H
 
-#include "Cancion.h"
-#include <iostream>
+#pragma once
 #include <string>
+#include "Cancion.h"
 using namespace std;
-const int MAX_CANCIONES = 100;
+static const int MAX_CANCIONES = 100;
 
-class AdministradorDeCancion {
+class AdministradorCancion {
 private:
-    Cancion canciones[MAX_CANCIONES];     
+    Cancion canciones[MAX_CANCIONES];
     int cantidad = 0;
 
 public:
-    AdministradorDeCancion() = default;
-
+    AdministradorCancion() = default;
     bool agregarCancion(const Cancion& cancion);
     bool eliminarCancion(const string& titulo);
     void listarCanciones() const;
     int obtenerCantidad() const;
     Cancion* buscarCancion(const string& titulo);
 };
+
 
 #endif

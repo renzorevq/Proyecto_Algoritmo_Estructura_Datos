@@ -16,6 +16,10 @@ public:
 
     void ordenarPorTitulo();    // Inserción
     void ordenarPorCreador();   // Burbuja    
+    const Podcast* obtenerTodos() const {
+        return podcasts;
+    }
+
 
 };
 

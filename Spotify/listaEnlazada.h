@@ -9,16 +9,16 @@ using namespace std;
 
 template <typename T>
 class ListaEnlazada {
-    Nodo<T>* cabeza;
+	Nodo<T>* cabeza;
 public:
-    ListaEnlazada();
-    ~ListaEnlazada();
-    
-    void insertar(const T& valor);
-    bool eliminar(const function<bool(const T&)>& criterio);
-    bool estaVacia() const;
-    void porCada(const function<void(const T&)>& accion) const;
-    void limpiar();
+	ListaEnlazada();
+	~ListaEnlazada();
+
+	void insertar(const T& valor);
+	bool eliminar(const function<bool(const T&)>& criterio);
+	bool estaVacia() const;
+	void porCada(const function<void(const T&)>& accion) const;
+	void limpiar();
 };
 
 template <typename T>

@@ -51,25 +51,7 @@
     <ClCompile Include="AdministradorCancion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="ListaReproduccion.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
     <ClCompile Include="Usuario.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="DuracionOrdenado.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="ArtistaOrdenado.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="TituloOrdenado.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="AlbumOrdenado.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="DatosComentario.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="AdministradorCompartirCancion.cpp">
@@ -90,6 +72,21 @@
     <ClCompile Include="AdministradorPodcast.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="CompartirCancionOrdenado.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="PodcastOrdenado.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="CancionOrdenada.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="DatosValoracionesOrdenado.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Cancion.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilidades.h">
@@ -104,25 +101,7 @@
     <ClInclude Include="ListaEnlazada.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="Cancion.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
     <ClInclude Include="Usuario.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaReproduccion.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
-    <ClInclude Include="DuracionOrdenado.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
-    <ClInclude Include="ArtistaOrdenado.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
-    <ClInclude Include="TituloOrdenado.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
-    <ClInclude Include="AlbumOrdenado.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="Podcast.h">
@@ -149,9 +128,6 @@
     <ClInclude Include="Historial.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="DatosComentario.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
     <ClInclude Include="EnlaceFavorito.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
@@ -162,6 +138,24 @@
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="AdministradorEstadisticaPista.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="AdministradorEnlaceFavorito.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="CompartirCancionOrdenada.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="PodcastOrdenado.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="CancionOrdenada.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="DatosValoracionesOrdenado.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Cancion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
   </ItemGroup>
