@@ -1,7 +1,9 @@
 #include "PodcastOrdenado.h"
 #include <iostream>
 
-PodcastOrdenado::PodcastOrdenado(int cap) : capacidad(cap), cantidad(0) {
+PodcastOrdenado::PodcastOrdenado(int capacidad) {
+    this->capacidad = capacidad;
+    cantidad = 0;
     podcasts = new Podcast[capacidad];
 }
 
@@ -27,25 +29,55 @@ void PodcastOrdenado::mostrarPodcasts() const {
 }
 
 void PodcastOrdenado::ordenarPorTitulo() {
-    for (int i = 1; i < cantidad; i++) {
-        Podcast clave = podcasts[i];
-        int j = i - 1;
-        while (j >= 0 && podcasts[j].obtenerTitulo() > clave.obtenerTitulo()) {
-            podcasts[j + 1] = podcasts[j];
-            j--;
-        }
-        podcasts[j + 1] = clave;
-    }
+    mergeSort(0, cantidad - 1, 0); // criterio 0: título
 }
 
 void PodcastOrdenado::ordenarPorCreador() {
-    for (int i = 0; i < cantidad - 1; i++) {
-        for (int j = 0; j < cantidad - i - 1; j++) {
-            if (podcasts[j].obtenerCreador() > podcasts[j + 1].obtenerCreador()) {
-                Podcast temp = podcasts[j];
-                podcasts[j] = podcasts[j + 1];
-                podcasts[j + 1] = temp;
-            }
-        }
+    mergeSort(0, cantidad - 1, 1); // criterio 1: creador
+}
+
+
+
+void PodcastOrdenado::mergeSort(int inicio, int fin, int criterio) {
+    if (inicio < fin) {
+        int medio = (inicio + fin) / 2;
+        mergeSort(inicio, medio, criterio);
+        mergeSort(medio + 1, fin, criterio);
+        merge(inicio, medio, fin, criterio);
     }
+}
+
+void PodcastOrdenado::merge(int inicio, int medio, int fin, int criterio) {
+    int n1 = medio - inicio + 1;
+    int n2 = fin - medio;
+
+    Podcast* izquierda = new Podcast[n1];
+    Podcast* derecha = new Podcast[n2];
+
+    for (int i = 0; i < n1; i++)
+        izquierda[i] = podcasts[inicio + i];
+    for (int j = 0; j < n2; j++)
+        derecha[j] = podcasts[medio + 1 + j];
+
+    int i = 0, j = 0, k = inicio;
+
+    while (i < n1 && j < n2) {
+        bool condicion;
+
+        if (criterio == 0) // título
+            condicion = izquierda[i].obtenerTitulo() < derecha[j].obtenerTitulo();
+        else               // creador
+            condicion = izquierda[i].obtenerCreador() < derecha[j].obtenerCreador();
+
+        if (condicion)
+            podcasts[k++] = izquierda[i++];
+        else
+            podcasts[k++] = derecha[j++];
+    }
+
+    while (i < n1) podcasts[k++] = izquierda[i++];
+    while (j < n2) podcasts[k++] = derecha[j++];
+
+    delete[] izquierda;
+    delete[] derecha;
 }

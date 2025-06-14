@@ -7,6 +7,8 @@ private:
     int capacidad;
     int cantidad;
 
+    void mergeSort(int inicio, int fin, int criterio); 
+    void merge(int inicio, int medio, int fin, int criterio);
 public:
     PodcastOrdenado(int capacidad);
     ~PodcastOrdenado();
@@ -16,4 +18,7 @@ public:
 
     void ordenarPorTitulo();
     void ordenarPorCreador();
+
+   
+
 };
