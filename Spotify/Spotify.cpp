@@ -13,7 +13,6 @@
 #include "Cancion.h"
 #include "ColaCircular.h"
 #include "ListaEnlazada.h"
-
 using namespace std;
 
 template <typename T>
@@ -32,6 +31,50 @@ public:
     bool estaVacia() const { return elementos.empty(); }
 };
 
+// Función para leer opción válida del menú principal
+int leerOpcionMenu() {
+    string entrada;
+    int opcion;
+
+    while (true) {
+        cout << "Seleccione opcion: ";
+        getline(cin, entrada);
+
+        // Verificar si la entrada está vacía
+        if (entrada.empty()) {
+            cout << "ERROR: Ingrese un valor valido\n";
+            continue;
+        }
+
+        // Verificar si todos los caracteres son dígitos
+        bool esValido = true;
+        for (char c : entrada) {
+            if (!isdigit(c)) {
+                esValido = false;
+                break;
+            }
+        }
+
+        if (esValido) {
+            try {
+                opcion = stoi(entrada);
+                if (opcion >= 1 && opcion <= 3) {
+                    return opcion;
+                }
+                else {
+                    cout << "ERROR: Ingrese un valor valido\n";
+                }
+            }
+            catch (const exception&) {
+                cout << "ERROR: Ingrese un valor valido\n";
+            }
+        }
+        else {
+            cout << "ERROR: Ingrese un valor valido\n";
+        }
+    }
+}
+
 int main() {
     vector<Usuario> usuarios;
     cargarUsuarios(usuarios);
@@ -47,23 +90,16 @@ int main() {
         limpiarPantalla();
         cout << "\033[32m";
         dibujarCaja({
-            "MINI SPOTIFY CON QUICKSORT",
+            "MINI SPOTIFY",
             "1. Registrarse",
             "2. Iniciar Sesion",
             "3. Salir"
             });
-        cout << "Seleccione opcion: ";
-        int opcion;
-        cin >> opcion;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        int opcion = leerOpcionMenu();
 
         if (acciones.count(opcion)) {
             acciones[opcion]();
-        }
-        else {
-            cout << "Opcion no valida!\n";
-            cout << "Presione Enter para continuar...";
-            cin.get();
         }
     }
 
