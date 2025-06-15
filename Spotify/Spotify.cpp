@@ -14,7 +14,6 @@
 #include "Cancion.h"
 #include "ColaCircular.h"
 #include "ListaEnlazada.h"
-
 using namespace std;
 
 template <typename T>
@@ -32,6 +31,50 @@ public:
     }
     bool estaVacia() const { return elementos.empty(); }
 };
+
+// Funci�n para leer opci�n v�lida del men� principal
+int leerOpcionMenu() {
+    string entrada;
+    int opcion;
+
+    while (true) {
+        cout << "Seleccione opcion: ";
+        getline(cin, entrada);
+
+        // Verificar si la entrada est� vac�a
+        if (entrada.empty()) {
+            cout << "ERROR: Ingrese un valor valido\n";
+            continue;
+        }
+
+        // Verificar si todos los caracteres son d�gitos
+        bool esValido = true;
+        for (char c : entrada) {
+            if (!isdigit(c)) {
+                esValido = false;
+                break;
+            }
+        }
+
+        if (esValido) {
+            try {
+                opcion = stoi(entrada);
+                if (opcion >= 1 && opcion <= 3) {
+                    return opcion;
+                }
+                else {
+                    cout << "ERROR: Ingrese un valor valido\n";
+                }
+            }
+            catch (const exception&) {
+                cout << "ERROR: Ingrese un valor valido\n";
+            }
+        }
+        else {
+            cout << "ERROR: Ingrese un valor valido\n";
+        }
+    }
+}
 
 int main() {
     vector<Usuario> usuarios;
@@ -86,6 +129,6 @@ int main() {
     }
 
     guardarUsuarios(usuarios);
-    cout << "\n¡Gracias por usar Mini Spotify!\n";
+    cout << "\n�Gracias por usar Mini Spotify!\n";
     return 0;
 }

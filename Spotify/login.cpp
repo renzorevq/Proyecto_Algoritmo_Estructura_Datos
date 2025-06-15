@@ -588,7 +588,7 @@ map<int, function<void()>> obtenerAccionesSubmenu(
               
                 limpiarPantalla();
                 dibujarCaja({ "VALORAR FORMATO" });
-                cout << "¿Qué quieres valorar?\n"
+                cout << "�Qu� quieres valorar?\n"
                     << " 1. Cancion\n"
                     << " 2. Podcast\n"
                     << "Selecciona (1-2): ";
@@ -987,7 +987,7 @@ void iniciarSesion(vector<Usuario>& usuarios) {
         case 9: { // VALORAR FORMATO
             limpiarPantalla();
             dibujarCaja({ "VALORAR FORMATO" });
-            cout << "¿Qué quieres valorar?\n"
+            cout << "�Qu� quieres valorar?\n"
                 << " 1. Cancion\n"
                 << " 2. Podcast\n"
                 << "Selecciona (1-2): ";
