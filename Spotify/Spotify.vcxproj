@@ -129,13 +129,13 @@
   <ItemGroup>
     <ClCompile Include="Cancion.cpp" />
     <ClCompile Include="CompartirCancionOrdenado.cpp" />
+    <ClCompile Include="ListaReproduccion.cpp" />
     <ClCompile Include="PodcastOrdenado.cpp" />
     <ClCompile Include="AdministradorCancion.cpp" />
     <ClCompile Include="AdministradorCompartirCancion.cpp" />
     <ClCompile Include="AdministradorDatosValoracion.cpp" />
-    <ClCompile Include="CancionOrdenada.cpp" />
+    <ClCompile Include="CancionOrdenado.cpp" />
     <ClCompile Include="EnlaceFavorito.cpp" />
-    <ClCompile Include="AdministradorEstadisticaPista.cpp" />
     <ClCompile Include="Historial.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="AdministradorPodcast.cpp" />
@@ -149,23 +149,23 @@
     <ClInclude Include="AdministradorCompartirCancion.h" />
     <ClInclude Include="AdministradorDatosValoracion.h" />
     <ClInclude Include="AdministradorEnlaceFavorito.h" />
-    <ClInclude Include="AdministradorEstadisticaPista.h" />
     <ClInclude Include="AdministradorPodcast.h" />
     <ClInclude Include="Cancion.h" />
-    <ClInclude Include="CompartirCancionOrdenada.h" />
+    <ClInclude Include="CompartirCancionOrdenado.h" />
+    <ClInclude Include="GuiaUsuario.h" />
+    <ClInclude Include="ListaReproduccion.h" />
     <ClInclude Include="PodcastOrdenado.h" />
     <ClInclude Include="ColaCircular.h" />
     <ClInclude Include="EnlaceFavorito.h" />
     <ClInclude Include="Historial.h" />
-    <ClInclude Include="CancionOrdenada.h" />
+    <ClInclude Include="CancionOrdenado.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="CompartirCancion.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Podcast.h" />
     <ClInclude Include="DatosValoracion.h" />
-    <ClInclude Include="DatosValoracionesOrdenado.h" />
-    <ClInclude Include="EstadisticaPista.h" />
+    <ClInclude Include="DatosValoracionOrdenado.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="Utilidades.h" />
   </ItemGroup>

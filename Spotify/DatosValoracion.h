@@ -1,5 +1,4 @@
 #pragma once
-
 #include "AdministradorDatosValoracion.h"
 #include <string>
 using namespace std;

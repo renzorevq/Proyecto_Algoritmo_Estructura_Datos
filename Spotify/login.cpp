@@ -10,15 +10,14 @@
 #include <atomic>
 #include <functional>
 #include <chrono>
+#include "GuiaUsuario.h"
 #include "AdministradorCompartirCancion.h"
-#include "AdministradorEstadisticaPista.h"
 #include "AdministradorDatosValoracion.h"
 #include "AdministradorPodcast.h"
 #include "AdministradorCancion.h"
 #include "Cancion.h"
 #include "Podcast.h"
 #include "Historial.h"
-#include "EstadisticaPista.h"
 #include "EnlaceFavorito.h"
 #include "DatosValoracion.h"
 #include "CompartirCancion.h"
@@ -28,7 +27,7 @@
 #include <iostream>
 #include <memory>    
 
-using namespace std;
+
 
 // Funcion para validar entrada de enteros
 int leerEntero(const string& mensaje) {
@@ -198,7 +197,7 @@ void iniciarSesion(vector<Usuario>& usuarios) {
     auto gestorCompartir = make_unique<CompartirCancion>();
     auto gestorValoracion = make_unique<DatosValoracion>();
     auto gestorEnlaces = make_unique<EnlaceFavorito>();
-    auto estadisticas = make_unique<EstadisticaPista>();
+    auto estadisticas = make_unique<GuiaUsuario>();
     auto historial = make_unique<Historial>();
     auto gestorPodcasts = make_unique<AdministradorPodcast>();
 
@@ -220,19 +219,19 @@ void iniciarSesion(vector<Usuario>& usuarios) {
             "4. Agregar Cancion",
             "5. Eliminar Cancion",
             "6. Listar Canciones",
-            "7. Compartir Cancion",
+            "7. Compartir Formato",
             "8. Ver Compartidos",
-            "9. Valorar Cancion",
+            "9. Valorar Formato",
             "10. Ver Valoraciones",
             "11. Agregar Enlace Favorito",
             "12. Ver Enlaces",
             "13. Eliminar Enlace",
-            "14. Reproducir Cancion",
-            "15. Ver Estadisticas",
+            "14. Reproducir Formato",
+            "15. Guia del Usuario",
             "16. Historial General",
             "17. Registrar Podcast",
             "18. Ver Podcasts",
-            "19. Ordenar Canciones", // Nueva opcion
+            "19. Ordenar Canciones", 
             "0. Cerrar Sesion",
             });
         cout << "Seleccione opcion: ";
@@ -459,7 +458,6 @@ void iniciarSesion(vector<Usuario>& usuarios) {
                             if (segundos >= DURACION_TOTAL) {
                                 *enReproduccion = false;
                                 cout << "\n>> Reproduccion finalizada.\n";
-                                estadisticas->registrarReproduccion(titulo);
                             }
                         }
                     }
@@ -522,8 +520,8 @@ void iniciarSesion(vector<Usuario>& usuarios) {
 
         case 15: {
             limpiarPantalla();
-            dibujarCaja({ "ESTADISTICAS DE REPRODUCCION" });
-            estadisticas->mostrarEstadisticas();
+            dibujarCaja({ "GUIA DEL USUARIO" });
+            estadisticas->mostrarGuia();
             pausar();
             break;
         }

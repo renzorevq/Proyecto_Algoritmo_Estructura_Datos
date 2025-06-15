@@ -1,4 +1,4 @@
-// AdministradorDeCancion.cpp
+
 #include "AdministradorCancion.h"
 #include <iostream>
 using namespace std;

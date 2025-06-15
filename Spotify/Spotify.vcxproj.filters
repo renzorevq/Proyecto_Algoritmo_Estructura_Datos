@@ -39,9 +39,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Spotify.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Utilidades.cpp">
       <Filter>Archivos de origen\Utilidades</Filter>
     </ClCompile>
@@ -49,9 +46,6 @@
       <Filter>Archivos de origen\Login</Filter>
     </ClCompile>
     <ClCompile Include="AdministradorCancion.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="Usuario.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="AdministradorCompartirCancion.cpp">
@@ -63,28 +57,34 @@
     <ClCompile Include="EnlaceFavorito.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="AdministradorEstadisticaPista.cpp">
-      <Filter>Archivos de origen\Clases</Filter>
-    </ClCompile>
     <ClCompile Include="Historial.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="AdministradorPodcast.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="Cancion.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Usuario.cpp">
+      <Filter>Archivos de origen\Usuario</Filter>
+    </ClCompile>
+    <ClCompile Include="CancionOrdenado.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
     <ClCompile Include="CompartirCancionOrdenado.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="PodcastOrdenado.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="CancionOrdenada.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
     <ClCompile Include="DatosValoracionesOrdenado.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
-    <ClCompile Include="Cancion.cpp">
+    <ClCompile Include="Spotify.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaReproduccion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,13 +101,7 @@
     <ClInclude Include="ListaEnlazada.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="Usuario.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
     <ClInclude Include="Podcast.h">
-      <Filter>Archivos de encabezado\Clases</Filter>
-    </ClInclude>
-    <ClInclude Include="EstadisticaPista.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="CompartirCancion.h">
@@ -137,25 +131,31 @@
     <ClInclude Include="AdministradorDatosValoracion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="AdministradorEstadisticaPista.h">
+    <ClInclude Include="Cancion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="AdministradorEnlaceFavorito.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Usuario.h">
+      <Filter>Archivos de encabezado\Usuario</Filter>
     </ClInclude>
-    <ClInclude Include="CompartirCancionOrdenada.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="AdministradorEnlaceFavorito.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="CancionOrdenado.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="CompartirCancionOrdenado.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="DatosValoracionOrdenado.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="PodcastOrdenado.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="CancionOrdenada.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="GuiaUsuario.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
-    <ClInclude Include="DatosValoracionesOrdenado.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Cancion.h">
+    <ClInclude Include="ListaReproduccion.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
   </ItemGroup>

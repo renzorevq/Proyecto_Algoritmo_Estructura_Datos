@@ -1,6 +1,5 @@
 #pragma once
-#ifndef LISTA_ENLAZADA_H
-#define LISTA_ENLAZADA_H
+
 
 #include <functional>
 #include "Nodo.h"
@@ -78,4 +77,3 @@ void ListaEnlazada<T>::limpiar() {
 	cabeza = nullptr;
 }
 
-#endif

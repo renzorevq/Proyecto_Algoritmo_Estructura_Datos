@@ -2,10 +2,6 @@
 #include "iostream"
 #include <string>
 
-using namespace std;
-
-
-
 // Utilidades de consola
 void limpiarPantalla() {
 #ifdef _WIN32

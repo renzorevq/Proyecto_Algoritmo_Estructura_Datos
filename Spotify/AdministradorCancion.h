@@ -1,8 +1,4 @@
 #pragma once
-#ifndef ADMINISTRADORDECANCION_H
-#define ADMINISTRADORDECANCION_H
-
-#pragma once
 #include <string>
 #include "Cancion.h"
 using namespace std;
@@ -22,5 +18,3 @@ public:
     Cancion* buscarCancion(const string& titulo);
 };
 
-
-#endif

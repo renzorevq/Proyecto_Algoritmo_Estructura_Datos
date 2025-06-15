@@ -1,8 +1,8 @@
-#include "CancionOrdenada.h"
+#include "CancionOrdenado.h"
 #include "chrono" 
 #include <iostream>
 
-void CancionOrdenada::ordenarCancion(Cancion canciones[], int cantidad) {
+void CancionOrdenado::ordenarCancion(Cancion canciones[], int cantidad) {
 
 	clock_t start = clock();
 

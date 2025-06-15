@@ -1,7 +1,7 @@
 #pragma once
 #include "Cancion.h"
 
-class CancionOrdenada {
+class CancionOrdenado {
 public:
     void ordenarCancion(Cancion canciones[], int cantidad);
     
