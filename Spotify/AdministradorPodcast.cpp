@@ -1,8 +1,9 @@
 #include "Podcast.h"
 #include "AdministradorPodcast.h"
+#include "PodcastOrdenado.h"
 
 
-
+AdministradorPodcast::AdministradorPodcast() : ordenado(MAX_PODCASTS) {}
 //Podcast
 Podcast::Podcast() : titulo(""), creador(""), duracion(0) {}
 Podcast::Podcast(const string& titulo, const string& creador, int duracion)
@@ -56,4 +57,23 @@ void AdministradorPodcast::ordenarPorCreador() {
    }
   }
  }
+}
+
+// Usar MergeSort por título
+void AdministradorPodcast::ordenarPorTituloMerge() {
+    ordenado.limpiar();
+    for (int i = 0; i < total; ++i) {
+        ordenado.agregarPodcast(podcasts[i]);
+    }
+    ordenado.ordenarPorTitulo();
+    ordenado.mostrarPodcasts();
+}
+
+// Usar MergeSort por creador
+void AdministradorPodcast::ordenarPorCreadorMerge() {
+    for (int i = 0; i < total; ++i) {
+        ordenado.agregarPodcast(podcasts[i]);
+    }
+    ordenado.ordenarPorCreador();
+    ordenado.mostrarPodcasts();
 }
