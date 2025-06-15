@@ -785,12 +785,14 @@ void subMenu(
 void iniciarSesion(vector<Usuario>& usuarios) {
     limpiarPantalla();
     dibujarCaja({ "INICIAR SESION" });
-    string correo, pass;
-    cout << "Correo: ";     getline(cin, correo);
-    cout << "Contrasena: "; getline(cin, pass);
+    string identifier, pass;
+    cout << "Correo o nombre de usuario: "; getline(cin, identifier);
+    cout << "Contrasena                : "; getline(cin, pass);
 
     auto it = find_if(usuarios.begin(), usuarios.end(),
-        [&](auto& u) { return u.obtenerCorreo() == correo; });
+        [&](auto& u) {
+        return (u.obtenerNombre() == identifier || u.obtenerCorreo() == identifier);
+        });
     if (it == usuarios.end() || it->obtenerContrasena() != pass) {
         cout << "-> Credenciales invalidas!\n";
         pausar();
@@ -856,7 +858,7 @@ void iniciarSesion(vector<Usuario>& usuarios) {
         int opcion = leerEnteroEnRango("", 0, 19);*/
         while (!seleccionHecha) {
             limpiarPantalla();
-            dibujarCajaConSeleccion(opciones, seleccion, 60);
+            dibujarCajaConSeleccion(opciones, seleccion, 60, "MENU PRINCIPAL");
 
             int tecla = _getch();
             if (tecla == 224) {
@@ -987,7 +989,7 @@ void iniciarSesion(vector<Usuario>& usuarios) {
         case 9: { // VALORAR FORMATO
             limpiarPantalla();
             dibujarCaja({ "VALORAR FORMATO" });
-            cout << "�Qu� quieres valorar?\n"
+            cout << "Que deseas valorar?\n"
                 << " 1. Cancion\n"
                 << " 2. Podcast\n"
                 << "Selecciona (1-2): ";

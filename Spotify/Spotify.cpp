@@ -96,26 +96,7 @@ int main() {
     while (ejecutando) {
         limpiarPantalla();
         cout << "\033[32m";
-        dibujarCajaConSeleccion(opcionesMenu, seleccion, 40);
-       /* dibujarCaja({
-            "MINI SPOTIFY CON QUICKSORT",
-            "1. Registrarse",
-            "2. Iniciar Sesion",
-            "3. Salir"
-            });*/
-       /* cout << "Seleccione opcion: ";
-        int opcion;
-        cin >> opcion;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-        if (acciones.count(opcion)) {
-            acciones[opcion]();
-        }
-        else {
-            cout << "Opcion no valida!\n";
-            cout << "Presione Enter para continuar...";
-            cin.get();
-        }*/
+        dibujarCajaConSeleccion(opcionesMenu, seleccion, 40, "MINI SPOTIFY");
         int tecla = _getch();
         if (tecla == 224) {
             tecla = _getch();
