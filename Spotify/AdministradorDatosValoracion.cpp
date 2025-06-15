@@ -34,12 +34,15 @@ float DatosValoracion::obtenerPromedio(const string& titulo) const {
 
 void DatosValoracion::listarPromedios() const {
     cout << "=== Valoraciones Promedio ===\n";
-    for (int i = 0; i < conteo; ++i) {
-        float promedio = (float)sumaValoracion[i] / cantidadValoraciones[i];
-        cout << fixed << setprecision(2);
-        cout << titulos[i] << " -> " << promedio << "/5\n";
-    }
-    if (conteo == 0)
+    if (conteo == 0) {
         cout << "(sin valoraciones aun)\n";
+    }
+    else {
+        for (int i = 0; i < conteo; ++i) {
+            
+            int promedioEntero = sumaValoracion[i] / cantidadValoraciones[i];
+            cout << titulos[i] << " -> " << promedioEntero << "/5\n";
+        }
+    }
     cout << "=============================\n";
 }

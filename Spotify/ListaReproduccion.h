@@ -1,25 +1,22 @@
-// ListaReproduccion.h
-
 #pragma once
-
 #include <string>
 #include "ListaEnlazada.h"
 #include "Cancion.h"
-
+using namespace std;
 class ListaReproduccion {
 private:
-    std::string nombre;
-    std::string descripcion;
+    string nombre;
+    string descripcion;
     ListaEnlazada<Cancion> canciones;
 
 public:
     ListaReproduccion();
-    ListaReproduccion(const std::string& nombreLista,
-        const std::string& descripcionLista);
+    ListaReproduccion(const string& nombreLista,
+        const string& descripcionLista);
 
     void agregarCancion(const Cancion& cancion);
-    void eliminarCancion(const std::string& tituloCancion);
+    void eliminarCancion(const string& tituloCancion);
     void listarCanciones() const;
-    std::string obtenerNombre() const;
+    string obtenerNombre() const;
     const ListaEnlazada<Cancion>& obtenerCanciones() const;
 };

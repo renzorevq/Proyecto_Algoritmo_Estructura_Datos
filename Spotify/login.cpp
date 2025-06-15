@@ -347,22 +347,68 @@ void iniciarSesion(vector<Usuario>& usuarios) {
             pausar();
             break;
         }
-        case 9: { // VALORAR CANCION
+        case 9: { // VALORAR FORMATO
             limpiarPantalla();
-            dibujarCaja({ "VALORAR CANCION" });
-            string titulo;
-            cout << "Titulo de la cancion: "; getline(cin, titulo);
-            int valor = leerEnteroEnRango("Valor (1-5): ", 1, 5);
+            dibujarCaja({ "VALORAR FORMATO" });
+            cout << "¿Qué quieres valorar?\n"
+                << " 1. Cancion\n"
+                << " 2. Podcast\n"
+                << "Selecciona (1-2): ";
+            int tipo = leerEnteroEnRango("", 1, 2);
 
-            if (gestorValoracion->agregarValoracion(titulo, valor))
+            string titulo;
+            cout << (tipo == 1 ? "Titulo de la cancion: " : "Titulo del podcast: ");
+            getline(cin, titulo);
+
+            // 1) Verificar existencia
+            bool existe = false;
+            if (tipo == 1) {
+                // Buscamos en todas las playlists del usuario
+                for (const auto& lista : usuarioLogueado.obtenerListaReproduccion()) {
+                    lista.obtenerCanciones().porCada([&](const Cancion& c) {
+                        if (c.obtenerTitulo() == titulo)
+                            existe = true;
+                        });
+                    if (existe) break;
+                }
+            }
+            else {
+                // Buscamos en el AdministradorPodcast
+                const Podcast* arr = gestorPodcasts->obtenerTodos();
+                int tot = gestorPodcasts->obtenerCantidad();
+                for (int i = 0; i < tot; ++i) {
+                    if (arr[i].obtenerTitulo() == titulo) {
+                        existe = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!existe) {
+                cout << "-> ERROR: El titulo \"" << titulo
+                    << "\" no existe en " << (tipo == 1 ? "canciones" : "podcasts") << ".\n";
+                pausar();
+                break;
+            }
+
+            // 2) Leer valor y registrar
+            int valor = leerEnteroEnRango("Valor (1-5): ", 1, 5);
+            bool ok = gestorValoracion->agregarValoracion(titulo, valor);
+
+            if (ok)
                 cout << "-> Valoracion guardada!\n";
             else
-                cout << "-> Valor no valido o capacidad llena\n";
-            historial->registrarEvento("Se valoro la cancion '" + titulo + "' con: " + to_string(valor));
+                cout << "-> ERROR: Valor no valido o capacidad de valoraciones llena.\n";
 
+            historial->registrarEvento(
+                string("Se valoro ") + (tipo == 1 ? "cancion: \"" : "podcast: \"")
+                + titulo + "\" con: " + to_string(valor)
+            );
             pausar();
             break;
         }
+
+
         case 10: { // VER VALORACIONES
             limpiarPantalla();
             dibujarCaja({ "VALORACIONES PROMEDIO" });
@@ -370,6 +416,7 @@ void iniciarSesion(vector<Usuario>& usuarios) {
             pausar();
             break;
         }
+
         case 11: {
             limpiarPantalla();
             dibujarCaja({ "AGREGAR ENLACE FAVORITO" });

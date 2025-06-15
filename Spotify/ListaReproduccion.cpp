@@ -1,12 +1,8 @@
-// ListaReproduccion.cpp
-
 #include "ListaReproduccion.h"
-#include "Utilidades.h"   // para dibujarCaja
+#include "Utilidades.h"
 #include <iostream>
 
 using namespace std;
-
-// — Implementación de ListaReproduccion —
 
 ListaReproduccion::ListaReproduccion()
     : nombre(""), descripcion(""), canciones() {
