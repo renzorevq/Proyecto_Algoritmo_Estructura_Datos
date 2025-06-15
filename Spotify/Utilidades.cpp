@@ -1,4 +1,4 @@
-#include "Utilidades.h"
+﻿#include "Utilidades.h"
 #include "iostream"
 #include <string>
 
@@ -21,13 +21,27 @@ void lineaHorizontal(int ancho) {
     cout << "+" << string(ancho - 2, '-') << "+\n";
 }
 
-void textoCentrado(const string& texto, int ancho) {
+void textoCentrado(const string& texto, int ancho, bool seleccion = false) {
     int relleno = (ancho - texto.size()) / 2;
-    cout << "|" << string(relleno, ' ') << texto << string(ancho - 2 - relleno - texto.size(), ' ') << "|\n";
+    if (seleccion) {
+        cout << "| " << string(relleno, ' ') << "\033[0m" << texto << "\033[32m" << string(ancho - 4 - relleno - texto.size(), ' ') << " | \n";
+    }
+    else {
+        cout << "|" << string(relleno, ' ') << texto << string(ancho - 2 - relleno - texto.size(), ' ') << "|\n";
+    }
 }
 
 void dibujarCaja(const vector<string>& lineas, int ancho) {
     lineaHorizontal(ancho);
     for (const auto& linea : lineas) textoCentrado(linea, ancho);
+    lineaHorizontal(ancho);
+}
+
+void dibujarCajaConSeleccion(const vector<string>& opciones, int seleccion, int ancho) {
+    lineaHorizontal(ancho);
+    for (int i = 0; i < opciones.size(); ++i) {
+        string texto = (i == seleccion ? "* " : "  ") + opciones[i] + (i == seleccion ? " *" : "  ");
+        textoCentrado(texto, ancho, i == seleccion);
+    }
     lineaHorizontal(ancho);
 }

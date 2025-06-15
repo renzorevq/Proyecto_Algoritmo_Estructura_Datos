@@ -1,4 +1,5 @@
-#include <iostream>
+﻿#include <iostream>
+#include <conio.h>
 #include <vector>
 #include <functional>
 #include <fstream>
@@ -37,6 +38,12 @@ int main() {
     cargarUsuarios(usuarios);
     ColaCircular<Cancion, 100> colaReproduccion;
     bool ejecutando = true;
+    vector<string> opcionesMenu = {
+        "Registrarse",
+        "Iniciar Sesion",
+        "Salir"
+    };
+    int seleccion = 0;
 
     map<int, function<void()>> acciones;
     acciones[1] = [&] { registrarse(usuarios); };
@@ -46,13 +53,14 @@ int main() {
     while (ejecutando) {
         limpiarPantalla();
         cout << "\033[32m";
-        dibujarCaja({
+        dibujarCajaConSeleccion(opcionesMenu, seleccion, 40);
+       /* dibujarCaja({
             "MINI SPOTIFY CON QUICKSORT",
             "1. Registrarse",
             "2. Iniciar Sesion",
             "3. Salir"
-            });
-        cout << "Seleccione opcion: ";
+            });*/
+       /* cout << "Seleccione opcion: ";
         int opcion;
         cin >> opcion;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -64,10 +72,20 @@ int main() {
             cout << "Opcion no valida!\n";
             cout << "Presione Enter para continuar...";
             cin.get();
+        }*/
+        int tecla = _getch();
+        if (tecla == 224) {
+            tecla = _getch();
+            if (tecla == 72) seleccion = (seleccion - 1 + opcionesMenu.size()) % opcionesMenu.size(); // ↑
+            if (tecla == 80) seleccion = (seleccion + 1) % opcionesMenu.size(); // ↓
+        }
+        else if (tecla == 13) {
+            int opcion = seleccion + 1;
+            acciones[opcion]();
         }
     }
 
     guardarUsuarios(usuarios);
-    cout << "\n�Gracias por usar Mini Spotify!\n";
+    cout << "\n¡Gracias por usar Mini Spotify!\n";
     return 0;
 }
