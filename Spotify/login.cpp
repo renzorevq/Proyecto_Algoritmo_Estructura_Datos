@@ -224,6 +224,7 @@ vector<string> obtenerOpcionesSubmenu(MenuOpcion opcion) {
         opciones = {
             "Registrar Podcast",
             "Ver Podcasts",
+            "Ordenar Podcasts(MergeSort)",
             "Volver"
         };
         break;
@@ -725,6 +726,13 @@ map<int, function<void()>> obtenerAccionesSubmenu(
                 pausar();
                 };
             acciones[2] = [&]() {
+                limpiarPantalla();
+                dibujarCaja({ "ORDENAR PODCAST CON MERGESORT" });
+                gestorPodcasts.ordenarPorTituloMerge();
+                historial->registrarEvento("Se ordenaron los podcasts por Titulo usando MergeSort");
+                pausar();
+                };
+            acciones[3] = [&]() {
                 salir = true;
                 };
             break;

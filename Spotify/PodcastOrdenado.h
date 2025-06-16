@@ -18,7 +18,7 @@ public:
 
     void ordenarPorTitulo();
     void ordenarPorCreador();
-
+    void limpiar();
    
 
 };

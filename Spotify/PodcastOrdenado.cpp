@@ -36,7 +36,10 @@ void PodcastOrdenado::ordenarPorCreador() {
     mergeSort(0, cantidad - 1, 1); // criterio 1: creador
 }
 
-
+void PodcastOrdenado::limpiar() {
+    
+    cantidad = 0;
+}
 
 void PodcastOrdenado::mergeSort(int inicio, int fin, int criterio) {
     if (inicio < fin) {
