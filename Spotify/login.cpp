@@ -208,6 +208,7 @@ vector<string> obtenerOpcionesSubmenu(MenuOpcion opcion) {
         opciones = {
             "Valorar Formato",
             "Ver Valoraciones",
+            "Ver Valoraciones Ordenado",
             "Volver"
         };
         break;
@@ -652,7 +653,15 @@ map<int, function<void()>> obtenerAccionesSubmenu(
                 pausar();
 
                 };
+
             acciones[2] = [&]() {
+                limpiarPantalla();
+                dibujarCaja({ "VALORACIONES PROMEDIO ORDENADO (COUNTING SORT)" });
+                gestorValoracion.listarPromediosOrdenado();
+                pausar();
+
+                };
+            acciones[3] = [&]() {
                 salir = true;
                 };
             break;
@@ -1051,7 +1060,7 @@ void iniciarSesion(vector<Usuario>& usuarios) {
         case 10: { // VER VALORACIONES
             limpiarPantalla();
             dibujarCaja({ "VALORACIONES PROMEDIO" });
-            gestorValoracion->listarPromedios();
+            gestorValoracion->listarPromediosOrdenado();
             pausar();
             break;
         }

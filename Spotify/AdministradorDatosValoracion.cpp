@@ -1,7 +1,8 @@
-#include "AdministradorDatosValoracion.h"
+﻿#include "AdministradorDatosValoracion.h"
 #include "DatosValoracion.h"
 #include <iostream>
 #include <iomanip>
+#include <vector>
 
 bool DatosValoracion::agregarValoracion(const string& titulo, int valor) {
     if (valor < 1 || valor > 5) return false;
@@ -42,6 +43,28 @@ void DatosValoracion::listarPromedios() const {
             
             int promedioEntero = sumaValoracion[i] / cantidadValoraciones[i];
             cout << titulos[i] << " -> " << promedioEntero << "/5\n";
+        }
+    }
+    cout << "=============================\n";
+}
+
+void DatosValoracion::listarPromediosOrdenado() const {
+    cout << "=== Valoraciones Promedio Ordenado (Counting Sort) ===\n";
+    if (conteo == 0) {
+        cout << "(sin valoraciones aun)\n";
+    }
+    else {
+        vector<vector<string>> contenedor(6);
+
+        for (int i = 0; i < conteo; ++i) {
+            int promedioEntero = sumaValoracion[i] / cantidadValoraciones[i];
+            contenedor[promedioEntero].push_back(titulos[i]);
+        }
+
+        for (int i = 5; i >= 1; --i) {
+            for (const auto& titulo : contenedor[i]) {
+                cout << titulo << " -> " << i << "/5\n";
+            }
         }
     }
     cout << "=============================\n";
