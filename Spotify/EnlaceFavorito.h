@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
-#include "AdministradorEnlaceFavorito.h"
+#include "GeneradorEnlaceFavorito.h"
 using namespace std;
-class EnlaceFavorito : public AdministradorEnlaceFavorito {
+class EnlaceFavorito : public GeneradorEnlaceFavorito {
 public:
     bool agregarEnlace(const string& titulo, const string& url);
     void listarFavoritos() const;

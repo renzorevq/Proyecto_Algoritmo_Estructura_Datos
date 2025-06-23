@@ -9,7 +9,7 @@ private:
     string links[MAX_COMPARTIDOS];
     int conteo = 0;
 
-    
+
     string generarCodigo() const;
 
 public:

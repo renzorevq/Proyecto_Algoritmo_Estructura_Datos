@@ -137,7 +137,7 @@
     <ClInclude Include="Usuario.h">
       <Filter>Archivos de encabezado\Usuario</Filter>
     </ClInclude>
-    <ClInclude Include="AdministradorEnlaceFavorito.h">
+    <ClInclude Include="GeneradorEnlaceFavorito.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="CancionOrdenado.h">
@@ -156,6 +156,9 @@
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="ListaReproduccion.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Creditos.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
   </ItemGroup>

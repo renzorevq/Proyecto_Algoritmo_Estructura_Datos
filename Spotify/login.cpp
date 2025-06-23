@@ -1,32 +1,34 @@
-﻿#include <iostream>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <limits>
-#include <map>
-#include <thread>
-#include <mutex>
-#include <atomic>
-#include <functional>
-#include <chrono>
-#include "GuiaUsuario.h"
+﻿#include "AdministradorCancion.h"
 #include "AdministradorCompartirCancion.h"
 #include "AdministradorDatosValoracion.h"
 #include "AdministradorPodcast.h"
-#include "AdministradorCancion.h"
 #include "Cancion.h"
-#include "Podcast.h"
-#include "Historial.h"
-#include "EnlaceFavorito.h"
-#include "DatosValoracion.h"
 #include "CompartirCancion.h"
+#include "Creditos.h"
+#include "DatosValoracion.h"
+#include "EnlaceFavorito.h"
+#include "GuiaUsuario.h"
+#include "Historial.h"
 #include "Login.h"
-#include "Utilidades.h"
+#include "Podcast.h"
 #include "Usuario.h"
-#include <iostream>
-#include <memory>    
+#include "Utilidades.h"
+#include <algorithm>
+#include <atomic>
+#include <chrono>
 #include <conio.h>
+#include <fstream>
+#include <functional>
+#include <iostream>
+#include <iostream>
+#include <limits>
+#include <map>
+#include <memory>    
+#include <mutex>
+#include <sstream>
+#include <thread>
+#include <vector>
+vector<string> codigosGenerados;  // Almacena últimos 3 dígitos de los enlaces generados
 
 
 
@@ -98,6 +100,17 @@ int leerEnteroEnRango(const string& mensaje, int minimo, int maximo) {
     }
 
     return valor;
+}
+void ordenarTimsortCodigos(vector<string>& codigos) {
+    sort(codigos.begin(), codigos.end());  // std::sort implementa Timsort internamente
+}
+
+void mostrarCodigosOrdenados(const vector<string>& codigos) {
+    cout << "\n--- CODIGOS ORDENADOS (Timsort - 3 últimos dígitos de enlaces) ---\n";
+    for (const auto& c : codigos) {
+        cout << "* " << c << "\n";
+    }
+    cout << "--------------------------------------------------------------------\n";
 }
 
 // Implementacion de QuickSort para canciones
@@ -195,13 +208,14 @@ vector<string> obtenerOpcionesSubmenu(MenuOpcion opcion) {
     case CANCIONES:
         opciones = {
             "Agregar Cancion",
-            "Eliminar Cancion",
-            "Listar Canciones",
-            "Compartir Cancion",
-            "Canciones Compartidos",
-            "Ordenar Canciones",
-            "Reproducir Cancion",
-            "Volver"
+        "Eliminar Cancion",
+        "Listar Canciones",
+        "Compartir Cancion",
+        "Canciones Compartidos",
+        "Ordenar Canciones",
+        "Reproducir Cancion",
+        "Ordenar Enlaces Compartidos",
+        "Volver"
         };
         break;
     case VALORACIONES:
@@ -232,6 +246,7 @@ vector<string> obtenerOpcionesSubmenu(MenuOpcion opcion) {
         opciones = {
             "Guia del Usuario",
             "Historial General",
+            "Creditos",
             "Volver"
         };
         break;
@@ -361,12 +376,18 @@ map<int, function<void()>> obtenerAccionesSubmenu(
                 string titulo;
                 cout << "Titulo de la cancion: "; getline(cin, titulo);
                 string link = gestorCompartir.compartir(titulo);
-                if (!link.empty())
-                    cout << "-> Link generado: " << link << "\n";
-                else
-                    cout << "-> Limite de compartidos alcanzado!\n";
-                historial->registrarEvento("Se compartio la cancion: " + titulo);
 
+                if (!link.empty()) {
+                    // Obtener últimos 3 caracteres (los dígitos aleatorios)
+                    string codigo = link.substr(link.size() - 3);
+                    codigosGenerados.push_back(codigo);  // Guardar para ordenamiento
+                    cout << "-> Link generado: " << link << "\n";
+                }
+                else {
+                    cout << "-> Limite de compartidos alcanzado!\n";
+                }
+
+                historial->registrarEvento("Se compartio la cancion: " + titulo);
                 pausar();
                 };
 
@@ -579,8 +600,23 @@ map<int, function<void()>> obtenerAccionesSubmenu(
                 cout << ">> Saliendo del reproductor...\n";
                 pausar();
                 };
+                acciones[7] = [&]() {
+                    limpiarPantalla();
+                    dibujarCaja({ "ORDENAMIENTO AVANZADO DE ENLACES (TIMSORT)" });
 
-            acciones[7] = [&]() {
+                    if (codigosGenerados.empty()) {
+                        cout << "(No hay enlaces generados aún)\n";
+                    }
+                    else {
+                        ordenarTimsortCodigos(codigosGenerados);
+                        mostrarCodigosOrdenados(codigosGenerados);
+                    }
+
+                    pausar();
+                    };
+
+
+            acciones[8] = [&]() {
                 salir = true;
                 };
             break;
@@ -751,6 +787,11 @@ map<int, function<void()>> obtenerAccionesSubmenu(
                 pausar();
                 };
             acciones[2] = [&]() {
+                limpiarPantalla();    
+                dibujarCaja({ "CREDITOS" });
+                Creditos::mostrar();
+                };
+            acciones[3] = [&]() {
                 salir = true;
                 };
             break;
