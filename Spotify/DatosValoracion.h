@@ -1,6 +1,6 @@
 #pragma once
 #include "AdministradorDatosValoracion.h"
-#include <string>
+
 using namespace std;
 class DatosValoracion : public AdministradorDatosValoracion {
 public:

@@ -1,7 +1,6 @@
 ﻿#include "AdministradorDatosValoracion.h"
 #include "DatosValoracion.h"
 #include <iostream>
-#include <iomanip>
 #include <vector>
 
 bool DatosValoracion::agregarValoracion(const string& titulo, int valor) {

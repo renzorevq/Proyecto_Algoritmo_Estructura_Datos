@@ -17,14 +17,11 @@
 #include <chrono>
 #include <conio.h>
 #include <fstream>
-#include <functional>
-#include <iostream>
-#include <limits>
 #include <map>  
 #include <mutex>
 #include <sstream>
 #include <thread>
-#include <vector>
+
 vector<string> codigosGenerados;  // Almacena últimos 3 dígitos de los enlaces generados
 
 

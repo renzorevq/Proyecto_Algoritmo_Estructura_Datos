@@ -1,13 +1,5 @@
 ﻿#include <iostream>
 #include <conio.h>
-#include <vector>
-#include <functional>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <stdexcept>
-#include <limits>
-#include <string>
 #include <map>
 #include "Utilidades.h"
 #include "Login.h"

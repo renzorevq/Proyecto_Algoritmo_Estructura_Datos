@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+
 #include "GeneradorEnlaceFavorito.h"
 using namespace std;
 class EnlaceFavorito : public GeneradorEnlaceFavorito {
