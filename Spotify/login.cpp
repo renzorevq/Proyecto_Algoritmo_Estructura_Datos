@@ -14,16 +14,13 @@
 #include "Usuario.h"
 #include "Utilidades.h"
 #include <algorithm>
-#include <atomic>
 #include <chrono>
 #include <conio.h>
 #include <fstream>
 #include <functional>
 #include <iostream>
-#include <iostream>
 #include <limits>
-#include <map>
-#include <memory>    
+#include <map>  
 #include <mutex>
 #include <sstream>
 #include <thread>

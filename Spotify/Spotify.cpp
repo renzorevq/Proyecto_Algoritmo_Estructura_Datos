@@ -110,6 +110,6 @@ int main() {
     }
 
     guardarUsuarios(usuarios);
-    cout << "\n�Gracias por usar Mini Spotify!\n";
+    cout << "\nGracias por usar Mini Spotify!\n";
     return 0;
 }
