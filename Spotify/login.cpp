@@ -3,6 +3,7 @@
 #include "AdministradorDatosValoracion.h"
 #include "AdministradorPodcast.h"
 #include "Cancion.h"
+#include "Login.h"
 #include "CompartirCancion.h"
 #include "Creditos.h"
 #include "DatosValoracion.h"
@@ -13,14 +14,15 @@
 #include "Podcast.h"
 #include "Usuario.h"
 #include "Utilidades.h"
-#include <algorithm>
 #include <chrono>
 #include <conio.h>
-#include <fstream>
-#include <map>  
 #include <mutex>
-#include <sstream>
 #include <thread>
+
+#include <sstream>
+#include <fstream>
+#include <map>
+
 
 vector<string> codigosGenerados;  // Almacena últimos 3 dígitos de los enlaces generados
 
@@ -95,8 +97,16 @@ int leerEnteroEnRango(const string& mensaje, int minimo, int maximo) {
 
     return valor;
 }
-void ordenarTimsortCodigos(vector<string>& codigos) {
-    sort(codigos.begin(), codigos.end());  // std::sort implementa Timsort internamente
+void ordenarCodigosPorInsercion(vector<string>& codigos) {
+    for (int i = 1; i < codigos.size(); ++i) {
+        string clave = codigos[i];
+        int j = i - 1;
+        while (j >= 0 && codigos[j] > clave) {
+            codigos[j + 1] = codigos[j];
+            j--;
+        }
+        codigos[j + 1] = clave;
+    }
 }
 
 void mostrarCodigosOrdenados(const vector<string>& codigos) {
@@ -173,17 +183,27 @@ public:
     }
 };
 
-void registrarse(vector<Usuario>& usuarios) {
+void registrarse(Usuario usuarios[], int& numUsuarios) {
+    if (numUsuarios >= MAX_USUARIOS) {
+        cout << "-> Limite de usuarios alcanzado!\n";
+        pausar();
+        return;
+    }
+
     limpiarPantalla();
     dibujarCaja({ "REGISTRARSE" });
     string n, c, p;
-    cout << "Nombre: ";   getline(cin, n);
-    cout << "Correo: ";   getline(cin, c);
+    cout << "Nombre: ";     getline(cin, n);
+    cout << "Correo: ";     getline(cin, c);
     cout << "Contrasena: "; getline(cin, p);
-    usuarios.emplace_back(n, c, p);
+
+    usuarios[numUsuarios] = Usuario(n, c, p);
+    numUsuarios++;
+
     cout << "-> Usuario registrado!\n";
     pausar();
 }
+
 
 enum MenuOpcion { PLAYLIST, CANCIONES, VALORACIONES, ENLACES, PODCAST, AYUDA, SALIR };
 
@@ -602,7 +622,7 @@ map<int, function<void()>> obtenerAccionesSubmenu(
                         cout << "(No hay enlaces generados aún)\n";
                     }
                     else {
-                        ordenarTimsortCodigos(codigosGenerados);
+                        ordenarCodigosPorInsercion(codigosGenerados);
                         mostrarCodigosOrdenados(codigosGenerados);
                     }
 
@@ -620,7 +640,7 @@ map<int, function<void()>> obtenerAccionesSubmenu(
               
                 limpiarPantalla();
                 dibujarCaja({ "VALORAR FORMATO" });
-                cout << "�Qu� quieres valorar?\n"
+                cout << "Que quieres valorar?\n"
                     << " 1. Cancion\n"
                     << " 2. Podcast\n"
                     << "Selecciona (1-2): ";
@@ -834,24 +854,29 @@ void subMenu(
 
 
 
-void iniciarSesion(vector<Usuario>& usuarios) {
+void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     limpiarPantalla();
     dibujarCaja({ "INICIAR SESION" });
     string identifier, pass;
     cout << "Correo o nombre de usuario: "; getline(cin, identifier);
     cout << "Contrasena                : "; getline(cin, pass);
 
-    auto it = find_if(usuarios.begin(), usuarios.end(),
-        [&](auto& u) {
-        return (u.obtenerNombre() == identifier || u.obtenerCorreo() == identifier);
-        });
-    if (it == usuarios.end() || it->obtenerContrasena() != pass) {
+    int indice = -1;
+    for (int i = 0; i < numUsuarios; ++i) {
+        if ((usuarios[i].obtenerNombre() == identifier || usuarios[i].obtenerCorreo() == identifier) &&
+            usuarios[i].obtenerContrasena() == pass) {
+            indice = i;
+            break;
+        }
+    }
+
+    if (indice == -1) {
         cout << "-> Credenciales invalidas!\n";
         pausar();
         return;
     }
 
-    Usuario& usuarioLogueado = *it;
+    Usuario& usuarioLogueado = usuarios[indice];
 
     auto gestorCompartir = make_unique<CompartirCancion>();
     auto gestorValoracion = make_unique<DatosValoracion>();
@@ -1195,20 +1220,30 @@ void iniciarSesion(vector<Usuario>& usuarios) {
     }
 }
 
-void cargarUsuarios(vector<Usuario>& usuarios) {
-    ifstream f("usuarios.txt"); if (!f) return;
+void cargarUsuarios(Usuario usuarios[], int& numUsuarios) {
+    ifstream f("usuarios.txt");
+    if (!f) return;
     string linea;
-    while (getline(f, linea)) {
+    numUsuarios = 0;
+
+    while (getline(f, linea) && numUsuarios < MAX_USUARIOS) {
         stringstream ss(linea);
         string n, c, p;
         if (getline(ss, n, ',') && getline(ss, c, ',') && getline(ss, p, ',')) {
-            usuarios.emplace_back(n, c, p);
+            usuarios[numUsuarios] = Usuario(n, c, p);
+            numUsuarios++;
         }
     }
 }
 
-void guardarUsuarios(const vector<Usuario>& usuarios) {
-    ofstream f("usuarios.txt"); if (!f) return;
-    for (auto& u : usuarios)
-        f << u.obtenerNombre() << "," << u.obtenerCorreo() << "," << u.obtenerContrasena() << "\n";
+
+void guardarUsuarios(const Usuario usuarios[], int numUsuarios) {
+    ofstream f("usuarios.txt");
+    if (!f) return;
+
+    for (int i = 0; i < numUsuarios; ++i) {
+        f << usuarios[i].obtenerNombre() << ","
+            << usuarios[i].obtenerCorreo() << ","
+            << usuarios[i].obtenerContrasena() << "\n";
+    }
 }

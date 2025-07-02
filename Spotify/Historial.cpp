@@ -1,23 +1,26 @@
 #include "Historial.h"
-#include <iostream>
+
+Historial::Historial() : numEventos(0) {}
 
 void Historial::registrarEvento(const string& evento) {
-    eventos.push_back(evento);
+    if (numEventos < MAX_EVENTOS) {
+        eventos[numEventos++] = evento;
+    }
 }
 
 void Historial::mostrarHistorial() const {
-    if (eventos.empty()) {
+    if (numEventos == 0) {
         cout << "(No hay eventos registrados)\n";
+        return;
     }
-    else {
-        cout << "=== HISTORIAL DE ACTIVIDADES ===\n";
-        for (const auto& e : eventos) {
-            cout << "- " << e << "\n";
-        }
-        cout << "================================\n";
+
+    cout << "=== HISTORIAL DE ACTIVIDADES ===\n";
+    for (int i = 0; i < numEventos; ++i) {
+        cout << "- " << eventos[i] << "\n";
     }
+    cout << "================================\n";
 }
 
 bool Historial::estaVacio() const {
-    return eventos.empty();
+    return numEventos == 0;
 }

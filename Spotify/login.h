@@ -1,16 +1,12 @@
-
 #pragma once
-#ifndef LOGIN_H
-#define LOGIN_H
-
 
 #include "Usuario.h"
 
-using namespace std;
+// Límite máximo de usuarios
+const int MAX_USUARIOS = 100;
 
-void registrarse(vector<Usuario>& usuarios);
-void iniciarSesion(vector<Usuario>& usuarios);
-void cargarUsuarios(vector<Usuario>& usuarios);
-void guardarUsuarios(const vector<Usuario>& usuarios);
-
-#endif
+// Prototipos usando sólo arreglos, sin vector
+void registrarse(Usuario usuarios[], int& numUsuarios);
+void iniciarSesion(Usuario usuarios[], int numUsuarios);
+void cargarUsuarios(Usuario usuarios[], int& numUsuarios);
+void guardarUsuarios(const Usuario usuarios[], int numUsuarios);
