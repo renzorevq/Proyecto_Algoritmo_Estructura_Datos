@@ -92,10 +92,10 @@ int main() {
         else if (tecla == 13) {
             switch (seleccion + 1) {
             case 1:
-                registrarse(usuarios, numUsuarios);  
+                registrarse(usuarios, numUsuarios);
                 break;
             case 2:
-                iniciarSesion(usuarios, numUsuarios);  
+                iniciarSesion(usuarios, numUsuarios);
                 break;
             case 3:
                 ejecutando = false;
@@ -104,7 +104,7 @@ int main() {
         }
     }
 
-    guardarUsuarios(usuarios, numUsuarios);  
+    guardarUsuarios(usuarios, numUsuarios);
     cout << "\nGracias por usar Mini Spotify!\n";
     return 0;
 }

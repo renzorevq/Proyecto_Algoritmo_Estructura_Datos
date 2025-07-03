@@ -1,10 +1,8 @@
 #pragma once
-
 #include "Nodo.h"
 #include "ListaEnlazada.h"
 #include "Utilidades.h"
-using namespace std;
-
+// using namespace std; // Ya declarado
 class Cancion {
 private:
     string titulo;
@@ -17,10 +15,8 @@ public:
         const string& nombreArtista,
         const string& nombreAlbum,
         int duracionSegundos);
-
     string obtenerTitulo() const;
     string obtenerArtista() const;
     string obtenerAlbum()   const;
     int obtenerDuracion()   const;
 };
-

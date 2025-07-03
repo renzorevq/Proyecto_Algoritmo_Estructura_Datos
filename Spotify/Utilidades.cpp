@@ -1,7 +1,6 @@
 ﻿#include "Utilidades.h"
 #include "iostream"
 
-
 using namespace std;
 
 // Utilidades de consola
@@ -39,14 +38,14 @@ void dibujarCaja(const vector<string>& lineas, int ancho) {
     lineaHorizontal(ancho);
 }
 
-void dibujarCajaConSeleccion(const vector<string>& opciones, int seleccion, int ancho, const string titulo) {
+void dibujarCajaConSeleccion(const string opciones[], int seleccion, int ancho, int numOpciones, const string titulo) {
     lineaHorizontal(ancho);
     textoCentrado("", ancho);
     if (titulo != "") {
         textoCentrado(titulo, ancho);
         textoCentrado("", ancho);
     }
-    for (int i = 0; i < opciones.size(); ++i) {
+    for (int i = 0; i < numOpciones; ++i) {
         string texto = (i == seleccion ? "* " : "  ") + opciones[i] + (i == seleccion ? " *" : "  ");
         textoCentrado(texto, ancho, i == seleccion);
     }

@@ -1,15 +1,10 @@
 #pragma once
-
-
 #include "Cancion.h"
-using namespace std;
 static const int MAX_CANCIONES = 100;
-
-class AdministradorCancion {    
+class AdministradorCancion {
 private:
     Cancion canciones[MAX_CANCIONES];
     int cantidad = 0;
-
 public:
     AdministradorCancion() = default;
     bool agregarCancion(const Cancion& cancion);
@@ -18,4 +13,3 @@ public:
     int obtenerCantidad() const;
     Cancion* buscarCancion(const string& titulo);
 };
-

@@ -9,3 +9,4 @@ protected:
     int cantidadValoraciones[MAX_VAL]{};
     int conteo = 0;
 };
+

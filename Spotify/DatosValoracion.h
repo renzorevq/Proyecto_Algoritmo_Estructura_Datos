@@ -13,7 +13,7 @@ public:
     int conteo = 0;
     bool agregarValoracion(const string& titulo, int valor);
 
-    
+
     void listarPromedios() const;
 
     void listarPromediosOrdenado() const;
