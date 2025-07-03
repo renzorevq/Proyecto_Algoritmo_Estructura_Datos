@@ -2,16 +2,18 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
-
 #include "ListaReproduccion.h"
 
 using namespace std;
+
+const int MAX_LISTAS_REPRODUCCION = 100; // Definir un tamaño máximo para las listas de reproducción
 
 class Usuario {
     string nombre;
     string correo;
     string contrasena;
-    vector<ListaReproduccion> misListaReproducciones;
+    ListaReproduccion misListaReproducciones[MAX_LISTAS_REPRODUCCION]; // Usar un arreglo estático
+    int numListas; // Contador de listas de reproducción
 public:
     Usuario();
     Usuario(const string& nombreUsuario,
@@ -20,10 +22,10 @@ public:
     string obtenerNombre() const;
     string obtenerCorreo() const;
     string obtenerContrasena() const;
-    vector<ListaReproduccion>& obtenerListaReproduccion();
+    ListaReproduccion* obtenerListaReproduccion(); // Método para obtener el arreglo de listas
+    int obtenerCantidadListas() const; // Método para obtener la cantidad de listas
 
     void crearListaReproduccion(const ListaReproduccion& nuevaListaReproduccion);
-
     void eliminarListaReproduccion(const string& nombreListaReproduccion);
 };
 

@@ -25,6 +25,7 @@
 // #include <functional> // Eliminado
 // #include <atomic> // Eliminado
 using namespace std;
+
 // Reemplazo para std::vector<string> codigosGenerados;
 const int MAX_CODIGOS_GENERADOS = 100;
 string codigosGenerados[MAX_CODIGOS_GENERADOS];
@@ -217,7 +218,8 @@ void registrarse(Usuario usuarios[], int& numUsuarios) {
     }
 
     limpiarPantalla();
-    dibujarCaja({ "REGISTRARSE" });
+    string lineas[1] = { "REGISTRARSE" }; // Crear un arreglo de cadenas
+    dibujarCaja(lineas, 1); // Pasar el arreglo y el número de líneas
     string n, c, p;
     cout << "Nombre: ";     getline(cin, n);
     cout << "Correo: ";     getline(cin, c);
@@ -229,6 +231,9 @@ void registrarse(Usuario usuarios[], int& numUsuarios) {
     cout << "-> Usuario registrado!\n";
     pausar();
 }
+
+// Repite esto para cada llamada a dibujarCaja en tu código
+
 
 enum MenuOpcion { PLAYLIST, CANCIONES, VALORACIONES, ENLACES, PODCAST, AYUDA, SALIR };
 
@@ -322,7 +327,8 @@ void ejecutarAccionSubmenu(
         switch (seleccion) {
         case 0: { // Crear Playlist
             limpiarPantalla();
-            dibujarCaja({ "CREAR PLAYLIST" });
+            string lineas[2] = { "CREAR PLAYLIST" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             string nombreP, descP;
             cout << "Nombre Playlist: "; getline(cin, nombreP);
             cout << "Descripcion    : "; getline(cin, descP);
@@ -334,7 +340,8 @@ void ejecutarAccionSubmenu(
         }
         case 1: { // Eliminar Playlist
             limpiarPantalla();
-            dibujarCaja({ "ELIMINAR PLAYLIST" });
+            string lineas[3] = { "ELIMINAR PLAYLIST" }; // Crear un arreglo de cadenas
+    dibujarCaja(lineas, 1);
             string nombreP;
             cout << "Nombre Playlist: "; getline(cin, nombreP);
             usuarioLogueado.eliminarListaReproduccion(nombreP);
@@ -344,10 +351,11 @@ void ejecutarAccionSubmenu(
         }
         case 2: { // Listar Playlists
             limpiarPantalla();
-            dibujarCaja({ "TUS PLAYLISTS" });
+            string lineas[4] = { "TUS PLAYLIST" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             // Reemplazo para iterar sobre std::vector<ListaReproduccion>
-            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion().data(); // Asumiendo que vector tiene data()
-            int numListas = usuarioLogueado.obtenerListaReproduccion().size();
+            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
+            int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
                 cout << "* " << listas[i].obtenerNombre() << "\n";
             }
@@ -361,8 +369,8 @@ void ejecutarAccionSubmenu(
         switch (seleccion) {
         case 0: { // Agregar Cancion
             limpiarPantalla();
-            dibujarCaja({ "AGREGAR CANCION" });
-
+            string lineas[5] = { "AGREGAR CANCION" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             string nombreP, t, art, alb;
             int dur;
             cout << "Playlist      : "; getline(cin, nombreP);
@@ -373,8 +381,8 @@ void ejecutarAccionSubmenu(
 
             bool encontrada = false;
             // Reemplazo para iterar sobre std::vector<ListaReproduccion>
-            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion().data();
-            int numListas = usuarioLogueado.obtenerListaReproduccion().size();
+            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
+            int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
                 if (listas[i].obtenerNombre() == nombreP) {
                     listas[i].agregarCancion(Cancion(t, art, alb, dur));
@@ -392,13 +400,14 @@ void ejecutarAccionSubmenu(
         }
         case 1: { // Eliminar Cancion
             limpiarPantalla();
-            dibujarCaja({ "ELIMINAR CANCION" });
+            string lineas[6] = { "ELIMINAR CANCION" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             string nombreP, t;
             cout << "Playlist      : "; getline(cin, nombreP);
             cout << "Titulo Cancion: "; getline(cin, t);
             // Reemplazo para iterar sobre std::vector<ListaReproduccion>
-            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion().data();
-            int numListas = usuarioLogueado.obtenerListaReproduccion().size();
+            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
+            int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
                 if (listas[i].obtenerNombre() == nombreP)
                     listas[i].eliminarCancion(t);
@@ -409,22 +418,24 @@ void ejecutarAccionSubmenu(
         }
         case 2: { // Listar Canciones
             limpiarPantalla();
-            dibujarCaja({ "LISTAR CANCIONES" });
+            string lineas[7] = { "LISTAR CANCIONES" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             string nombreP;
             cout << "Playlist: "; getline(cin, nombreP);
             // Reemplazo para iterar sobre std::vector<ListaReproduccion>
-            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion().data();
-            int numListas = usuarioLogueado.obtenerListaReproduccion().size();
+            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
+            int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
                 if (listas[i].obtenerNombre() == nombreP)
                     listas[i].listarCanciones();
             }
-            pausar();
+            pausar(); 
             break;
         }
         case 3: { // Compartir Cancion
             limpiarPantalla();
-            dibujarCaja({ "COMPARTIR CANCION" });
+            string lineas[8] = { "COMPARTIR CANCION" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             string titulo;
             cout << "Titulo de la cancion: "; getline(cin, titulo);
             string link = gestorCompartir.compartir(titulo);
@@ -447,22 +458,24 @@ void ejecutarAccionSubmenu(
         }
         case 4: { // Canciones Compartidas
             limpiarPantalla();
-            dibujarCaja({ "CANCIONES COMPARTIDAS" });
+            string lineas[9] = { "CANCIONES COMPARTIDAS" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             gestorCompartir.listarCompartidos();
             pausar();
             break;
         }
         case 5: { // Ordenar Canciones con QuickSort
             limpiarPantalla();
-            dibujarCaja({ "ORDENAR CANCIONES CON QUICKSORT" });
+            string lineas[10] = { "ORDENADAR CANCIONES OCN QUICKSORT" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
 
             string nombreP;
             cout << "Nombre de la playlist: "; getline(cin, nombreP);
 
             bool playlistEncontrada = false;
             // Reemplazo para iterar sobre std::vector<ListaReproduccion>
-            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion().data();
-            int numListas = usuarioLogueado.obtenerListaReproduccion().size();
+            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
+            int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
                 if (listas[i].obtenerNombre() == nombreP) {
                     playlistEncontrada = true;
@@ -562,7 +575,8 @@ void ejecutarAccionSubmenu(
         }
         case 6: { // Reproducir Cancion
             limpiarPantalla();
-            dibujarCaja({ "REPRODUCTOR DE CANCIONES O PODCAST" });
+            string lineas[11] = { "REPRODUCTOR DE CANCION O PODCAST" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
 
             string titulo;
             cout << "Titulo de la cancion o podcast: ";
@@ -572,8 +586,8 @@ void ejecutarAccionSubmenu(
             DURACION_TOTAL = -1;
 
             // Buscar en canciones del usuario
-            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion().data();
-            int numListas = usuarioLogueado.obtenerListaReproduccion().size();
+            ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
+            int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
                 const ListaEnlazada<Cancion>& canciones = listas[i].obtenerCanciones();
                 // Reemplazo para porCada
@@ -693,7 +707,8 @@ void ejecutarAccionSubmenu(
         }
         case 7: { // Ordenar Enlaces Compartidos (Timsort)
             limpiarPantalla();
-            dibujarCaja({ "ORDENAMIENTO AVANZADO DE ENLACES (TIMSORT)" });
+            string lineas[12] = { "ORDENAMINETO AVANZADO DE ENLACES(TIMSORT)" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
 
             if (numCodigosGenerados == 0) {
                 cout << "(No hay enlaces generados aun)\n";
@@ -713,7 +728,8 @@ void ejecutarAccionSubmenu(
         switch (seleccion) {
         case 0: { // Valorar Formato
             limpiarPantalla();
-            dibujarCaja({ "VALORAR FORMATO" });
+            string lineas[13] = { "VALORAR FORMATO" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             cout << "Que quieres valorar?\n"
                 << " 1. Cancion\n"
                 << " 2. Podcast\n"
@@ -728,8 +744,8 @@ void ejecutarAccionSubmenu(
             bool existe = false;
             if (tipo == 1) {
                 // Buscamos en todas las playlists del usuario
-                ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion().data();
-                int numListas = usuarioLogueado.obtenerListaReproduccion().size();
+                ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
+                int numListas = usuarioLogueado.obtenerCantidadListas();
                 for (int i = 0; i < numListas; ++i) {
                     const ListaEnlazada<Cancion>& canciones = listas[i].obtenerCanciones();
                     // Reemplazo para porCada
@@ -786,14 +802,17 @@ void ejecutarAccionSubmenu(
         }
         case 1: { // Ver Valoraciones
             limpiarPantalla();
-            dibujarCaja({ "VALORACIONES PROMEDIO" });
+            string lineas[14] = { "VALORACIONES PROMEDIO" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             gestorValoracion.listarPromedios();
             pausar();
             break;
         }
         case 2: { // Ver Valoraciones Ordenado (Counting Sort)
             limpiarPantalla();
-            dibujarCaja({ "VALORACIONES PROMEDIO ORDENADO (COUNTING SORT)" });
+           
+                string lineas[15] = { "VALORACIONES PROMEDIO ORDENADO CON COUNTING SORT" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             gestorValoracion.listarPromediosOrdenado();
             pausar();
             break;
@@ -805,7 +824,8 @@ void ejecutarAccionSubmenu(
         switch (seleccion) {
         case 0: { // Agregar Enlace Favorito
             limpiarPantalla();
-            dibujarCaja({ "AGREGAR ENLACE FAVORITO" });
+            string lineas[16] = { "AGREGAR ENLACE FAVORITO" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             string titulo, url;
             cout << "Titulo de la cancion: "; getline(cin, titulo);
             cout << "URL externa(numero de 3 digitos):https://open.spotify.com/intl-es/track/"; getline(cin, url);
@@ -818,14 +838,16 @@ void ejecutarAccionSubmenu(
         }
         case 1: { // Ver Enlaces
             limpiarPantalla();
-            dibujarCaja({ "TUS ENLACES FAVORITOS" });
+            string lineas[17] = { "TUS ENLACES FAVORITOS" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             gestorEnlaces.listarFavoritos();
             pausar();
             break;
         }
         case 2: { // Eliminar Enlace
             limpiarPantalla();
-            dibujarCaja({ "ELIMINAR ENLACE FAVORITO" });
+            string lineas[18] = { "ELIMINAR ENLACE FAVORITO" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             gestorEnlaces.listarFavoritos();
             int idx = leerEnteroEnRango("Indice a eliminar: ", 1, 100); // Rango razonable para indices
             if (gestorEnlaces.eliminarEnlace(idx - 1))
@@ -842,7 +864,8 @@ void ejecutarAccionSubmenu(
         switch (seleccion) {
         case 0: { // Registrar Podcast
             limpiarPantalla();
-            dibujarCaja({ "REGISTRAR PODCAST" });
+            string lineas[19] = { "REGISTRAR PODCAST" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             string titulo, creador;
             cout << "Titulo del podcast : "; getline(cin, titulo);
             cout << "Creador del podcast: "; getline(cin, creador);
@@ -856,14 +879,16 @@ void ejecutarAccionSubmenu(
         }
         case 1: { // Ver Podcasts
             limpiarPantalla();
-            dibujarCaja({ "LISTA DE PODCASTS" });
+            string lineas[20] = { "LISTA DE PODCAST" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             gestorPodcasts.listarPodcasts();
             pausar();
             break;
         }
         case 2: { // Ordenar Podcasts (MergeSort)
             limpiarPantalla();
-            dibujarCaja({ "ORDENAR PODCAST CON MERGESORT" });
+            string lineas[21] = { "ORDENAR PODCAST CON MERGESORT" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             gestorPodcasts.ordenarPorTituloMerge();
             historial.registrarEvento("Se ordenaron los podcasts por Titulo usando MergeSort");
             pausar();
@@ -876,21 +901,24 @@ void ejecutarAccionSubmenu(
         switch (seleccion) {
         case 0: { // Guia del Usuario
             limpiarPantalla();
-            dibujarCaja({ "GUIA DEL USUARIO" });
+            string lineas[22] = { "GUIA DE USUARIO" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             estadisticas.mostrarGuia();
             pausar();
             break;
         }
         case 1: { // Historial General
             limpiarPantalla();
-            dibujarCaja({ "HISTORIAL GENERAL DE ACTIVIDADES" });
+            string lineas[23] = { "HISTORIAL GENERAL DE ACTIVIDADES" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             historial.mostrarHistorial();
             pausar();
             break;
         }
         case 2: { // Creditos
             limpiarPantalla();
-            dibujarCaja({ "CREDITOS" });
+            string lineas[24] = { "CREDITOS" }; // Crear un arreglo de cadenas
+            dibujarCaja(lineas, 1);
             Creditos::mostrar();
             break;
         }
@@ -949,7 +977,8 @@ void subMenu(
 
 void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     limpiarPantalla();
-    dibujarCaja({ "INICIAR SESION" });
+    string lineas[25] = { "HISTORIAL GENERAL DE ACTIVIDADES" }; // Crear un arreglo de cadenas
+    dibujarCaja(lineas, 1);
     string identifier, pass;
     cout << "Correo o nombre de usuario: "; getline(cin, identifier);
     cout << "Contrasena                : "; getline(cin, pass);

@@ -17,7 +17,12 @@ void ListaReproduccion::eliminarCancion(const string& tituloC) {
         });
 }
 void ListaReproduccion::listarCanciones() const {
-    dibujarCaja({ "PLAYLIST: " + nombre, descripcion });
+    string lineas[2]; // Crear un arreglo para las líneas
+    lineas[0] = "PLAYLIST: " + nombre;
+    lineas[1] = descripcion;
+
+    dibujarCaja(lineas, 2); // Pasar el arreglo y el número de líneas
+
     if (canciones.estaVacia()) {
         cout << "(sin canciones)\n";
     }
@@ -28,6 +33,7 @@ void ListaReproduccion::listarCanciones() const {
             });
     }
 }
+
 string ListaReproduccion::obtenerNombre() const {
     return nombre;
 }
