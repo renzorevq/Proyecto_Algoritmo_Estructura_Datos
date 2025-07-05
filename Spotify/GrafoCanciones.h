@@ -11,10 +11,13 @@ private:
     bool matrizAdy[MAX_GRAFO][MAX_GRAFO];
     int total;
     int buscarIndice(const string& nombre);
+    int posX[MAX_GRAFO];
+    int posY[MAX_GRAFO];
+
 public:
     GrafoCanciones();
     bool agregarCancion(const string& nombre);
     bool agregarConexion(const string& a, const string& b);
-    void mostrarGrafo();
+    void mostrarGrafoVisual();
     void interactuar(Usuario& usuario); 
 };

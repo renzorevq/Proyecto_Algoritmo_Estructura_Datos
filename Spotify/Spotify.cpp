@@ -6,6 +6,7 @@
 #include "Cancion.h"
 #include "ColaCircular.h"
 #include "ListaEnlazada.h"
+#include <windows.h>
 using namespace std;
 
 template <typename T>
@@ -53,6 +54,7 @@ T leerOpcionMenu(const int numOpciones) {
 }
 
 int main() {
+    SetConsoleOutputCP(CP_UTF8);
     // Arreglo de usuarios tradicional
     Usuario usuarios[MAX_USUARIOS];
     int numUsuarios = 0;
