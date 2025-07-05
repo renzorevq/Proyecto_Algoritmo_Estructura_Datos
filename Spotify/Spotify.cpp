@@ -27,8 +27,9 @@ public:
     bool estaVacia() const { return tope == 0; }
 };
 
-// Leer opción
-int leerOpcionMenu(const int numOpciones) {
+// Función para leer opción como template
+template <typename T>
+T leerOpcionMenu(const int numOpciones) {
     string entrada;
     while (true) {
         cout << "Seleccione opcion: ";
@@ -45,19 +46,20 @@ int leerOpcionMenu(const int numOpciones) {
             cout << "ERROR: Ingrese un valor valido\n";
             continue;
         }
-        int opcion = stoi(entrada);
+        T opcion = static_cast<T>(stoi(entrada));
         if (opcion >= 1 && opcion <= numOpciones) return opcion;
         cout << "ERROR: Opcion fuera de rango\n";
     }
 }
 
 int main() {
-    //  Arreglo de usuarios tradicional
+    // Arreglo de usuarios tradicional
     Usuario usuarios[MAX_USUARIOS];
     int numUsuarios = 0;
 
-    cargarUsuarios(usuarios, numUsuarios);  //  ahora tiene dos argumentos
+    cargarUsuarios(usuarios, numUsuarios);
 
+    // Usando template para la cola de reproducción
     ColaCircular<Cancion, 100> colaReproduccion;
 
     const char* opcionesMenu[] = {
