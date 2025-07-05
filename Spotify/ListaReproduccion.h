@@ -16,5 +16,5 @@ public:
     void eliminarCancion(const string& tituloCancion);
     void listarCanciones() const;
     string obtenerNombre() const;
-    const ListaEnlazada<Cancion>& obtenerCanciones() const;
+    ListaEnlazada<Cancion>& obtenerCanciones();
 };

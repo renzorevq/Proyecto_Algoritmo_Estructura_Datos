@@ -87,6 +87,9 @@
     <ClCompile Include="ListaReproduccion.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="GrafoCanciones.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilidades.h">
@@ -159,6 +162,9 @@
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
     <ClInclude Include="Creditos.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="GrafoCanciones.h">
       <Filter>Archivos de encabezado\Clases</Filter>
     </ClInclude>
   </ItemGroup>

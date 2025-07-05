@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std; // Ya declarado
+
 template <typename T, size_t N>
 class ColaCircular {
 private:

@@ -1,6 +1,6 @@
 #pragma once
 #include "Nodo.h"
-// Lista enlazada genérica sin dependencia de <functional>
+
 template <typename T>
 class ListaEnlazada {
     Nodo<T>* cabeza;

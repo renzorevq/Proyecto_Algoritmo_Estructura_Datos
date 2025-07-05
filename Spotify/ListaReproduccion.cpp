@@ -37,6 +37,7 @@ void ListaReproduccion::listarCanciones() const {
 string ListaReproduccion::obtenerNombre() const {
     return nombre;
 }
-const ListaEnlazada<Cancion>& ListaReproduccion::obtenerCanciones() const {
+
+ListaEnlazada<Cancion>& ListaReproduccion::obtenerCanciones() {
     return canciones;
 }

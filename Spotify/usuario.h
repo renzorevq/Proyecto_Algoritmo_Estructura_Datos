@@ -22,8 +22,8 @@ public:
     string obtenerNombre() const;
     string obtenerCorreo() const;
     string obtenerContrasena() const;
-    ListaReproduccion* obtenerListaReproduccion(); // Método para obtener el arreglo de listas
-    int obtenerCantidadListas() const; // Método para obtener la cantidad de listas
+    ListaReproduccion* obtenerListaReproduccion(); // Declaración
+    int obtenerCantidadListas() const; // Declaración
 
     void crearListaReproduccion(const ListaReproduccion& nuevaListaReproduccion);
     void eliminarListaReproduccion(const string& nombreListaReproduccion);

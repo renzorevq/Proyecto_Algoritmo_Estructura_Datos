@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Cancion.cpp" />
     <ClCompile Include="CompartirCancionOrdenado.cpp" />
+    <ClCompile Include="GrafoCanciones.cpp" />
     <ClCompile Include="ListaReproduccion.cpp" />
     <ClCompile Include="PodcastOrdenado.cpp" />
     <ClCompile Include="AdministradorCancion.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Cancion.h" />
     <ClInclude Include="CompartirCancionOrdenado.h" />
     <ClInclude Include="Creditos.h" />
+    <ClInclude Include="GrafoCanciones.h" />
     <ClInclude Include="GuiaUsuario.h" />
     <ClInclude Include="ListaReproduccion.h" />
     <ClInclude Include="PodcastOrdenado.h" />

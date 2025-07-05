@@ -10,7 +10,7 @@ using namespace std;
 
 template <typename T>
 class Pila {
-    T elementos[100];  // máximo 100 elementos
+    T elementos[100]; 
     int tope = 0;
 public:
     void push(const T& valor) {
@@ -59,7 +59,7 @@ int main() {
 
     cargarUsuarios(usuarios, numUsuarios);
 
-    // Usando template para la cola de reproducción
+   
     ColaCircular<Cancion, 100> colaReproduccion;
 
     const char* opcionesMenu[] = {
@@ -74,7 +74,7 @@ int main() {
     while (ejecutando) {
         limpiarPantalla();
 
-        // Caja simple
+        
         cout << "+----------------------------------+\n";
         cout << "|          MINI SPOTIFY            |\n";
         cout << "+----------------------------------+\n";

@@ -19,17 +19,16 @@
 #include <thread>
 #include <sstream>
 #include <fstream>
+#include "GrafoCanciones.h"
 
-// #include <map> // Eliminado
-// #include <vector> // Eliminado
-// #include <functional> // Eliminado
-// #include <atomic> // Eliminado
 using namespace std;
+GrafoCanciones gestorGrafoCanciones;
 
 // Definición de constantes
 const int MAX_OPCIONES_SUBMENU = 10;
 
 // Implementación de Árbol Binario
+
 template <typename T>
 class NodoArbol {
 public:
@@ -61,7 +60,7 @@ private:
 
         return nodo;
     }
-
+    
     // Recorrido inorden recursivo
     void inordenRecursivo(NodoArbol<T>* nodo, void (*funcion)(const T&), int nivel = 0) const {
         if (nodo != nullptr) {
@@ -71,7 +70,7 @@ private:
             for (int i = 0; i < nivel; i++) {
                 cout << "  ";
             }
-            cout << "├─ ";
+            cout << "/─ ";
             funcion(nodo->valor);
 
             inordenRecursivo(nodo->derecho, funcion, nivel + 1);
@@ -151,7 +150,7 @@ public:
     }
 };
 
-// Reemplazo para std::vector<string> codigosGenerados;
+
 ArregloFijo<string, 100> codigosGenerados;
 
 // 2. Convertir estructura de progreso en un template
@@ -195,7 +194,6 @@ public:
     }
 };
 
-// Reemplazo para std::map<string, int> progresoCanciones;
 MapaFijo<string, int, 100> progresoCanciones;
 
 // 3. Convertir el estado booleano atomic en un template
@@ -220,7 +218,7 @@ public:
     }
 };
 
-// Reemplazo para std::atomic<bool>
+
 EstadoVolatil<bool> g_enReproduccion(false);
 EstadoVolatil<bool> g_detenerHilo(false);
 
@@ -321,75 +319,8 @@ public:
     }
 };
 
-// Funciones para validación de entrada
-int leerEntero(const string& mensaje) {
-    int valor;
-    string entrada;
 
-    while (true) {
-        cout << mensaje;
-        getline(cin, entrada);
 
-        // Verificar si la entrada esta vacia
-        if (entrada.empty()) {
-            cout << "ERROR: Ingrese correctamente el valor\n";
-            continue;
-        }
-
-        // Verificar si todos los caracteres son digitos (permitir numeros negativos)
-        bool esValido = true;
-        size_t inicio = 0;
-
-        // Permitir signo negativo al inicio
-        if (entrada[0] == '-' || entrada[0] == '+') {
-            inicio = 1;
-            if (entrada.length() == 1) {
-                esValido = false;
-            }
-        }
-
-        // Verificar que el resto sean digitos
-        for (size_t i = inicio; i < entrada.length(); i++) {
-            if (!isdigit(entrada[i])) {
-                esValido = false;
-                break;
-            }
-        }
-
-        if (esValido) {
-            try {
-                valor = stoi(entrada);
-                break;
-            }
-            catch (const exception&) {
-                cout << "ERROR: Ingrese correctamente el valor\n";
-            }
-        }
-        else {
-            cout << "ERROR: Ingrese correctamente el valor\n";
-        }
-    }
-
-    return valor;
-}
-
-// Funcion para leer enteros con validacion de rango
-int leerEnteroEnRango(const string& mensaje, int minimo, int maximo) {
-    int valor;
-
-    while (true) {
-        valor = leerEntero(mensaje);
-
-        if (valor >= minimo && valor <= maximo) {
-            break;
-        }
-        else {
-            cout << "ERROR: El valor debe estar entre " << minimo << " y " << maximo << "\n";
-        }
-    }
-
-    return valor;
-}
 
 void registrarse(Usuario usuarios[], int& numUsuarios) {
     if (numUsuarios >= MAX_USUARIOS) {
@@ -413,11 +344,11 @@ void registrarse(Usuario usuarios[], int& numUsuarios) {
     pausar();
 }
 
-enum MenuOpcion { PLAYLIST, CANCIONES, VALORACIONES, ENLACES, PODCAST, AYUDA, SALIR };
+enum MenuOpcion { PLAYLIST, CANCIONES, VALORACIONES, ENLACES, PODCAST, GRAFO_MUSICAL, AYUDA, SALIR };
 
 // Función para obtener opciones de submenú
-template <typename T, int MAX_SIZE>
-void obtenerOpcionesSubmenu(MenuOpcion opcion, T opciones[], int& numOpciones) {
+
+void obtenerOpcionesSubmenu(MenuOpcion opcion, string opciones[], int& numOpciones) {
     numOpciones = 0;
     switch (opcion) {
     case PLAYLIST:
@@ -455,15 +386,20 @@ void obtenerOpcionesSubmenu(MenuOpcion opcion, T opciones[], int& numOpciones) {
         opciones[numOpciones++] = "Ordenar Podcasts(MergeSort)";
         opciones[numOpciones++] = "Volver";
         break;
+    case GRAFO_MUSICAL:
+        opciones[numOpciones++] = "Modo Sin Conexion (Grafo)";
+        opciones[numOpciones++] = "Volver";
+        break;
     case AYUDA:
         opciones[numOpciones++] = "Guia del Usuario";
         opciones[numOpciones++] = "Historial General";
-        opciones[numOpciones++] = "Ver Estadísticas en Árbol";  // Nueva opción
         opciones[numOpciones++] = "Creditos";
         opciones[numOpciones++] = "Volver";
         break;
+
     }
 }
+
 
 // Clase para gestionar estadísticas en árbol binario
 class EstadisticasArbol {
@@ -544,9 +480,9 @@ public:
 // Instancia global
 EstadisticasArbol gestorEstadisticasArbol;
 
-// Reemplazo para std::map<int, std::function<void()>>
-void ejecutarAccionSubmenu(
-    MenuOpcion opcion,
+
+void SubMenu(
+   MenuOpcion opcion,
     int seleccion,
     Usuario& usuarioLogueado,
     Historial& historial,
@@ -555,7 +491,7 @@ void ejecutarAccionSubmenu(
     EnlaceFavorito& gestorEnlaces,
     GuiaUsuario& estadisticas,
     CompartirCancion& gestorCompartir,
-    std::mutex& mtxTiempo
+    mutex& mtxTiempo
 ) {
     // Variables locales para el reproductor
     int* p_segundos = nullptr; // Puntero al progreso de la cancion actual
@@ -609,7 +545,7 @@ void ejecutarAccionSubmenu(
             limpiarPantalla();
             string lineas[4] = { "TUS PLAYLIST" };
             dibujarCaja(lineas, 1);
-            // Reemplazo para iterar sobre std::vector<ListaReproduccion>
+           
             ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
             int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
@@ -633,10 +569,10 @@ void ejecutarAccionSubmenu(
             cout << "Titulo Cancion: "; getline(cin, t);
             cout << "Artista       : "; getline(cin, art);
             cout << "Album         : "; getline(cin, alb);
-            dur = leerEnteroEnRango("Duracion (s)  : ", 1, 7200); // Entre 1 segundo y 2 horas
+            dur = leerEnteroEnRango("Duracion (s)  : ", 1, 7200);
 
             bool encontrada = false;
-            // Reemplazo para iterar sobre std::vector<ListaReproduccion>
+           
             ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
             int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
@@ -661,7 +597,7 @@ void ejecutarAccionSubmenu(
             string nombreP, t;
             cout << "Playlist      : "; getline(cin, nombreP);
             cout << "Titulo Cancion: "; getline(cin, t);
-            // Reemplazo para iterar sobre std::vector<ListaReproduccion>
+         
             ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
             int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
@@ -678,7 +614,7 @@ void ejecutarAccionSubmenu(
             dibujarCaja(lineas, 1);
             string nombreP;
             cout << "Playlist: "; getline(cin, nombreP);
-            // Reemplazo para iterar sobre std::vector<ListaReproduccion>
+           
             ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
             int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
@@ -727,7 +663,7 @@ void ejecutarAccionSubmenu(
             cout << "Nombre de la playlist: "; getline(cin, nombreP);
 
             bool playlistEncontrada = false;
-            // Reemplazo para iterar sobre std::vector<ListaReproduccion>
+           
             ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
             int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
@@ -735,7 +671,7 @@ void ejecutarAccionSubmenu(
                     playlistEncontrada = true;
 
                     // Obtener canciones para ordenar
-                    Cancion cancionesTemp[MAX_CANCIONES]; // Asumiendo MAX_CANCIONES es suficiente
+                    Cancion cancionesTemp[MAX_CANCIONES];
                     int numCancionesTemp = 0;
 
                     const ListaEnlazada<Cancion>& cancionesOriginales = listas[i].obtenerCanciones();
@@ -835,8 +771,8 @@ void ejecutarAccionSubmenu(
             int numListas = usuarioLogueado.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
                 const ListaEnlazada<Cancion>& canciones = listas[i].obtenerCanciones();
-                // Reemplazo para porCada
-                Cancion tempArray[MAX_CANCIONES]; // Temporal para copiar
+               
+                Cancion tempArray[MAX_CANCIONES]; 
                 int tempCount = 0;
                 canciones.porCada([&](const Cancion& c) {
                     if (tempCount < MAX_CANCIONES) {
@@ -1145,6 +1081,15 @@ void ejecutarAccionSubmenu(
         }
         break;
     }
+    case GRAFO_MUSICAL: {
+        switch (seleccion) {
+        case 0:
+            limpiarPantalla();
+            gestorGrafoCanciones.interactuar(usuarioLogueado); 
+            break;
+        }
+        break;
+    }
     case AYUDA: {
         switch (seleccion) {
         case 0: { // Guia del Usuario
@@ -1163,7 +1108,7 @@ void ejecutarAccionSubmenu(
             pausar();
             break;
         }
-        case 2: { // Ver Estadísticas en Árbol (NUEVA OPCIÓN)
+        case 2: { // Ver Estadísticas en Árbol
             limpiarPantalla();
             gestorEstadisticasArbol.interactuarConArbol();
             break;
@@ -1191,25 +1136,18 @@ void subMenu(
     EnlaceFavorito& gestorEnlaces,
     GuiaUsuario& estadisticas,
     CompartirCancion& gestorCompartir,
-    std::mutex& mtxTiempo
+    mutex& mtxTiempo
 )
 {
-    T opciones[MAX_SIZE];
+    string opciones[MAX_OPCIONES_SUBMENU];
     int numOpciones = 0;
-    obtenerOpcionesSubmenu<T, MAX_SIZE>(opcion, opciones, numOpciones);
+    obtenerOpcionesSubmenu(opcion, opciones, numOpciones);
 
     int seleccion = 0;
     bool salir = false;
-
     while (!salir) {
         limpiarPantalla();
-        // Reemplazo para std::vector<string>
-        T opcionesDibujo[MAX_SIZE];
-        for (int i = 0; i < numOpciones; ++i) {
-            opcionesDibujo[i] = opciones[i];
-        }
-        dibujarCajaConSeleccion(opcionesDibujo, seleccion, 50, numOpciones, "MENU PRINCIPAL");
-
+        dibujarCajaConSeleccion(opciones, seleccion, 60, numOpciones, "MENU PRINCIPAL");
         int tecla = _getch();
         if (tecla == 224) {
             tecla = _getch();
@@ -1217,11 +1155,11 @@ void subMenu(
             if (tecla == 80) seleccion = (seleccion + 1) % numOpciones;
         }
         else if (tecla == 13) {
-            if (seleccion == numOpciones - 1) { // La ultima opcion es "Volver"
+            if (seleccion == numOpciones - 1) {
                 salir = true;
             }
             else {
-                ejecutarAccionSubmenu(opcion, seleccion, usuarioLogueado, historial,
+                SubMenu(static_cast<MenuOpcion>(opcion), seleccion, usuarioLogueado, historial,
                     gestorPodcasts, gestorValoracion, gestorEnlaces,
                     estadisticas, gestorCompartir, mtxTiempo);
             }
@@ -1231,7 +1169,7 @@ void subMenu(
 
 void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     limpiarPantalla();
-    string lineas[25] = { "INICIAR SESION" }; // Corregido el título
+    string lineas[25] = { "INICIAR SESION" };
     dibujarCaja(lineas, 1);
     string identifier, pass;
     cout << "Correo o nombre de usuario: "; getline(cin, identifier);
@@ -1277,6 +1215,7 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Valoraciones";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Enlaces";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Podcast";
+    opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Grafo Musical";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Ayuda";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Cerrar Sesion";
 
@@ -1321,7 +1260,7 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
             break;
         }
         case 5: { // Ayuda
-            subMenu<string, MAX_OPCIONES_SUBMENU>(AYUDA, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
+            subMenu<string, MAX_OPCIONES_SUBMENU>(GRAFO_MUSICAL, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
             break;
         }
         case 6: { // Cerrar Sesion

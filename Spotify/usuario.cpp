@@ -18,7 +18,7 @@ ListaReproduccion* Usuario::obtenerListaReproduccion() {
     return misListaReproducciones; // Retornar el arreglo de listas
 }
 
-int Usuario::obtenerCantidadListas() const {
+int Usuario::obtenerCantidadListas() const{
     return numListas; // Retornar el número de listas
 }
 
