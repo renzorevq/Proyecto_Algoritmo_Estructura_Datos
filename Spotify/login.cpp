@@ -344,7 +344,7 @@ void registrarse(Usuario usuarios[], int& numUsuarios) {
     pausar();
 }
 
-enum MenuOpcion { PLAYLIST, CANCIONES, VALORACIONES, ENLACES, PODCAST, GRAFO_MUSICAL, AYUDA, SALIR };
+enum MenuOpcion { PLAYLIST, CANCIONES, VALORACIONES, ENLACES, PODCAST, AYUDA, GRAFO_MUSICAL, SALIR };
 
 // Función para obtener opciones de submenú
 
@@ -1201,7 +1201,7 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     Historial historial;
 
     // Mutex para el reproductor
-    std::mutex mtxTiempo;
+    mutex mtxTiempo;
 
     bool sesionActiva = true;
     int seleccion = 0;
@@ -1215,8 +1215,8 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Valoraciones";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Enlaces";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Podcast";
-    opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Grafo Musical";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Ayuda";
+    opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Grafo Musical";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Cerrar Sesion";
 
 
@@ -1259,11 +1259,17 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
             subMenu<string, MAX_OPCIONES_SUBMENU>(PODCAST, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
             break;
         }
-        case 5: { // Ayuda
+
+       
+        case 5: { // AYUDA
+            subMenu<string, MAX_OPCIONES_SUBMENU>(AYUDA, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
+            break;
+        }
+        case 6: { // GRAFO
             subMenu<string, MAX_OPCIONES_SUBMENU>(GRAFO_MUSICAL, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
             break;
         }
-        case 6: { // Cerrar Sesion
+        case 7: { // Cerrar Sesion
             sesionActiva = false;
             break;
         }
