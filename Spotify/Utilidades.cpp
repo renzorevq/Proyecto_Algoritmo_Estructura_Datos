@@ -4,11 +4,7 @@
 using namespace std;
 
 void limpiarPantalla() {
-#ifdef _WIN32
     system("cls");
-#else
-    system("clear");
-#endif
 }
 void pausar() {
     cout << "\n[ENTER] para continuar...";

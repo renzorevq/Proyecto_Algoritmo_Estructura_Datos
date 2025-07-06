@@ -56,7 +56,7 @@ T leerOpcionMenu(const int numOpciones) {
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     // Arreglo de usuarios tradicional
-    Usuario usuarios[MAX_USUARIOS];
+    Usuario* usuarios = new Usuario[MAX_USUARIOS];
     int numUsuarios = 0;
 
     cargarUsuarios(usuarios, numUsuarios);
@@ -109,6 +109,7 @@ int main() {
     }
 
     guardarUsuarios(usuarios, numUsuarios);
+    delete[] usuarios;
     cout << "\nGracias por usar Mini Spotify!\n";
     return 0;
 }
