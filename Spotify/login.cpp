@@ -791,7 +791,7 @@ void SubMenu(
             // Buscar en podcasts
             if (DURACION_TOTAL == -1) {
                 const Podcast* lista = gestorPodcasts.obtenerTodos();
-                int cantidad = gestorPodcasts.obtenerCantidad();
+                int cantidad = gestorPodcasts.obtenerCantidad(usuarioLogueado);
                 for (int i = 0; i < cantidad; ++i) {
                     if (lista[i].obtenerTitulo() == titulo) {
                         DURACION_TOTAL = lista[i].obtenerDuracion();
@@ -953,7 +953,7 @@ void SubMenu(
             else {
                 // Buscamos en el AdministradorPodcast
                 const Podcast* arr = gestorPodcasts.obtenerTodos();
-                int tot = gestorPodcasts.obtenerCantidad();
+                int tot = gestorPodcasts.obtenerCantidad(usuarioLogueado);
                 for (int i = 0; i < tot; ++i) {
                     if (arr[i].obtenerTitulo() == titulo) {
                         existe = true;
@@ -1054,7 +1054,7 @@ void SubMenu(
             cout << "Titulo del podcast : "; getline(cin, titulo);
             cout << "Creador del podcast: "; getline(cin, creador);
             int duracion = leerEnteroEnRango("Duracion (segundos): ", 1, 14400); // Entre 1 segundo y 4 horas
-            if (gestorPodcasts.registrarPodcast(titulo, creador, duracion))
+            if (gestorPodcasts.registrarPodcast(titulo, creador, duracion, usuarioLogueado))
                 cout << "-> Podcast registrado!\n";
             else
                 cout << "-> Limite de podcasts alcanzado!\n";
@@ -1065,7 +1065,7 @@ void SubMenu(
             limpiarPantalla();
             string lineas[20] = { "LISTA DE PODCAST" };
             dibujarCaja(lineas, 1);
-            gestorPodcasts.listarPodcasts();
+            gestorPodcasts.listarPodcasts(usuarioLogueado);
             pausar();
             break;
         }
@@ -1388,6 +1388,49 @@ void guardarCanciones(const Usuario usuarios[], int numUsuarios) {
                     << c.obtenerAlbum() << ","
                     << c.obtenerDuracion() << "\n";
                 });
+
+            archivo.close();
+        }
+    }
+}
+
+void cargarPodcasts(Usuario usuarios[], int& numUsuarios) {
+    for (int i = 0; i < numUsuarios; ++i) {
+        string nombreArchivo = "dataset/podcasts/podcasts_" + usuarios[i].obtenerNombre() + ".txt";
+        ifstream archivo(nombreArchivo);
+        if (!archivo.is_open()) continue;
+
+        string linea;
+        while (getline(archivo, linea)) {
+            stringstream ss(linea);
+            string titulo, creador, duracionStr;
+
+            if (getline(ss, titulo, ',') && getline(ss, creador, ',') && getline(ss, duracionStr)) {
+                int duracion = stoi(duracionStr);
+                Podcast p(titulo, creador, duracion);
+                usuarios[i].agregarPodcast(p);
+            }
+        }
+
+        archivo.close();
+    }
+}
+
+void guardarPodcasts(const Usuario usuarios[], int numUsuarios) {
+    for (int i = 0; i < numUsuarios; ++i) {
+        const Usuario& usuario = usuarios[i];
+
+        if (usuario.obtenerCantidadPodcasts() > 0) {
+            string archivoNombre = "dataset/podcasts/podcasts_" + usuario.obtenerNombre() + ".txt";
+            ofstream archivo(archivoNombre);
+            if (!archivo.is_open()) continue;
+
+            for (int j = 0; j < usuario.obtenerCantidadPodcasts(); ++j) {
+                const Podcast p = usuario.obtenerPodcast(j);
+                archivo << p.obtenerTitulo() << ","
+                    << p.obtenerCreador() << ","
+                    << p.obtenerDuracion() << "\n";
+            }
 
             archivo.close();
         }

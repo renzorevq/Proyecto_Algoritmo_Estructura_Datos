@@ -1,0 +1,21 @@
+El futuro es hoy,Carlos Ramirez,1800
+Historias en 10 minutos,Ana Torres,600
+Cafe con ciencia,Luis Ortega,2400
+Marketing al desnudo,Claudia Suarez,1500
+CodeTalks,Mario Perez,3600
+Viajes y sabores,Lucia Mendoza,2700
+Crimenes del pasado,Daniela Ruiz,3200
+Sonidos del universo,Roberto Mejia,2100
+Disenando Ideas,Camila Vargas,1950
+Mentores de la vida,Julio Salinas,1800
+Caminos de sabiduria,Sofia Rivas,2500
+Tecnologia sin filtro,Alvaro Gomez,1800
+Psicologia cotidiana,Laura Cabrera,2000
+Detras del microfono,Esteban Flores,1700
+Arte y expresion,Valeria Medina,2100
+Negocios con proposito,Diego Castro,2700
+Cultura pop actual,Isabel Vega,1900
+Innovar o morir,Martin Rojas,1600
+Voces que inspiran,Adriana Luna,2300
+Pensamiento critico,Rafael Campos,3000
+

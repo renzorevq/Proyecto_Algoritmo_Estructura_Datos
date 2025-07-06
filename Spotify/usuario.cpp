@@ -1,6 +1,6 @@
 #include "Usuario.h"
 
-Usuario::Usuario() : numListas(0) {} // Inicializar el contador de listas
+Usuario::Usuario() : numListas(0), numPodcasts(0) {} // Inicializar el contador de listas
 
 Usuario::Usuario(const string& nombreUsuario,
     const string& correoElectronico,
@@ -40,4 +40,18 @@ void Usuario::eliminarListaReproduccion(const string& nombreListaReproduccion) {
             break;  // Eliminamos solo la primera coincidencia
         }
     }
+}
+
+void Usuario::agregarPodcast(Podcast& p) {
+    if (numPodcasts < MAX_PODCASTS) {
+        podcasts[numPodcasts++] = p;
+    }
+}
+
+Podcast Usuario::obtenerPodcast(int indice) const {
+    return podcasts[indice];
+}
+
+int Usuario::obtenerCantidadPodcasts() const {
+    return numPodcasts;
 }

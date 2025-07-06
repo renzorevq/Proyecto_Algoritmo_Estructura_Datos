@@ -3,6 +3,7 @@
 
 #include "Podcast.h"
 #include "PodcastOrdenado.h"
+#include "usuario.h"
 using namespace std;
 class AdministradorPodcast {
 private:
@@ -14,9 +15,9 @@ private:
 public:
     AdministradorPodcast();
 
-    bool registrarPodcast(const string& titulo, const string& creador, int duracion);
-    void listarPodcasts() const;
-    int obtenerCantidad() const;
+    bool registrarPodcast(const string& titulo, const string& creador, int duracion, Usuario& usuario);
+    void listarPodcasts(Usuario& usuario) const;
+    int obtenerCantidad(Usuario& usuario) const;
 
     void ordenarPorTitulo();    // Inserción
     void ordenarPorCreador();   // Burbuja    
