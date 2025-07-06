@@ -28,9 +28,9 @@ public:
     string obtenerNombre() const;
     string obtenerCorreo() const;
     string obtenerContrasena() const;
-    ListaReproduccion* obtenerListaReproduccion(); // Declaración
+    ListaReproduccion* obtenerListaReproduccion(); 
     const ListaReproduccion& obtenerListaReproduccion(int indice) const;
-    int obtenerCantidadListas() const; // Declaración
+    int obtenerCantidadListas() const;
 
     void crearListaReproduccion(const ListaReproduccion& nuevaListaReproduccion);
     void eliminarListaReproduccion(const string& nombreListaReproduccion);

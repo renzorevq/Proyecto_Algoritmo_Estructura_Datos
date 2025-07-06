@@ -3,7 +3,7 @@
 
 #include "Podcast.h"
 #include "PodcastOrdenado.h"
-#include "usuario.h"
+#include "Usuario.h"
 using namespace std;
 class AdministradorPodcast {
 private:

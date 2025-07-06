@@ -1267,7 +1267,6 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     int seleccion = 0;
     bool seleccionHecha = false;
 
-    // Reemplazo para std::vector<string> opciones
     string opcionesMenuPrincipal[MAX_OPCIONES_SUBMENU];
     int numOpcionesMenuPrincipal = 0;
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Playlist";

@@ -8,12 +8,12 @@ const int HASH_SIZE = 10;
 class TablaHashUsuarios {
 private:
     Nodo<Usuario>* tabla[HASH_SIZE];
-    int hash(const std::string& correo);
+    int hash(const string& correo);
 
 public:
     TablaHashUsuarios();
     void insertar(const Usuario& u);
-    Usuario* buscar(const std::string& correo);
-    bool eliminar(const std::string& correo);
+    Usuario* buscar(const string& correo);
+    bool eliminar(const string& correo);
     void mostrar();
 };
