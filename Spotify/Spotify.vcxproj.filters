@@ -90,6 +90,9 @@
     <ClCompile Include="GrafoCanciones.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="TablaHashUsuarios.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilidades.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="GrafoCanciones.h">
       <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="TablaHashUsuarios.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

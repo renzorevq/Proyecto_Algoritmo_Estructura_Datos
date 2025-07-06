@@ -142,6 +142,7 @@
     <ClCompile Include="AdministradorPodcast.cpp" />
     <ClCompile Include="Spotify.cpp" />
     <ClCompile Include="DatosValoracionesOrdenado.cpp" />
+    <ClCompile Include="TablaHashUsuarios.cpp" />
     <ClCompile Include="Usuario.cpp" />
     <ClCompile Include="Utilidades.cpp" />
   </ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="Podcast.h" />
     <ClInclude Include="DatosValoracion.h" />
     <ClInclude Include="DatosValoracionOrdenado.h" />
+    <ClInclude Include="TablaHashUsuarios.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="Utilidades.h" />
   </ItemGroup>

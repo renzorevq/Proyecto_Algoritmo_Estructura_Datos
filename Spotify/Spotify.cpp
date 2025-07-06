@@ -56,6 +56,7 @@ T leerOpcionMenu(const int numOpciones) {
 }
 
 int main() {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); // Verde claro
     SetConsoleOutputCP(CP_UTF8);
     // Arreglo de usuarios tradicional
     Usuario* usuarios = new Usuario[MAX_USUARIOS];

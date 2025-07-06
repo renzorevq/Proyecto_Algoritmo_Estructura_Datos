@@ -20,9 +20,11 @@
 #include <sstream>
 #include <fstream>
 #include "GrafoCanciones.h"
+#include "TablaHashUsuarios.h"
 
 using namespace std;
 GrafoCanciones gestorGrafoCanciones;
+TablaHashUsuarios tablaUsuarios;
 
 // Definición de constantes
 const int MAX_OPCIONES_SUBMENU = 10;
@@ -337,8 +339,19 @@ void registrarse(Usuario usuarios[], int& numUsuarios) {
     cout << "Correo: ";     getline(cin, c);
     cout << "Contrasena: "; getline(cin, p);
 
+    // Verificar si el correo ya existe en la tabla hash
+    if (tablaUsuarios.buscar(c) != nullptr) {
+        cout << "-> Ya existe un usuario con ese correo!\n";
+        pausar();
+        return;
+    }
+
+    // Crear e insertar
     usuarios[numUsuarios] = Usuario(n, c, p);
+    tablaUsuarios.insertar(usuarios[numUsuarios - 1]);  // Insertar último usuario
+
     numUsuarios++;
+
 
     cout << "-> Usuario registrado!\n";
     pausar();
@@ -519,7 +532,7 @@ void SubMenu(
         switch (seleccion) {
         case 0: { // Crear Playlist
             limpiarPantalla();
-            string lineas[2] = { "CREAR PLAYLIST" };
+            string lineas[4] = { "CREAR PLAYLIST" };
             dibujarCaja(lineas, 1);
             string nombreP, descP;
             cout << "Nombre Playlist: "; getline(cin, nombreP);
@@ -532,7 +545,7 @@ void SubMenu(
         }
         case 1: { // Eliminar Playlist
             limpiarPantalla();
-            string lineas[3] = { "ELIMINAR PLAYLIST" };
+            string lineas[5] = { "ELIMINAR PLAYLIST" };
             dibujarCaja(lineas, 1);
             string nombreP;
             cout << "Nombre Playlist: "; getline(cin, nombreP);
@@ -543,7 +556,7 @@ void SubMenu(
         }
         case 2: { // Listar Playlists
             limpiarPantalla();
-            string lineas[4] = { "TUS PLAYLIST" };
+            string lineas[6] = { "TUS PLAYLIST" };
             dibujarCaja(lineas, 1);
            
             ListaReproduccion* listas = usuarioLogueado.obtenerListaReproduccion();
@@ -561,7 +574,7 @@ void SubMenu(
         switch (seleccion) {
         case 0: { // Agregar Cancion
             limpiarPantalla();
-            string lineas[5] = { "AGREGAR CANCION" };
+            string lineas[7] = { "AGREGAR CANCION" };
             dibujarCaja(lineas, 1);
             string nombreP, t, art, alb;
             int dur;
@@ -592,7 +605,7 @@ void SubMenu(
         }
         case 1: { // Eliminar Cancion
             limpiarPantalla();
-            string lineas[6] = { "ELIMINAR CANCION" };
+            string lineas[8] = { "ELIMINAR CANCION" };
             dibujarCaja(lineas, 1);
             string nombreP, t;
             cout << "Playlist      : "; getline(cin, nombreP);
@@ -610,7 +623,7 @@ void SubMenu(
         }
         case 2: { // Listar Canciones
             limpiarPantalla();
-            string lineas[7] = { "LISTAR CANCIONES" };
+            string lineas[9] = { "LISTAR CANCIONES" };
             dibujarCaja(lineas, 1);
             string nombreP;
             cout << "Playlist: "; getline(cin, nombreP);
@@ -626,7 +639,7 @@ void SubMenu(
         }
         case 3: { // Compartir Cancion
             limpiarPantalla();
-            string lineas[8] = { "COMPARTIR CANCION" };
+            string lineas[10] = { "COMPARTIR CANCION" };
             dibujarCaja(lineas, 1);
             string titulo;
             cout << "Titulo de la cancion: "; getline(cin, titulo);
@@ -648,7 +661,7 @@ void SubMenu(
         }
         case 4: { // Canciones Compartidas
             limpiarPantalla();
-            string lineas[9] = { "CANCIONES COMPARTIDAS" };
+            string lineas[11] = { "CANCIONES COMPARTIDAS" };
             dibujarCaja(lineas, 1);
             gestorCompartir.listarCompartidos();
             pausar();
@@ -656,7 +669,7 @@ void SubMenu(
         }
         case 5: { // Ordenar Canciones con QuickSort
             limpiarPantalla();
-            string lineas[10] = { "ORDENADAR CANCIONES CON QUICKSORT" };
+            string lineas[12] = { "ORDENADAR CANCIONES CON QUICKSORT" };
             dibujarCaja(lineas, 1);
 
             string nombreP;
@@ -756,7 +769,7 @@ void SubMenu(
         }
         case 6: { // Reproducir Cancion
             limpiarPantalla();
-            string lineas[11] = { "REPRODUCTOR DE CANCION O PODCAST" };
+            string lineas[13] = { "REPRODUCTOR DE CANCION O PODCAST" };
             dibujarCaja(lineas, 1);
 
             string titulo;
@@ -888,7 +901,7 @@ void SubMenu(
         }
         case 7: { // Ordenar Enlaces Compartidos (Timsort)
             limpiarPantalla();
-            string lineas[12] = { "ORDENAMINETO AVANZADO DE ENLACES(TIMSORT)" };
+            string lineas[14] = { "ORDENAMINETO AVANZADO DE ENLACES(TIMSORT)" };
             dibujarCaja(lineas, 1);
 
             if (codigosGenerados.getCantidad() == 0) {
@@ -913,7 +926,7 @@ void SubMenu(
         switch (seleccion) {
         case 0: { // Valorar Formato
             limpiarPantalla();
-            string lineas[13] = { "VALORAR FORMATO" };
+            string lineas[15] = { "VALORAR FORMATO" };
             dibujarCaja(lineas, 1);
             cout << "Que quieres valorar?\n"
                 << " 1. Cancion\n"
@@ -987,7 +1000,7 @@ void SubMenu(
         }
         case 1: { // Ver Valoraciones
             limpiarPantalla();
-            string lineas[14] = { "VALORACIONES PROMEDIO" };
+            string lineas[16] = { "VALORACIONES PROMEDIO" };
             dibujarCaja(lineas, 1);
             gestorValoracion.listarPromedios();
             pausar();
@@ -995,7 +1008,7 @@ void SubMenu(
         }
         case 2: { // Ver Valoraciones Ordenado (Counting Sort)
             limpiarPantalla();
-            string lineas[15] = { "VALORACIONES PROMEDIO ORDENADO CON COUNTING SORT" };
+            string lineas[17] = { "VALORACIONES PROMEDIO ORDENADO CON COUNTING SORT" };
             dibujarCaja(lineas, 1);
             gestorValoracion.listarPromediosOrdenado();
             pausar();
@@ -1008,7 +1021,7 @@ void SubMenu(
         switch (seleccion) {
         case 0: { // Agregar Enlace Favorito
             limpiarPantalla();
-            string lineas[16] = { "AGREGAR ENLACE FAVORITO" };
+            string lineas[18] = { "AGREGAR ENLACE FAVORITO" };
             dibujarCaja(lineas, 1);
             string titulo, url;
             cout << "Titulo de la cancion: "; getline(cin, titulo);
@@ -1022,7 +1035,7 @@ void SubMenu(
         }
         case 1: { // Ver Enlaces
             limpiarPantalla();
-            string lineas[17] = { "TUS ENLACES FAVORITOS" };
+            string lineas[19] = { "TUS ENLACES FAVORITOS" };
             dibujarCaja(lineas, 1);
             gestorEnlaces.listarFavoritos();
             pausar();
@@ -1030,7 +1043,7 @@ void SubMenu(
         }
         case 2: { // Eliminar Enlace
             limpiarPantalla();
-            string lineas[18] = { "ELIMINAR ENLACE FAVORITO" };
+            string lineas[20] = { "ELIMINAR ENLACE FAVORITO" };
             dibujarCaja(lineas, 1);
             gestorEnlaces.listarFavoritos();
             int idx = leerEnteroEnRango("Indice a eliminar: ", 1, 100); // Rango razonable para indices
@@ -1048,7 +1061,7 @@ void SubMenu(
         switch (seleccion) {
         case 0: { // Registrar Podcast
             limpiarPantalla();
-            string lineas[19] = { "REGISTRAR PODCAST" };
+            string lineas[21] = { "REGISTRAR PODCAST" };
             dibujarCaja(lineas, 1);
             string titulo, creador;
             cout << "Titulo del podcast : "; getline(cin, titulo);
@@ -1063,7 +1076,7 @@ void SubMenu(
         }
         case 1: { // Ver Podcasts
             limpiarPantalla();
-            string lineas[20] = { "LISTA DE PODCAST" };
+            string lineas[22] = { "LISTA DE PODCAST" };
             dibujarCaja(lineas, 1);
             gestorPodcasts.listarPodcasts();
             pausar();
@@ -1071,7 +1084,7 @@ void SubMenu(
         }
         case 2: { // Ordenar Podcasts (MergeSort)
             limpiarPantalla();
-            string lineas[21] = { "ORDENAR PODCAST CON MERGESORT" };
+            string lineas[23] = { "ORDENAR PODCAST CON MERGESORT" };
             dibujarCaja(lineas, 1);
             gestorPodcasts.ordenarPorTituloMerge();
             historial.registrarEvento("Se ordenaron los podcasts por Titulo usando MergeSort");
@@ -1094,7 +1107,7 @@ void SubMenu(
         switch (seleccion) {
         case 0: { // Guia del Usuario
             limpiarPantalla();
-            string lineas[22] = { "GUIA DE USUARIO" };
+            string lineas[24] = { "GUIA DE USUARIO" };
             dibujarCaja(lineas, 1);
             estadisticas.mostrarGuia();
             pausar();
@@ -1102,7 +1115,7 @@ void SubMenu(
         }
         case 1: { // Historial General
             limpiarPantalla();
-            string lineas[23] = { "HISTORIAL GENERAL DE ACTIVIDADES" };
+            string lineas[25] = { "HISTORIAL GENERAL DE ACTIVIDADES" };
             dibujarCaja(lineas, 1);
             historial.mostrarHistorial();
             pausar();
@@ -1115,7 +1128,7 @@ void SubMenu(
         }
         case 3: { // Creditos
             limpiarPantalla();
-            string lineas[24] = { "CREDITOS" };
+            string lineas[25] = { "CREDITOS" };
             dibujarCaja(lineas, 1);
             Creditos::mostrar();
             break;
@@ -1166,14 +1179,61 @@ void subMenu(
         }
     }
 }
+void mostrarMenuPrincipal(Usuario& usuarioLogueado) {
+    // Aquí va el menú principal después del login
+    limpiarPantalla();
+    cout << "\n+-------------------------------------------+\n";
+    cout << "|         BIENVENIDO AL MENU PRINCIPAL      |\n";
+    cout << "+-------------------------------------------+\n";
+    cout << "| Usuario: " << usuarioLogueado.obtenerNombre() << "                          |\n";
+    cout << "| Correo : " << usuarioLogueado.obtenerCorreo() << "                         |\n";
+    cout << "+-------------------------------------------+\n";
 
+    // Aquí puedes agregar un menú real o llamar a otra función que lo haga
+    pausar();
+}
 void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     limpiarPantalla();
-    string lineas[25] = { "INICIAR SESION" };
-    dibujarCaja(lineas, 1);
     string identifier, pass;
+    string lineas[1] = { "INICIAR SESION" };
+    dibujarCaja(lineas, 1);
+
     cout << "Correo o nombre de usuario: "; getline(cin, identifier);
     cout << "Contrasena                : "; getline(cin, pass);
+
+    Usuario* usuarioEncontrado = nullptr;
+
+    // Busqueda en la tabla hash
+    usuarioEncontrado = tablaUsuarios.buscar(identifier);
+
+    // Si no es por correo es por nombre
+    if (usuarioEncontrado == nullptr) {
+        for (int i = 0; i < numUsuarios; ++i) {
+            if (usuarios[i].obtenerCorreo() == identifier || usuarios[i].obtenerNombre() == identifier) {
+                usuarioEncontrado = &usuarios[i];
+                break;
+            }
+        }
+    }
+
+    // No encontrado
+    if (usuarioEncontrado == nullptr) {
+        cout << "-> Usuario no encontrado.\n";
+        pausar();
+        return;
+    }
+
+    // Contraseña verificada
+    if (usuarioEncontrado->obtenerContrasena() != pass) {
+        cout << "-> Contraseña incorrecta!\n";
+        pausar();
+        return;
+    }
+
+    // Inicio de sesion
+    cout << "-> Bienvenido, " << usuarioEncontrado->obtenerNombre() << "!\n";
+    pausar();
+    mostrarMenuPrincipal(*usuarioEncontrado);
 
     int indice = -1;
     for (int i = 0; i < numUsuarios; ++i) {
@@ -1217,6 +1277,7 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Podcast";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Ayuda";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Grafo Musical";
+    opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Usuarios Registrados";
     opcionesMenuPrincipal[numOpcionesMenuPrincipal++] = "Cerrar Sesion";
 
 
@@ -1258,9 +1319,7 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
         case 4: { // Podcast
             subMenu<string, MAX_OPCIONES_SUBMENU>(PODCAST, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
             break;
-        }
-
-       
+        }       
         case 5: { // AYUDA
             subMenu<string, MAX_OPCIONES_SUBMENU>(AYUDA, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
             break;
@@ -1269,7 +1328,15 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
             subMenu<string, MAX_OPCIONES_SUBMENU>(GRAFO_MUSICAL, usuarioLogueado, historial, gestorPodcasts, gestorValoracion, gestorEnlaces, estadisticas, gestorCompartir, mtxTiempo);
             break;
         }
-        case 7: { // Cerrar Sesion
+        case 7: {
+            limpiarPantalla();
+            string lineas[1] = { "USUARIOS REGISTRADOS (HASHTABLE)" };
+            dibujarCaja(lineas, 1);
+            tablaUsuarios.mostrar();
+            pausar();
+            break;
+        }
+        case 8: { // Cerrar Sesion
             sesionActiva = false;
             break;
         }
