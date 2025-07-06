@@ -3,6 +3,7 @@
 #include "PodcastOrdenado.h"
 
 
+
 AdministradorPodcast::AdministradorPodcast() : ordenado(MAX_PODCASTS) {}
 //Podcast
 Podcast::Podcast() : titulo(""), creador(""), duracion(0) {}
@@ -14,26 +15,28 @@ string Podcast::obtenerCreador() const { return creador; }
 int Podcast::obtenerDuracion() const { return duracion; }
 
 //PodcastManager
-bool  AdministradorPodcast::registrarPodcast(const string& titulo, const string& creador, int duracion) {
+bool  AdministradorPodcast::registrarPodcast(const string& titulo, const string& creador, int duracion, Usuario& usuario) {
     if (total >= MAX_PODCASTS) return false;
-    podcasts[total++] = Podcast(titulo, creador, duracion);
+    Podcast nuevoPodcast(titulo, creador, duracion);
+    podcasts[total++] = nuevoPodcast;
+    usuario.agregarPodcast(nuevoPodcast);
     return true;
 }
 
-void  AdministradorPodcast::listarPodcasts() const {
-    if (total == 0) {
+void  AdministradorPodcast::listarPodcasts(Usuario& usuario) const {
+    if (usuario.obtenerCantidadPodcasts() == 0) {
         cout << "(No hay podcasts registrados)\n";
         return;
     }
-    for (int i = 0; i < total; ++i) {
-        cout << i + 1 << ". " << podcasts[i].obtenerTitulo()
-            << " | Creador: " << podcasts[i].obtenerCreador()
-            << " | Duracion: " << podcasts[i].obtenerDuracion() << "s\n";
+    for (int i = 0; i < usuario.obtenerCantidadPodcasts(); ++i) {
+        cout << i + 1 << ". " << usuario.obtenerPodcast(i).obtenerTitulo()
+            << " | Creador: " << usuario.obtenerPodcast(i).obtenerCreador()
+            << " | Duracion: " << usuario.obtenerPodcast(i).obtenerDuracion() << "s\n";
     }
 }
 
-int  AdministradorPodcast::obtenerCantidad() const {
-    return total;
+int  AdministradorPodcast::obtenerCantidad(Usuario& usuario) const {
+    return usuario.obtenerCantidadPodcasts();
 }
 
 void AdministradorPodcast::ordenarPorTitulo() {

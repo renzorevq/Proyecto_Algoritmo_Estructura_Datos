@@ -65,6 +65,7 @@ int main() {
     cargarUsuarios(usuarios, numUsuarios);
     cargarPlaylists(usuarios, numUsuarios);
     cargarCanciones(usuarios, numUsuarios);
+    cargarPodcasts(usuarios, numUsuarios);
 
    
     ColaCircular<Cancion, 100> colaReproduccion;
@@ -116,6 +117,7 @@ int main() {
     guardarUsuarios(usuarios, numUsuarios);
     guardarPlaylists(usuarios, numUsuarios);
     guardarCanciones(usuarios, numUsuarios);
+    guardarPodcasts(usuarios, numUsuarios);
     delete[] usuarios;
     cout << "\nGracias por usar Mini Spotify!\n";
     return 0;
