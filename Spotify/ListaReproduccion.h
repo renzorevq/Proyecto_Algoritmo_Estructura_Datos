@@ -2,6 +2,7 @@
 #include <string>
 #include "ListaEnlazada.h"
 #include "Cancion.h"
+
 using namespace std;
 class ListaReproduccion {
 private:
@@ -16,5 +17,6 @@ public:
     void eliminarCancion(const string& tituloCancion);
     void listarCanciones() const;
     string obtenerNombre() const;
-    ListaEnlazada<Cancion>& obtenerCanciones();
+    string obtenerDescripcion() const;
+    const ListaEnlazada<Cancion>& obtenerCanciones() const;
 };

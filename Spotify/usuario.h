@@ -2,7 +2,9 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
+#include <string> 
 #include "ListaReproduccion.h"
+
 
 using namespace std;
 
@@ -23,6 +25,7 @@ public:
     string obtenerCorreo() const;
     string obtenerContrasena() const;
     ListaReproduccion* obtenerListaReproduccion(); // Declaración
+    const ListaReproduccion& obtenerListaReproduccion(int indice) const;
     int obtenerCantidadListas() const; // Declaración
 
     void crearListaReproduccion(const ListaReproduccion& nuevaListaReproduccion);

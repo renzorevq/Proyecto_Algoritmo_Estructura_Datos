@@ -1,0 +1,91 @@
+Rock Clasico
+----------------------------------------------------------------
+Bohemian Rhapsody,Queen,A Night at the Opera,355
+Stairway to Heaven,Led Zeppelin,Led Zeppelin IV,482
+Paint It Black,The Rolling Stones,Aftermath,225
+Back in Black,AC/DC,Back in Black,255
+Another Brick in the Wall,Pink Floyd,The Wall,335
+Come Together,The Beatles,Abbey Road,260
+Sweet Child o' Mine,Guns N' Roses,Appetite for Destruction,356
+Light My Fire,The Doors,The Doors,426
+Dream On,Aerosmith,Aerosmith,268
+Smoke on the Water,Deep Purple,Machine Head,340
+
+
+Pop del Momento
+----------------------------------------------------------------
+vampire,Olivia Rodrigo,GUTS,219
+Cruel Summer,Taylor Swift,Lover,178
+Houdini,Dua Lipa,RADICAL OPTIMISM,185
+Lunch,Billie Eilish,HIT ME HARD AND SOFT,208
+Popular,The Weeknd,The Idol Vol. 1,230
+Espresso,Sabrina Carpenter,Singular,176
+Monaco,Bad Bunny,nadie sabe lo que va a pasar manana,235
+Provenza,Karol G,MAÑANA SERA BONITO,210
+Paint The Town Red,Doja Cat,Scarlet,226
+Kill Bill,SZA,SOS,154
+
+Relajacion
+----------------------------------------------------------------
+Nuvole Bianche,Ludovico Einaudi,Una Mattina,365
+River Flows in You,Yiruma,First Love,239
+Only Time,Enya,A Day Without Rain,218
+An Ending (Ascent),Brian Eno,Ambient 1,258
+Mystery of Love,Sufjan Stevens,Call Me by Your Name,248
+On the Nature of Daylight,Max Richter,The Blue Notebooks,375
+Near Light,Olafur Arnalds,Living Room Songs,305
+Saeglopur,Sigur Ros,Takk...,440
+Your Hand in Mine,Explosions in the Sky,The Earth Is Not a Cold Dead Place,497
+Merry Christmas Mr. Lawrence,Ryuichi Sakamoto,Coda,280
+
+Latino Hits
+----------------------------------------------------------------
+BZRP Music Sessions 53,Shakira y Bizarrap,Single,217
+Titi Me Pregunto,Bad Bunny,Un Verano Sin Ti,243
+TQG,Karol G y Shakira,MAÑANA SERA BONITO,197
+Feliz Cumpleanos Ferxxo,Feid,Feliz Cumpleaños Ferxxo,212
+Todo de Ti,Rauw Alejandro,VICE VERSA,200
+Tacones Rojos,Sebastian Yatra,Dharma,176
+Mi Gente,J Balvin,Single,187
+MAMIII,Becky G y Karol G,Single,227
+Envolver,Anitta,Versions of Me,193
+LALA,Myke Towers,LALA,203
+
+Baladas Romanticas
+----------------------------------------------------------------
+La Incondicional,Luis Miguel,Busca Una Mujer,270
+El Problema,Ricardo Arjona,Santo Pecado,330
+Todo Cambio,Camila,Todo Cambio,232
+Entra en mi Vida,Sin Bandera,Sin Bandera,299
+Vivimi,Laura Pausini,Resta in Ascolto,252
+Me Niego,Reik,Des/Amor,222
+Solamente Tu,Pablo Alboran,Pablo Alboran,247
+Amiga Mia,Alejandro Sanz,Mas,280
+Besame,Ricardo Montaner,Viajero Frecuente,228
+Por Amarte Asi,Christian Castro,Mi Vida Sin Tu Amor,244
+
+Reggaeton
+----------------------------------------------------------------
+Gasolina,Daddy Yankee,Barrio Fino,192
+Danza Kuduro,Don Omar,Meet the Orphans,199
+Rakata,Wisin y Yandel,Pa’l Mundo,203
+Yo Voy,Zion y Lennox,Musicozion,249
+Pa Que Retozen,Tego Calderon,El Abayarde,260
+Noche de Travesura,Hector el Father,Gold Star Music,230
+Candy,Plan B,Love & Sex,238
+5 Letras,Alexis y Fido,Down to Earth,223
+Quiero Bailar,Ivy Queen,Diva,246
+Mayor Que Yo,Luny Tunes,Mas Flow 2,285
+
+Bachata
+----------------------------------------------------------------
+Propuesta Indecente,Romeo Santos,Formula Vol. 2,239
+Obsesion,Aventura,We Broke the Rules,252
+Corazon Sin Cara,Prince Royce,Prince Royce,208
+Te Regalo el Mar,Frank Reyes,Te Regalo el Mar,240
+Es Tan Dificil,Zacarias Ferreira,El Amor Vencera,227
+Intentalo Tu,Joe Veras,Intentalo Tu,218
+Tengo un Amor,Toby Love,Toby Love,230
+Perdidos,Monchy y Alexandra,Hasta el Fin,225
+Lejos de Ti,Grupo Extra,Lejos de Ti,235
+Te Extrano,Xtreme,Haciendo Historia,255

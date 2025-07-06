@@ -12,7 +12,7 @@
 #include "Podcast.h"
 #include "Usuario.h"
 #include "Utilidades.h"
-#include "Login.h"
+#include "login.h"
 #include <chrono>
 #include <conio.h>
 #include <mutex>
@@ -1275,7 +1275,7 @@ void iniciarSesion(Usuario usuarios[], int numUsuarios) {
 }
 
 void cargarUsuarios(Usuario usuarios[], int& numUsuarios) {
-    ifstream f("usuarios.txt");
+    ifstream f("dataset/usuarios/usuarios.txt");
     if (!f) return;
     string linea;
     numUsuarios = 0;
@@ -1291,12 +1291,105 @@ void cargarUsuarios(Usuario usuarios[], int& numUsuarios) {
 }
 
 void guardarUsuarios(const Usuario usuarios[], int numUsuarios) {
-    ofstream f("usuarios.txt");
+    ofstream f("dataset/usuarios/usuarios.txt");
     if (!f) return;
 
     for (int i = 0; i < numUsuarios; ++i) {
         f << usuarios[i].obtenerNombre() << ","
             << usuarios[i].obtenerCorreo() << ","
             << usuarios[i].obtenerContrasena() << "\n";
+    }
+}
+
+void cargarPlaylists(Usuario usuarios[], int& numUsuarios) {
+    for (int i = 0; i < numUsuarios; ++i) {
+        string nombreArchivo = "dataset/playlists/playlist_" + usuarios[i].obtenerNombre() + ".txt";
+        ifstream archivo(nombreArchivo);
+        if (!archivo.is_open()) continue;
+
+        string linea;
+        while (getline(archivo, linea)) {
+            stringstream ss(linea);
+            string nombreLista, descripcion;
+
+            if (getline(ss, nombreLista, ',') && getline(ss, descripcion)) {
+                ListaReproduccion nuevaLista(nombreLista, descripcion);
+                usuarios[i].crearListaReproduccion(nuevaLista);
+            }
+        }
+
+        archivo.close();
+    }
+}
+
+void guardarPlaylists(const Usuario usuarios[], int numUsuarios) {
+    for (int i = 0; i < numUsuarios; ++i) {
+        const Usuario& usuario = usuarios[i];
+
+        if (usuario.obtenerCantidadListas() != 0) {
+            ofstream archivo("dataset/playlists/playlist_" + usuario.obtenerNombre() + ".txt");
+
+            if (!archivo.is_open()) continue;
+
+            for (int j = 0; j < usuario.obtenerCantidadListas(); ++j) {
+                archivo << usuario.obtenerListaReproduccion(j).obtenerNombre() << ","
+                    << usuario.obtenerListaReproduccion(j).obtenerDescripcion() << "\n";
+            }
+
+            archivo.close();
+        }
+    }
+}
+
+void cargarCanciones(Usuario usuarios[], int& numUsuarios)
+{
+    for (int i = 0; i < numUsuarios; ++i) {
+        Usuario& usuario = usuarios[i];
+
+        for (int j = 0; j < usuario.obtenerCantidadListas(); ++j) {
+            ListaReproduccion* lista = &usuario.obtenerListaReproduccion()[j];
+            string archivoNombre = "dataset/canciones/" + lista->obtenerNombre() + "_" + usuario.obtenerNombre() + "_canciones.txt";
+
+            ifstream archivo(archivoNombre);
+            if (!archivo.is_open()) continue;
+
+            string linea;
+            while (getline(archivo, linea)) {
+                stringstream ss(linea);
+                string titulo, artista, album, duracionStr;
+                if (getline(ss, titulo, ',') && getline(ss, artista, ',') &&
+                    getline(ss, album, ',') && getline(ss, duracionStr)) {
+
+                    int duracion = stoi(duracionStr);
+                    Cancion nuevaCancion(titulo, artista, album, duracion);
+                    lista->agregarCancion(nuevaCancion);
+                }
+            }
+
+            archivo.close();
+        }
+    }
+}
+
+void guardarCanciones(const Usuario usuarios[], int numUsuarios) {
+    for (int i = 0; i < numUsuarios; ++i) {
+        const Usuario& usuario = usuarios[i];
+
+        for (int j = 0; j < usuario.obtenerCantidadListas(); ++j) {
+            const ListaReproduccion& lista = usuario.obtenerListaReproduccion(j);
+            string archivoNombre = "dataset/canciones/" + lista.obtenerNombre() + "_" + usuario.obtenerNombre() + "_canciones.txt";
+
+            ofstream archivo(archivoNombre);
+            if (!archivo.is_open()) continue;
+
+            lista.obtenerCanciones().porCada([&archivo](const Cancion& c) {
+                archivo << c.obtenerTitulo() << ","
+                    << c.obtenerArtista() << ","
+                    << c.obtenerAlbum() << ","
+                    << c.obtenerDuracion() << "\n";
+                });
+
+            archivo.close();
+        }
     }
 }

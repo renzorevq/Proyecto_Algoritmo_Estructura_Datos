@@ -1,6 +1,9 @@
 #include "ListaReproduccion.h"
 #include "Utilidades.h"
 #include <iostream>
+#include <fstream>
+#include "usuario.h"
+
 using namespace std;
 ListaReproduccion::ListaReproduccion()
     : nombre(""), descripcion(""), canciones() {
@@ -38,6 +41,10 @@ string ListaReproduccion::obtenerNombre() const {
     return nombre;
 }
 
-ListaEnlazada<Cancion>& ListaReproduccion::obtenerCanciones() {
+string ListaReproduccion::obtenerDescripcion() const {
+    return descripcion;
+}
+
+const ListaEnlazada<Cancion>& ListaReproduccion::obtenerCanciones() const {
     return canciones;
 }

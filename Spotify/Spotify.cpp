@@ -7,6 +7,8 @@
 #include "ColaCircular.h"
 #include "ListaEnlazada.h"
 #include <windows.h>
+#include "ListaReproduccion.h"
+
 using namespace std;
 
 template <typename T>
@@ -60,6 +62,8 @@ int main() {
     int numUsuarios = 0;
 
     cargarUsuarios(usuarios, numUsuarios);
+    cargarPlaylists(usuarios, numUsuarios);
+    cargarCanciones(usuarios, numUsuarios);
 
    
     ColaCircular<Cancion, 100> colaReproduccion;
@@ -109,6 +113,8 @@ int main() {
     }
 
     guardarUsuarios(usuarios, numUsuarios);
+    guardarPlaylists(usuarios, numUsuarios);
+    guardarCanciones(usuarios, numUsuarios);
     delete[] usuarios;
     cout << "\nGracias por usar Mini Spotify!\n";
     return 0;

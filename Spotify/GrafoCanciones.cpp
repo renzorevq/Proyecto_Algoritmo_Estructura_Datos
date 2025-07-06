@@ -127,7 +127,7 @@ void GrafoCanciones::interactuar(Usuario& usuario) {
             ListaReproduccion* listas = usuario.obtenerListaReproduccion();
             int numListas = usuario.obtenerCantidadListas();
             for (int i = 0; i < numListas; ++i) {
-                ListaEnlazada<Cancion>& canciones = listas[i].obtenerCanciones();
+                const ListaEnlazada<Cancion>& canciones = listas[i].obtenerCanciones();
                 canciones.porCada([&](const Cancion& c) {
                     if (agregarCancion(c.obtenerTitulo())) {
                         agregadas++;

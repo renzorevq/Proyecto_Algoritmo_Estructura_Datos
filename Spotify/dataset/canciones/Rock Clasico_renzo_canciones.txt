@@ -1,0 +1,10 @@
+Bohemian Rhapsody,Queen,A Night at the Opera,355
+Stairway to Heaven,Led Zeppelin,Led Zeppelin IV,482
+Paint It Black,The Rolling Stones,Aftermath,225
+Back in Black,AC/DC,Back in Black,255
+Another Brick in the Wall,Pink Floyd,The Wall,335
+Come Together,The Beatles,Abbey Road,260
+Sweet Child o' Mine,Guns N' Roses,Appetite for Destruction,356
+Light My Fire,The Doors,The Doors,426
+Dream On,Aerosmith,Aerosmith,268
+Smoke on the Water,Deep Purple,Machine Head,340
