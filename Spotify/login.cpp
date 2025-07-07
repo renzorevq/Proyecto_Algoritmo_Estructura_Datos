@@ -119,7 +119,7 @@ public:
         }
 
         cout << "Estructura del árbol:\n";
-        inorden([](const T& valor) {
+        inorden([](const T& valor) { //lambda
             cout << valor << "\n";
             });
     }
@@ -437,7 +437,7 @@ public:
     void mostrarCategorias() {
         cout << "\n-- CATEGORÍAS MUSICALES (ÁRBOL BINARIO) --\n\n";
 
-        arbolCategoriasMusica.inorden([](const string& categoria) {
+        arbolCategoriasMusica.inorden([](const string& categoria) { //lambda
             cout << categoria << "\n";
             });
 
@@ -511,7 +511,7 @@ void SubMenu(
     int DURACION_TOTAL = -1;
 
     // Buscar el progreso de la cancion/podcast actual
-    auto buscarProgreso = [&](const string& titulo) {
+    auto buscarProgreso = [&](const string& titulo) { //lambda
         for (int i = 0; i < progresoCanciones.getCantidad(); ++i) {
             if (progresoCanciones.getClave(i) == titulo) {
                 p_segundos = &progresoCanciones.getValor(i);
@@ -692,7 +692,7 @@ void SubMenu(
                     // Convertir de ListaEnlazada a arreglo para usar QuickSort
                     Cancion tempArray[MAX_CANCIONES]; // Temporal para copiar
                     int tempCount = 0;
-                    cancionesOriginales.porCada([&](const Cancion& c) {
+                    cancionesOriginales.porCada([&](const Cancion& c) { //lambda
                         if (tempCount < MAX_CANCIONES) {
                             tempArray[tempCount++] = c;
                         }
@@ -787,7 +787,7 @@ void SubMenu(
                
                 Cancion tempArray[MAX_CANCIONES]; 
                 int tempCount = 0;
-                canciones.porCada([&](const Cancion& c) {
+                canciones.porCada([&](const Cancion& c) { //lambda
                     if (tempCount < MAX_CANCIONES) {
                         tempArray[tempCount++] = c;
                     }
@@ -830,7 +830,7 @@ void SubMenu(
             g_enReproduccion.set(false);
             g_detenerHilo.set(false);
 
-            thread hiloCronometro([&]() {
+            thread hiloCronometro([&]() { //lambda
                 while (!g_detenerHilo.get()) {
                     if (g_enReproduccion.get() && *p_segundos < DURACION_TOTAL) {
                         this_thread::sleep_for(chrono::seconds(1));
@@ -849,7 +849,7 @@ void SubMenu(
                 }
                 });
 
-            thread hiloVisual([&]() {
+            thread hiloVisual([&]() { //lambda
                 while (!g_detenerHilo.get()) {
                     this_thread::sleep_for(chrono::milliseconds(500));
                     lock_guard<mutex> lock(mtxTiempo);
@@ -949,7 +949,7 @@ void SubMenu(
                     // Reemplazo para porCada
                     Cancion tempArray[MAX_CANCIONES]; // Temporal para copiar
                     int tempCount = 0;
-                    canciones.porCada([&](const Cancion& c) {
+                    canciones.porCada([&](const Cancion& c) { //lambda
                         if (tempCount < MAX_CANCIONES) {
                             tempArray[tempCount++] = c;
                         }
@@ -977,7 +977,7 @@ void SubMenu(
 
             if (!existe) {
                 cout << "-> ERROR: El titulo \"" << titulo
-                    << "\" no existe en " << (tipo == 1 ? "canciones" : "podcasts") << ".\n";
+                    << "\" no existe en " << (tipo == 1 ? "canciones" : "podcasts") << ".\n"; //lambda
                 pausar();
                 return;
             }
